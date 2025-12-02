@@ -132,14 +132,28 @@ const Reading = () => {
           <motion.div 
             key={card.id} 
             className="preview-card"
-            initial={{ opacity: 0, scale: 0.5, y: 50 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            layoutId={`card-${card.id}`}
+            initial={{ rotateY: 180 }}
+            animate={{ 
+              rotateY: 0,
+              opacity: 1
+            }}
+            transition={{ 
+              duration: 0.8,
+              rotateY: { duration: 0.6 }
+            }}
+            style={{
+              transformStyle: 'preserve-3d',
+              perspective: '1000px'
+            }}
           >
             <img 
               src={card.image} 
               alt={card.name_kr}
-              style={{ transform: card.isReversed ? 'rotate(180deg)' : 'none' }}
+              style={{ 
+                transform: card.isReversed ? 'rotate(180deg)' : 'none',
+                backfaceVisibility: 'hidden'
+              }}
               onError={(e) => { e.target.src = `${baseUrl}cards/card_back.png`; }}
             />
             <p>
@@ -203,18 +217,24 @@ const Reading = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              {[...Array(Math.min(pile.length, 5))].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="pile-card-layer"
-                  style={{ 
-                    transform: `translateY(-${i * 2}px) translateZ(${i}px)`,
-                    zIndex: i 
-                  }}
-                >
-                  <img src={`${baseUrl}cards/card_back.png`} alt="Card Back" />
-                </div>
-              ))}
+              {[...Array(Math.min(pile.length, 5))].map((_, i) => {
+                const isTopCard = i === Math.min(pile.length, 5) - 1;
+                const topCard = pile[pile.length - 1];
+                
+                return (
+                  <motion.div 
+                    key={i} 
+                    className="pile-card-layer"
+                    layoutId={isTopCard && topCard ? `card-${topCard.id}` : undefined}
+                    style={{ 
+                      transform: `translateY(-${i * 2}px) translateZ(${i}px)`,
+                      zIndex: i 
+                    }}
+                  >
+                    <img src={`${baseUrl}cards/card_back.png`} alt="Card Back" />
+                  </motion.div>
+                );
+              })}
               <div className="pile-count">{pile.length}장</div>
             </motion.div>
           ))}
