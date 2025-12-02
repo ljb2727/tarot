@@ -127,7 +127,7 @@ const Reading = () => {
       )}
 
       {/* 선택된 카드 프리뷰 */}
-      <div className="selected-preview" style={{ minHeight: '180px', marginBottom: '1rem' }}>
+      <div className="selected-preview" style={{ minHeight: '180px', marginBottom: '1rem', overflow: 'hidden' }}>
         {selectedCards.map((card, idx) => (
           <motion.div 
             key={card.id} 
