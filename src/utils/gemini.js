@@ -12,21 +12,43 @@ export const generateTarotReading = async (cards, apiKey, question) => {
   const card3 = cards[2];
 
   const prompt = `당신은 타로 전문가입니다. 다음 질문에 대해 타로 리딩을 해주세요.
+제공된 '이미지 묘사'를 바탕으로 카드의 그림을 사용자에게 설명하듯 묘사하고 해석해주세요.
 
 질문: ${question}
 
 뽑은 카드:
 1. 과거 - ${card1.name_kr} (${card1.isReversed ? '역방향' : '정방향'})
+   이미지 묘사: ${card1.image_description}
    의미: ${card1.isReversed ? card1.meaning_reversed : card1.meaning_upright}
 
 2. 현재 - ${card2.name_kr} (${card2.isReversed ? '역방향' : '정방향'})
+   이미지 묘사: ${card2.image_description}
    의미: ${card2.isReversed ? card2.meaning_reversed : card2.meaning_upright}
 
 3. 미래 - ${card3.name_kr} (${card3.isReversed ? '역방향' : '정방향'})
+   이미지 묘사: ${card3.image_description}
    의미: ${card3.isReversed ? card3.meaning_reversed : card3.meaning_upright}
 
-위 카드들의 의미를 바탕으로 과거-현재-미래 해석과 조언을 해주세요.
-핵심 키워드는 **볼드**로 표시해주세요.`;
+답변 가이드라인:
+1. 각 카드 해석 시, **제공된 이미지 묘사를 활용하여** 카드의 그림을 생생하게 설명해주세요. (예: "이 카드에는 [이미지 묘사 내용]이 그려져 있습니다.")
+2. 그 그림이 사용자님의 상황과 어떻게 연결되는지 **공감하며 설명**해주세요.
+3. 핵심 키워드는 **볼드**로 표시해주세요.
+4. 답변 형식은 다음과 같이 해주세요:
+
+🃏 **과거: ${card1.name_kr}**
+(이미지 묘사 및 공감 해석)
+
+🃏 **현재: ${card2.name_kr}**
+(이미지 묘사 및 공감 해석)
+
+🃏 **미래: ${card3.name_kr}**
+(이미지 묘사 및 공감 해석)
+
+### 과거-현재-미래 종합 해석
+(전체 흐름 요약)
+
+🌟 **종합 조언**
+(구체적인 조언)`;
 
   try {
     // @google/genai 패키지 사용법에 맞게 수정

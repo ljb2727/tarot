@@ -7,220 +7,634 @@
         "name_kr": "바보",
         "name_en": "The Fool",
         "meaning_upright": "새로운 시작, 순수함, 자유로운 정신, 모험, 무한한 가능성, 순진함",
-        "meaning_reversed": "무모함, 위험한 행동, 준비 부족, 경솔함, 두려움에 막힌 시작"
+        "meaning_reversed": "무모함, 위험한 행동, 준비 부족, 경솔함, 두려움에 막힌 시작",
+        "image_description": "젊은 여행자가 절벽 끝에 서서 한 발을 내딛으려는 순간. 화려한 옷을 입고 지팡이에 작은 보따리를 메고 있으며, 흰 개가 옆에서 따라간다. 하늘은 밝고 맑으며, 발 아래 절벽은 보이지 않는다. 태양이 뒤에서 빛나고 있으며, 얼굴에는 순수한 미소가 가득하다. 산봉우리들이 배경에 보이고, 손에는 흰 장미를 들고 있다."
       },
       {
         "number": 1,
         "name_kr": "마법사",
         "name_en": "The Magician",
         "meaning_upright": "능력, 의지력, 창조, 자원 활용, 행동력, 집중",
-        "meaning_reversed": "조작, 속임수, 능력 낭비, 의지 부족, 에너지 분산"
+        "meaning_reversed": "조작, 속임수, 능력 낭비, 의지 부족, 에너지 분산",
+        "image_description": "빨간 로브를 입은 마법사가 제단 앞에 서 있다. 한 손은 하늘을 가리키고 다른 손은 땅을 가리키며 '위와 같이 아래도 같다'는 원리를 상징한다. 제단 위에는 지팡이(불), 컵(물), 검(공기), 펜타클(흙)의 네 가지 원소가 놓여 있다. 머리 위에는 무한대 기호가 떠 있고, 허리에는 뱀이 자신의 꼬리를 물고 있는 우로보로스 벨트를 차고 있다. 발 아래에는 백합과 장미가 피어 있다."
       },
       {
         "number": 2,
         "name_kr": "여사제",
         "name_en": "The High Priestess",
         "meaning_upright": "직관, 내면의 지혜, 신비, 무의식, 고요함, 영적 통찰",
-        "meaning_reversed": "직관 무시, 비밀, 내면의 목소리 차단, 표면적 지식"
+        "meaning_reversed": "직관 무시, 비밀, 내면의 목소리 차단, 표면적 지식",
+        "image_description": "푸른 로브를 입은 여사제가 두 기둥 사이 왕좌에 앉아 있다. 한 기둥은 검은색(B), 다른 기둥은 흰색(J)이다. 무릎에는 토라 두루마리를 들고 있으며 'TORA'라고 쓰여 있다. 가슴에는 십자가가 걸려 있고, 머리에는 초승달 왕관을 쓰고 있다. 발 아래에는 초승달이 놓여 있으며, 뒤에는 석류 무늬가 있는 장막이 드리워져 있다. 표정은 고요하고 신비로우며, 내면을 응시하는 듯하다."
       },
       {
         "number": 3,
         "name_kr": "여황제",
         "name_en": "The Empress",
         "meaning_upright": "풍요, 모성, 자연, 창조성, 감각적 즐거움, 풍부함",
-        "meaning_reversed": "의존, 과잉보호, 창조력 부족, 물질적 문제"
+        "meaning_reversed": "의존, 과잉보호, 창조력 부족, 물질적 문제",
+        "image_description": "임신한 여황제가 푹신한 쿠션이 깔린 왕좌에 편안하게 앉아 있다. 흰 드레스 위에 석류 무늬가 수놓아져 있으며, 금빛 왕관에는 12개의 별이 박혀 있다. 오른손에는 금 홀을 들고 있고, 옆에는 금성 기호가 새겨진 하트 모양 방패가 놓여 있다. 주변은 울창한 숲과 폭포, 풍성하게 익은 밀밭으로 둘러싸여 있다. 발 아래에는 붉은 벨벳 쿠션이 깔려 있고, 배경의 하늘은 황금빛이다."
       },
       {
         "number": 4,
         "name_kr": "황제",
         "name_en": "The Emperor",
         "meaning_upright": "권위, 구조, 통제, 안정성, 아버지상, 리더십",
-        "meaning_reversed": "독재, 경직성, 권위 남용, 통제 부족"
+        "meaning_reversed": "독재, 경직성, 권위 남용, 통제 부족",
+        "image_description": "석조 왕좌에 당당히 앉은 황제. 왕좌는 붉은색이며 네 모퉁이에 숫양 머리가 조각되어 있다. 빨간 로브를 입고 있으며, 금빛 갑옷이 로브 사이로 보인다. 오른손에는 이집트의 앵크(생명의 십자가)를, 왼손에는 구체(지구)를 들고 있다. 금관을 쓰고 있으며, 긴 흰 수염이 위엄 있게 흘러내린다. 배경은 황량한 붉은 산맥이며, 왕좌 뒤로 작은 강이 흐르고 있다. 표정은 엄격하고 단호하다."
       },
       {
         "number": 5,
         "name_kr": "교황",
         "name_en": "The Hierophant",
         "meaning_upright": "전통, 영적 지도, 교육, 신념, 제도, 관습",
-        "meaning_reversed": "독단, 규칙 거부, 비정통, 자유로운 사고"
+        "meaning_reversed": "독단, 규칙 거부, 비정통, 자유로운 사고",
+        "image_description": "교황이 두 기둥 사이의 보좌에 앉아 있다. 삼중 왕관을 쓰고 있으며, 빨강과 흰색의 화려한 예복을 입고 있다. 왼손에는 세 개의 십자가가 달린 교황의 지팡이를 들고 있고, 오른손은 축복의 손짓을 하고 있다. 발 아래에는 두 명의 수도승이 무릎 꿇고 있으며, 한 사람은 장미가 수놓인 로브를, 다른 사람은 백합이 수놓인 로브를 입고 있다. 발 앞에는 두 개의 열쇠가 교차되어 있다. 배경은 회색 기둥과 아치형 천장이다."
       },
       {
         "number": 6,
         "name_kr": "연인",
         "name_en": "The Lovers",
         "meaning_upright": "사랑, 조화, 관계, 선택, 가치관의 일치, 파트너십",
-        "meaning_reversed": "불화, 잘못된 선택, 가치관 충돌, 관계 문제"
+        "meaning_reversed": "불화, 잘못된 선택, 가치관 충돌, 관계 문제",
+        "image_description": "에덴동산에 벌거벗은 남자와 여자가 서 있다. 여자 뒤에는 사과나무가 있고 뱀이 감겨 있으며, 남자 뒤에는 불타는 나무가 있다. 하늘 위에서 큰 대천사 라파엘이 날개를 펼치고 축복하고 있으며, 태양이 뒤에서 빛나고 있다. 남자는 여자를 바라보고, 여자는 천사를 올려다본다. 멀리 보이는 산은 신성함을 상징한다. 전체적인 분위기는 순수하고 신성하며, 선택의 순간을 포착하고 있다."
       },
       {
         "number": 7,
         "name_kr": "전차",
         "name_en": "The Chariot",
         "meaning_upright": "의지, 결단, 승리, 통제, 방향성, 움직임",
-        "meaning_reversed": "통제력 상실, 방향성 부족, 좌절, 과도한 공격성"
+        "meaning_reversed": "통제력 상실, 방향성 부족, 좌절, 과도한 공격성",
+        "image_description": "청년 전사가 별이 박힌 캐노피가 있는 전차에 서 있다. 어깨에는 초승달 장식이 있고, 가슴에는 사각형 흉갑을 착용하고 있다. 머리에는 금관과 월계수 화관을 쓰고 있으며, 손에는 홀을 들고 있다. 전차를 끄는 것은 한 마리는 검은색, 한 마리는 흰색인 두 마리의 스핑크스다. 전차 앞면에는 날개 달린 원반이 장식되어 있다. 배경은 도시의 성벽이며, 뒤로 강이 흐르고 있다. 표정은 결연하고 자신감에 차 있다."
       },
       {
         "number": 8,
         "name_kr": "힘",
         "name_en": "Strength",
         "meaning_upright": "용기, 인내, 부드러운 힘, 자제력, 내면의 힘, 연민",
-        "meaning_reversed": "자제력 부족, 의심, 나약함, 내면의 혼란"
+        "meaning_reversed": "자제력 부족, 의심, 나약함, 내면의 혼란",
+        "image_description": "흰 드레스를 입은 여인이 사자의 턱을 부드럽게 어루만지고 있다. 머리 위에는 무한대 기호가 떠 있으며, 허리에는 꽃으로 만든 띠를 두르고 있다. 사자는 공격적이지 않고 순종적인 모습이다. 여인의 표정은 차분하고 사랑스러우며, 폭력이 아닌 연민으로 짐승을 다스린다. 배경은 황금빛 하늘과 푸른 산이며, 발 아래에는 야생화가 피어 있다. 전체적으로 내면의 힘과 부드러운 지배를 상징한다."
       },
       {
         "number": 9,
         "name_kr": "은둔자",
         "name_en": "The Hermit",
         "meaning_upright": "내면 탐구, 고독, 지혜, 성찰, 영적 깨달음, 인도",
-        "meaning_reversed": "고립, 외로움, 현실 도피, 내면 탐구 거부"
+        "meaning_reversed": "고립, 외로움, 현실 도피, 내면 탐구 거부",
+        "image_description": "회색 로브를 입은 노인이 눈 덮인 산꼭대기에 홀로 서 있다. 한 손에는 육각별(솔로몬의 인장)이 빛나는 등불을 높이 들고 있고, 다른 손에는 금빛 지팡이를 짚고 있다. 긴 흰 수염이 바람에 날리며, 표정은 지혜롭고 고요하다. 배경은 어두운 밤하늘과 높은 산봉우리들이다. 등불의 빛만이 유일한 광원이며, 길을 밝히는 내면의 지혜를 상징한다. 눈 덮인 산은 고독과 영적 고지를 나타낸다."
       },
       {
         "number": 10,
         "name_kr": "운명의 수레바퀴",
         "name_en": "Wheel of Fortune",
         "meaning_upright": "운명, 변화, 주기, 행운, 전환점, 흐름",
-        "meaning_reversed": "불운, 저항, 변화 거부, 나쁜 흐름"
+        "meaning_reversed": "불운, 저항, 변화 거부, 나쁜 흐름",
+        "image_description": "거대한 수레바퀴가 푸른 하늘에 떠 있다. 바퀴에는 연금술 기호와 히브리 문자 YHVH(야훼), 그리고 TARO라는 글자가 새겨져 있다. 바퀴 위에는 칼을 든 스핑크스가 앉아 있고, 오른쪽에는 뱀 아누비스가 내려가고 있으며, 왼쪽에는 붉은 악마 티폰이 올라가고 있다. 네 모퉁이에는 날개 달린 천사(물병자리), 독수리(전갈자리), 사자(사자자리), 황소(황소자리)가 구름 위에서 책을 읽고 있다. 바퀴는 끊임없이 회전하는 운명의 순환을 상징한다."
       },
       {
         "number": 11,
         "name_kr": "정의",
         "name_en": "Justice",
         "meaning_upright": "공정, 진실, 법, 균형, 책임, 결과",
-        "meaning_reversed": "불공정, 거짓, 책임 회피, 불균형"
+        "meaning_reversed": "불공정, 거짓, 책임 회피, 불균형",
+        "image_description": "석조 왕좌에 앉은 여성이 정면을 응시하고 있다. 빨간 로브와 녹색 망토를 입고 있으며, 머리에는 금관을 쓰고 있다. 오른손에는 곧은 칼을 들고 위를 가리키고, 왼손에는 저울을 들고 있다. 왕좌 뒤에는 보라색 장막이 쳐져 있고, 양쪽에 회색 기둥이 서 있다. 표정은 엄숙하고 공정하며, 어떤 감정도 보이지 않는다. 사각형 브로치가 목에 달려 있고, 발 아래에는 보라색 신발이 보인다. 전체적으로 법과 질서, 객관적 판단을 상징한다."
       },
       {
         "number": 12,
         "name_kr": "매달린 남자",
         "name_en": "The Hanged Man",
         "meaning_upright": "희생, 새로운 관점, 정지, surrender, 통찰, 기다림",
-        "meaning_reversed": "헛된 희생, 지체, 저항, 관점 변화 거부"
+        "meaning_reversed": "헛된 희생, 지체, 저항, 관점 변화 거부",
+        "image_description": "젊은 남자가 살아있는 나무로 만든 T자형 틀에 한쪽 발로 거꾸로 매달려 있다. 다른 다리는 무릎에서 구부러져 숫자 4를 만들고, 두 팔은 뒤로 젖혀져 거꾸로 된 삼각형을 만든다. 머리 주위에는 황금빛 후광이 빛나고 있으며, 얼굴은 평온하고 심지어 계몽된 듯 보인다. 파란 셔츠와 빨간 바지를 입고 있다. 배경은 회색 하늘이며, 고통스럽지 않은 희생과 새로운 관점에서 세상을 보는 것을 상징한다."
       },
       {
         "number": 13,
         "name_kr": "죽음",
         "name_en": "Death",
         "meaning_upright": "변화, 끝과 시작, 변신, 해방, 새로운 시작을 위한 마무리",
-        "meaning_reversed": "변화 거부, 정체, 두려움, 과거에 집착"
+        "meaning_reversed": "변화 거부, 정체, 두려움, 과거에 집착",
+        "image_description": "검은 갑옷을 입은 해골 기사가 흰 말을 타고 있다. 손에는 검은 깃발을 들고 있으며, 깃발에는 흰 장미(불멸)가 그려져 있다. 말 앞에는 왕관을 쓴 왕이 죽어 누워 있고, 주교가 기도하며, 여인이 고개를 돌리고, 어린 아이가 꽃을 바치고 있다. 배경에는 해가 두 탑 사이로 떠오르고 있으며, 멀리 강이 흐르고 폭포가 보인다. 전체적으로 죽음과 재생, 변화의 불가피성을 상징한다."
       },
       {
         "number": 14,
         "name_kr": "절제",
         "name_en": "Temperance",
         "meaning_upright": "균형, 절제, 조화, 인내, 통합, 치유",
-        "meaning_reversed": "불균형, 과도함, 조급함, 부조화"
+        "meaning_reversed": "불균형, 과도함, 조급함, 부조화",
+        "image_description": "큰 날개를 가진 천사가 물가에 서 있다. 흰 로브를 입고 있으며, 가슴에는 금빛 삼각형 안에 사각형이 그려져 있다. 이마에는 태양 기호가 빛나고 있다. 두 손에 금빛 잔을 들고 한쪽에서 다른 쪽으로 물을 부으며, 물은 마법처럼 위쪽으로 흐른다. 한 발은 물속에, 다른 발은 땅 위에 있어 물질과 영적 세계의 균형을 나타낸다. 배경에는 황금빛 왕관이 있는 산이 보이며, 길이 산으로 이어진다. 붓꽃이 물가에 피어 있다."
       },
       {
         "number": 15,
         "name_kr": "악마",
         "name_en": "The Devil",
         "meaning_upright": "속박, 집착, 물질주의, 유혹, 중독, 제한",
-        "meaning_reversed": "해방, 자각, 속박으로부터의 해방, 통제 회복"
+        "meaning_reversed": "해방, 자각, 속박으로부터의 해방, 통제 회복",
+        "image_description": "거대한 염소 머리를 가진 악마가 검은 받침대 위에 앉아 있다. 박쥐 날개를 펼치고 있으며, 오른손은 위를 가리키고 있다(연인 카드의 반대). 이마에는 거꾸로 된 오각별이 있고, 왼손에는 타오르는 횃불을 들고 있다. 받침대 아래에는 사슬에 묶인 벗은 남자와 여자가 있는데, 사슬은 느슨해서 벗어날 수 있지만 그들은 그것을 깨닫지 못한다. 두 사람 모두 작은 뿔과 꼬리가 있어 악마를 닮아가고 있다. 배경은 완전히 검은색이다."
       },
       {
         "number": 16,
         "name_kr": "탑",
         "name_en": "The Tower",
         "meaning_upright": "급격한 변화, 붕괴, 깨달음, 혼란, 파괴적 변화, 진실의 폭로",
-        "meaning_reversed": "변화 회피, 내면의 혼란, 재앙 회피, 점진적 붕괴"
+        "meaning_reversed": "변화 회피, 내면의 혼란, 재앙 회피, 점진적 붕괴",
+        "image_description": "높은 회색 탑이 벼락을 맞아 꼭대기의 금관이 떨어지고 있다. 탑 창문에서 두 사람이 거꾸로 떨어지고 있으며, 팔다리를 휘젓고 있다. 탑에서 불길이 치솟고 있으며, 22개의 불꽃이 하늘로 흩어진다. 배경은 검은 밤하늘이고, 큰 노란 번개가 탑을 가르고 있다. 탑은 바위 산 위에 세워져 있으며, 잘못된 기초 위에 세워진 구조물의 붕괴를 상징한다. 전체적으로 급격하고 파괴적인 깨달음과 필연적인 변화를 나타낸다."
       },
       {
         "number": 17,
         "name_kr": "별",
         "name_en": "The Star",
         "meaning_upright": "희망, 영감, 치유, 평온, 낙관, 갱신",
-        "meaning_reversed": "절망, 희망 상실, 낙담, 신념 부족"
+        "meaning_reversed": "절망, 희망 상실, 낙담, 신념 부족",
+        "image_description": "벌거벗은 여인이 연못가에 무릎을 꿇고 있다. 두 손에 물병을 들고 한쪽에서는 물을 땅에, 다른 쪽에서는 연못으로 붓고 있다. 땅으로 부은 물은 다섯 갈래로 나뉘어 흐른다. 머리 위에는 큰 노란 별 하나와 일곱 개의 작은 흰 별들이 빛나고 있다. 배경에는 붓꽃이 피어 있고, 나무 위에 새 한 마리가 앉아 있다. 멀리 산이 보이며, 전체적으로 평화롭고 희망찬 분위기다. 여인의 자세는 열려 있고 자연과 하나된 모습이다."
       },
       {
         "number": 18,
         "name_kr": "달",
         "name_en": "The Moon",
         "meaning_upright": "환상, 무의식, 직관, 두려움, 불확실성, 꿈",
-        "meaning_reversed": "혼란 해소, 진실 드러남, 두려움 극복, 명료함"
+        "meaning_reversed": "혼란 해소, 진실 드러남, 두려움 극복, 명료함",
+        "image_description": "보름달이 하늘에 떠 있으며, 사람 얼굴이 그려져 있고 표정은 우울하다. 달에서 노란 광선이 쏟아지고 있으며, 광선 사이로 이슬이 떨어진다. 아래에는 개와 늑대가 달을 향해 짖고 있다. 연못에서는 가재가 기어 나오고 있다. 두 개의 회색 탑이 양쪽에 서 있으며, 그 사이로 구불구불한 길이 멀리 산까지 이어진다. 전체 분위기는 신비롭고 불안하며, 무의식과 환상의 세계를 나타낸다. 달빛은 환상적이고 속임수를 만들어낸다."
       },
       {
         "number": 19,
         "name_kr": "태양",
         "name_en": "The Sun",
         "meaning_upright": "기쁨, 성공, 활력, 긍정, 명료함, 행복",
-        "meaning_reversed": "일시적 우울, 기쁨 지연, 과도한 낙관, 내면의 어린이"
+        "meaning_reversed": "일시적 우울, 기쁨 지연, 과도한 낙관, 내면의 어린이",
+        "image_description": "거대한 태양이 하늘에 떠 있으며, 사람 얼굴이 그려져 있고 표정은 기쁘다. 21개의 곧은 광선과 21개의 물결 모양 광선이 퍼져 나간다. 벌거벗은 어린아이가 흰 말을 타고 있으며, 머리에는 꽃으로 만든 화관을 쓰고 있다. 한 손에는 주황색 깃발을 들고 있다. 배경에는 해바라기가 가득한 정원이 있고, 회색 벽돌담이 둘러싸고 있다. 전체 분위기는 밝고 따뜻하며 순수한 기쁨으로 가득 차 있다. 어린아이의 표정은 천진난만하고 행복하다."
       },
       {
         "number": 20,
         "name_kr": "심판",
         "name_en": "Judgement",
         "meaning_upright": "재생, 평가, 깨달음, 용서, 부름, 새로운 단계",
-        "meaning_reversed": "자기 의심, 과거에 얽매임, 판단 회피, 후회"
+        "meaning_reversed": "자기 의심, 과거에 얽매임, 판단 회피, 후회",
+        "image_description": "대천사 가브리엘이 구름 위에서 트럼펫을 불고 있다. 큰 흰 날개를 펼치고 있으며, 트럼펫에는 십자가가 그려진 흰 깃발이 달려 있다. 아래 땅에서는 회색 관에서 벗은 사람들이 일어나고 있다. 한 남자, 한 여자, 한 아이가 두 팔을 벌리고 천사를 향해 올려다보고 있다. 뒤에는 눈 덮인 산맥이 보이며, 하늘은 밝은 노란색이다. 사람들의 몸은 회색에서 점차 색이 돌아오고 있으며, 부활과 재생을 상징한다."
       },
       {
         "number": 21,
         "name_kr": "세계",
         "name_en": "The World",
         "meaning_upright": "완성, 성취, 완결, 통합, 여행, 성공",
-        "meaning_reversed": "미완성, 지연, 목표 미달, 완결 부족"
+        "meaning_reversed": "미완성, 지연, 목표 미달, 완결 부족",
+        "image_description": "벌거벗은 여인이 거대한 월계수 화환 안에서 춤을 추고 있다. 보라색 천으로 몸을 가리고 있으며, 양손에 지팡이를 들고 있다. 다리는 십자가 모양으로 교차되어 있다. 화환은 초록색이며 빨간 리본으로 묶여 있다. 네 모퉁이에는 운명의 수레바퀴와 같은 네 생명체가 있다: 천사, 독수리, 사자, 황소. 배경은 푸른 하늘이며, 전체적으로 완성과 성취, 우주적 춤을 상징한다. 여인의 표정은 기쁘고 자유로우며, 모든 것을 통합한 완전함을 나타낸다."
       }
     ],
     "minor_arcana": {
       "wands": [
-        { "number": "Ace", "name_kr": "지팡이 에이스", "name_en": "Ace of Wands", "meaning_upright": "창조적 에너지, 영감, 새로운 기회, 열정, 시작", "meaning_reversed": "에너지 부족, 지연된 시작, 영감 고갈, 방향 상실" },
-        { "number": 2, "name_kr": "지팡이 2", "name_en": "Two of Wands", "meaning_upright": "계획, 미래 전망, 결정, 발견, 대담함", "meaning_reversed": "두려움, 계획 부족, 안전지대, 결정 회피" },
-        { "number": 3, "name_kr": "지팡이 3", "name_en": "Three of Wands", "meaning_upright": "확장, 전망, 진전, 선견지명, 기회 탐색", "meaning_reversed": "좌절, 지연, 계획 장애, 좁은 시야" },
-        { "number": 4, "name_kr": "지팡이 4", "name_en": "Four of Wands", "meaning_upright": "축하, 기쁨, 조화, 안정, 이정표, 가정의 행복", "meaning_reversed": "불안정, 긴장, 축하 연기, 조화 부족" },
-        { "number": 5, "name_kr": "지팡이 5", "name_en": "Five of Wands", "meaning_upright": "경쟁, 갈등, 의견 충돌, 도전, 긴장", "meaning_reversed": "갈등 회피, 내면의 갈등, 협력, 화해" },
-        { "number": 6, "name_kr": "지팡이 6", "name_en": "Six of Wands", "meaning_upright": "승리, 인정, 성공, 자신감, 대중의 찬사", "meaning_reversed": "실패, 자만, 인정 부족, 자신감 결여" },
-        { "number": 7, "name_kr": "지팡이 7", "name_en": "Seven of Wands", "meaning_upright": "방어, 용기, 끈기, 도전에 맞서기, 입장 고수", "meaning_reversed": "압도됨, 포기, 자신감 부족, 회피" },
-        { "number": 8, "name_kr": "지팡이 8", "name_en": "Eight of Wands", "meaning_upright": "신속한 행동, 변화, 진전, 소식, 여행", "meaning_reversed": "지연, 좌절, 혼란, 조급함" },
-        { "number": 9, "name_kr": "지팡이 9", "name_en": "Nine of Wands", "meaning_upright": "회복력, 끈기, 경계, 마지막 방어, 지속", "meaning_reversed": "지침, 편집증, 방어적, 포기" },
-        { "number": 10, "name_kr": "지팡이 10", "name_en": "Ten of Wands", "meaning_upright": "부담, 책임, 과중한 짐, 스트레스, 헌신", "meaning_reversed": "짐 내려놓기, 위임, 책임 회피, 해방" },
-        { "number": "Page", "name_kr": "지팡이 시종", "name_en": "Page of Wands", "meaning_upright": "열정, 탐험, 발견, 자유로운 정신, 메시지", "meaning_reversed": "무모함, 산만함, 나쁜 소식, 열정 부족" },
-        { "number": "Knight", "name_kr": "지팡이 기사", "name_en": "Knight of Wands", "meaning_upright": "모험, 충동, 에너지, 열정, 변화", "meaning_reversed": "경솔함, 조급함, 좌절, 방향성 상실" },
-        { "number": "Queen", "name_kr": "지팡이 여왕", "name_en": "Queen of Wands", "meaning_upright": "자신감, 독립성, 활력, 결단력, 매력", "meaning_reversed": "자기중심, 질투, 불안, 지배욕" },
-        { "number": "King", "name_kr": "지팡이 왕", "name_en": "King of Wands", "meaning_upright": "리더십, 비전, 기업가 정신, 영향력, 대담함", "meaning_reversed": "독재, 오만, 무모함, 에너지 낭비" }
+        {
+          "number": "Ace",
+          "name_kr": "지팡이 에이스",
+          "name_en": "Ace of Wands",
+          "meaning_upright": "창조적 에너지, 영감, 새로운 기회, 열정, 시작",
+          "meaning_reversed": "에너지 부족, 지연된 시작, 영감 고갈, 방향 상실",
+          "image_description": "구름에서 나온 손이 살아있는 지팡이를 힘차게 쥐고 있다. 지팡이에서는 새싹과 잎이 돋아나고 있다. 8개의 작은 잎들이 지팡이에서 떨어지고 있다. 아래에는 강이 흐르는 푸른 풍경이 펼쳐지고, 멀리 산과 성이 보인다. 하늘은 밝은 노란색이며, 전체적으로 새로운 시작과 창조적 에너지가 넘친다."
+        },
+        {
+          "number": 2,
+          "name_kr": "지팡이 2",
+          "name_en": "Two of Wands",
+          "meaning_upright": "계획, 미래 전망, 결정, 발견, 대담함",
+          "meaning_reversed": "두려움, 계획 부족, 안전지대, 결정 회피",
+          "image_description": "부유한 상인이 성벽 위에 서서 세계를 내려다보고 있다. 오른손으로는 벽에 고정된 지팡이를 잡고, 왼손에는 작은 지구본을 들고 있다. 또 다른 지팡이가 벽에 세워져 있다. 멀 리 바다와 산, 경작지가 보인다. 붉은 로브와 모자를 쓰고 있으며, 장미와 백합이 새겨진 망토를 걸치고 있다. 표정은 사려 깊고 미래를 계획하는 듯하다."
+        },
+        {
+          "number": 3,
+          "name_kr": "지팡이 3",
+          "name_en": "Three of Wands",
+          "meaning_upright": "확장, 전망, 진전, 선견지명, 기회 탐색",
+          "meaning_reversed": "좌절, 지연, 계획 장애, 좁은 시야",
+          "image_description": "인물이 절벽 끝에 서서 바다를 바라보고 있다. 등을 보이고 있으며, 노란색과 빨간색 로브를 입고 있다. 세 개의 지팡이가 땅에 박혀 있고, 그중 하나를 손으로 잡고 있다. 바다에는 세 척의 배가 항해하고 있다. 배경은 푸른 산들이며, 하늘은 맑다. 전체적으로 탐험과 확장, 기회를 기다리는 모습이다."
+        },
+        {
+          "number": 4,
+          "name_kr": "지팡이 4",
+          "name_en": "Four of Wands",
+          "meaning_upright": "축하, 기쁨, 조화, 안정, 이정표, 가정의 행복",
+          "meaning_reversed": "불안정, 긴장, 축하 연기, 조화 부족",
+          "image_description": "네 개의 큰 지팡이가 땅에 박혀 있고, 꽃과 과일 화환이 지팡이 위에 걸쳐져 있다. 두 사람이 꽃다발을 들고 춤을 추며 축하하고 있다. 배경에는 다리가 있고, 강 너머로 성이 보인다. 더 많은 사람들이 모여 축하하고 있다. 하늘은 밝고 맑으며, 전체 분위기는 기쁘고 축제 같다."
+        },
+        {
+          "number": 5,
+          "name_kr": "지팡이 5",
+          "name_en": "Five of Wands",
+          "meaning_upright": "경쟁, 갈등, 의견 충돌, 도전, 긴장",
+          "meaning_reversed": "갈등 회피, 내면의 갈등, 협력, 화해",
+          "image_description": "다섯 명의 젊은이들이 각자 지팡이를 들고 혼란스럽게 싸우고 있다. 그들은 서로 다른 방향을 향하고 있으며, 조직적인 전투라기보다는 혼란스러운 난투극처럼 보인다. 모두 다른 색깔의 옷을 입고 있어 다양한 의견을 나타낸다. 배경은 푸른 하늘이며, 땅은 황금빛이다. 진지한 싸움이라기보다는 경쟁이나 의견 충돌처럼 보인다."
+        },
+        {
+          "number": 6,
+          "name_kr": "지팡이 6",
+          "name_en": "Six of Wands",
+          "meaning_upright": "승리, 인정, 성공, 자신감, 대중의 찬사",
+          "meaning_reversed": "실패, 자만, 인정 부족, 자신감 결여",
+          "image_description": "승리한 기사가 흰 말을 타고 군중 사이를 지나가고 있다. 머리에는 월계관을 쓰고 있으며, 손에 든 지팡이에도 월계관이 장식되어 있다. 주변에는 다섯 개의 지팡이를 든 사람들이 그를 따르고 있다. 빨간 로브를 입고 있으며, 표정은 자랑스럽고 자신감에 차 있다. 군중들이 그를 환호하며 맞이하고 있다."
+        },
+        {
+          "number": 7,
+          "name_kr": "지팡이 7",
+          "name_en": "Seven of Wands",
+          "meaning_upright": "방어, 용기, 끈기, 도전에 맞서기, 입장 고수",
+          "meaning_reversed": "압도됨, 포기, 자신감 부족, 회피",
+          "image_description": "젊은이가 언덕 위에서 지팡이를 들고 방어 자세를 취하고 있다. 아래에서 여섯 개의 지팡이가 그를 향해 치켜들어져 있다. 그는 높은 곳에 서 있어 우위를 점하고 있지만, 여러 방향에서 도전을 받고 있다. 한 발은 땅에, 다른 발은 불안정한 위치에 있다. 표정은 결연하고 자신의 입장을 지키려는 의지가 강하다."
+        },
+        {
+          "number": 8,
+          "name_kr": "지팡이 8",
+          "name_en": "Eight of Wands",
+          "meaning_upright": "신속한 행동, 변화, 진전, 소식, 여행",
+          "meaning_reversed": "지연, 좌절, 혼란, 조급함",
+          "image_description": "여덟 개의 지팡이가 푸른 하늘을 가로질러 빠르게 날아가고 있다. 모두 같은 방향으로 날아가며, 거의 땅에 닿을 듯하다. 아래에는 강이 흐르는 푸른 풍경이 있으며, 멀리 언덕이 보인다. 지팡이에는 잎이 달려 있어 여전히 살아있음을 나타낸다. 인물은 없으며, 전체적으로 속도와 진전, 빠른 의사소통을 상징한다."
+        },
+        {
+          "number": 9,
+          "name_kr": "지팡이 9",
+          "name_en": "Nine of Wands",
+          "meaning_upright": "회복력, 끈기, 경계, 마지막 방어, 지속",
+          "meaning_reversed": "지침, 편집증, 방어적, 포기",
+          "image_description": "부상당한 남자가 여덟 개의 지팡이 앞에 서서 아홉 번째 지팡이를 움켜쥐고 있다. 머리에는 붕대가 감겨 있으며, 표정은 지쳐 있지만 경계심을 늦추지 않는다. 뒤에는 여덟 개의 지팡이가 방벽처럼 세워져 있다. 자세는 방어적이지만 여전히 서 있다. 배경은 황금빛 하늘이며, 많은 전투를 치른 후 마지막 힘을 쥐어짜는 모습이다."
+        },
+        {
+          "number": 10,
+          "name_kr": "지팡이 10",
+          "name_en": "Ten of Wands",
+          "meaning_upright": "부담, 책임, 과중한 짐, 스트레스, 헌신",
+          "meaning_reversed": "짐 내려놓기, 위임, 책임 회피, 해방",
+          "image_description": "한 남자가 열 개의 무거운 지팡이를 힘겹게 안고 걸어가고 있다. 허리가 구부러져 있고, 얼굴이 지팡이에 가려져 앞이 보이지 않는다. 멀리 마을이 보이지만 아직 멀다. 지팡이가 너무 많아 균형을 잡기 힘들어 보인다. 옷은 단순하며, 전체적으로 과중한 책임과 부담, 거의 목적지에 도달했지만 지친 모습을 나타낸다."
+        },
+        {
+          "number": "Page",
+          "name_kr": "지팡이 시종",
+          "name_en": "Page of Wands",
+          "meaning_upright": "열정, 탐험, 발견, 자유로운 정신, 메시지",
+          "meaning_reversed": "무모함, 산만함, 나쁜 소식, 열정 부족",
+          "image_description": "젊은이가 황량한 사막에 서서 큰 지팡이를 두 손으로 잡고 있다. 지팡이를 신기하게 바라보고 있으며, 몸을 약간 기울이고 있다. 밝은 색 튜닉과 빨간 모자를 쓰고 있다. 세 개의 피라미드가 배경에 보인다. 표정은 호기심 많고 열정적이며, 모험을 떠날 준비가 되어 있다."
+        },
+        {
+          "number": "Knight",
+          "name_kr": "지팡이 기사",
+          "name_en": "Knight of Wands",
+          "meaning_upright": "모험, 충동, 에너지, 열정, 변화",
+          "meaning_reversed": "경솔함, 조급함, 좌절, 방향성 상실",
+          "image_description": "갑옷을 입은 기사가 뛰어오르는 말을 타고 있다. 손에 지팡이를 들고 있으며, 말은 앞발을 들어 올리고 있다. 투구에는 깃털이 장식되어 있고, 갑옷과 말 덮개에는 도롱뇽 무늬(불의 상징)가 새겨져 있다. 배경은 사막이며, 세 개의 피라미드가 보인다. 전체적으로 에너지와 충동, 빠른 행동을 상징한다."
+        },
+        {
+          "number": "Queen",
+          "name_kr": "지팡이 여왕",
+          "name_en": "Queen of Wands",
+          "meaning_upright": "자신감, 독립성, 활력, 결단력, 매력",
+          "meaning_reversed": "자기중심, 질투, 불안, 지배욕",
+          "image_description": "여왕이 노란색 왕좌에 당당히 앉아 있다. 왕좌에는 사자들이 조각되어 있고, 해바라기가 장식되어 있다. 한 손에 지팡이를, 다른 손에 해바라기를 들고 있다. 발 아래에는 검은 고양이가 앉아 있다. 노란색과 빨간색 로브를 입고 있으며, 금관을 쓰고 있다. 표정은 자신감 있고 활기차며, 배경은 사막과 푸른 하늘이다."
+        },
+        {
+          "number": "King",
+          "name_kr": "지팡이 왕",
+          "name_en": "King of Wands",
+          "meaning_upright": "리더십, 비전, 기업가 정신, 영향력, 대담함",
+          "meaning_reversed": "독재, 오만, 무모함, 에너지 낭비",
+          "image_description": "왕이 주황색 왕좌에 앉아 있다. 왕좌와 로브에는 사자와 도롱뇽이 새겨져 있다. 오른손에 큰 지팡이를 들고 있으며, 왼손에는 작은 도롱뇽을 쥐고 있다. 금관을 쓰고 있으며, 빨간 망토를 걸치고 있다. 표정은 자신감 있고 권위적이다. 배경은 황량한 사막이며, 전체적으로 리더십과 비전, 창조적 에너지를 상징한다."
+        }
       ],
       "cups": [
-        { "number": "Ace", "name_kr": "컵 에이스", "name_en": "Ace of Cups", "meaning_upright": "사랑, 감정의 시작, 직관, 창조성, 영적 경험", "meaning_reversed": "감정 억제, 공허함, 감정 표현 부족, 실망" },
-        { "number": 2, "name_kr": "컵 2", "name_en": "Two of Cups", "meaning_upright": "파트너십, 사랑, 조화, 연결, 상호 존중", "meaning_reversed": "불화, 불균형, 단절, 관계 문제" },
-        { "number": 3, "name_kr": "컵 3", "name_en": "Three of Cups", "meaning_upright": "축하, 우정, 창조성, 공동체, 기쁨", "meaning_reversed": "과잉, 고립, 우정 문제, 축하 지연" },
-        { "number": 4, "name_kr": "컵 4", "name_en": "Four of Cups", "meaning_upright": "무관심, 명상, 재평가, 무료함, 내면 탐색", "meaning_reversed": "각성, 동기부여, 기회 인식, 새로운 전망" },
-        { "number": 5, "name_kr": "컵 5", "name_en": "Five of Cups", "meaning_upright": "상실, 슬픔, 후회, 실망, 과거에 집중", "meaning_reversed": "용서, 앞으로 나아감, 치유, 긍정적 시각" },
-        { "number": 6, "name_kr": "컵 6", "name_en": "Six of Cups", "meaning_upright": "향수, 과거, 추억, 순수함, 동심", "meaning_reversed": "과거에 얽매임, 미래 지향, 어린 시절 문제" },
-        { "number": 7, "name_kr": "컵 7", "name_en": "Seven of Cups", "meaning_upright": "선택, 환상, 백일몽, 기회, 혼란", "meaning_reversed": "명료함, 현실, 결정, 환상 버리기" },
-        { "number": 8, "name_kr": "컵 8", "name_en": "Eight of Cups", "meaning_upright": "떠남, 포기, 탐색, 실망, 새로운 길", "meaning_reversed": "두려움, 회피, 정체, 떠나기 어려움" },
-        { "number": 9, "name_kr": "컵 9", "name_en": "Nine of Cups", "meaning_upright": "만족, 소원 성취, 행복, 풍요, 즐거움", "meaning_reversed": "불만, 자만, 과욕, 표면적 행복" },
-        { "number": 10, "name_kr": "컵 10", "name_en": "Ten of Cups", "meaning_upright": "행복, 조화, 가족, 사랑, 이상적 관계", "meaning_reversed": "불화, 가족 문제, 가치관 충돌, 단절" },
-        { "number": "Page", "name_kr": "컵 시종", "name_en": "Page of Cups", "meaning_upright": "창조성, 직관, 호기심, 감성적 메시지, 새로운 감정", "meaning_reversed": "감정 미숙, 환상, 나쁜 소식, 창조력 부족" },
-        { "number": "Knight", "name_kr": "컵 기사", "name_en": "Knight of Cups", "meaning_upright": "낭만, 매력, 이상주의, 제안, 감성", "meaning_reversed": "비현실적, 변덕, 실망, 감정 과잉" },
-        { "number": "Queen", "name_kr": "컵 여왕", "name_en": "Queen of Cups", "meaning_upright": "연민, 직관, 감성, 돌봄, 감정적 안정", "meaning_reversed": "감정 의존, 불안정, 과민함, 조작" },
-        { "number": "King", "name_kr": "컵 왕", "name_en": "King of Cups", "meaning_upright": "감정 통제, 외교, 균형, 지혜, 연민", "meaning_reversed": "감정 조작, 불안정, 냉담, 감정 억압" }
+        {
+          "number": "Ace",
+          "name_kr": "컵 에이스",
+          "name_en": "Ace of Cups",
+          "meaning_upright": "사랑, 감정의 시작, 직관, 창조성, 영적 경험",
+          "meaning_reversed": "감정 억제, 공허함, 감정 표현 부족, 실망",
+          "image_description": "구름에서 나온 손이 금빛 컵을 들고 있다. 컵에서는 물이 넘쳐흐르며 다섯 줄기로 떨어진다. 컵 위에는 비둘기가 성체를 물고 날아 내려오고 있다. 아래에는 연꽃이 떠 있는 연못이 있다. 하늘은 밝고 맑으며, 전체적으로 새로운 감정과 사랑, 영적 충만함을 상징한다."
+        },
+        {
+          "number": 2,
+          "name_kr": "컵 2",
+          "name_en": "Two of Cups",
+          "meaning_upright": "파트너십, 사랑, 조화, 연결, 상호 존중",
+          "meaning_reversed": "불화, 불균형, 단절, 관계 문제",
+          "image_description": "젊은 남녀가 서로 마주보고 서서 컵을 들어 올리고 있다. 그들 위에는 날개 달린 사자 머리를 가진 카두케우스(헤르메스의 지팡이)가 떠 있다. 남자는 빨간 로브를, 여자는 흰 드레스를 입고 있으며 꽃 화관을 쓰고 있다. 뒤에는 집과 언덕이 보인다. 전체적으로 상호 사랑과 파트너십, 균형 잡힌 관계를 상징한다."
+        },
+        {
+          "number": 3,
+          "name_kr": "컵 3",
+          "name_en": "Three of Cups",
+          "meaning_upright": "축하, 우정, 창조성, 공동체, 기쁨",
+          "meaning_reversed": "과잉, 고립, 우정 문제, 축하 지연",
+          "image_description": "세 명의 젊은 여인들이 꽃 화관을 쓰고 원을 그리며 춤을 추고 있다. 각자 컵을 들어 올리며 건배하고 있다. 다양한 색깔의 드레스를 입고 있으며, 발 아래에는 수확물(호박, 과일)이 흩어져 있다. 표정은 기쁘고 축제 분위기다. 배경은 밝은 하늘이며, 전체적으로 우정과 축하, 공동체의 기쁨을 나타낸다."
+        },
+        {
+          "number": 4,
+          "name_kr": "컵 4",
+          "name_en": "Four of Cups",
+          "meaning_upright": "무관심, 명상, 재평가, 무료함, 내면 탐색",
+          "meaning_reversed": "각성, 동기부여, 기회 인식, 새로운 전망",
+          "image_description": "젊은이가 나무 아래 앉아 팔짱을 끼고 명상에 잠겨 있다. 앞에는 세 개의 컵이 놓여 있지만 그는 관심이 없어 보인다. 구름에서 손이 나와 네 번째 컵을 제공하고 있지만, 그는 이것도 무시하고 있다. 표정은 지루하거나 불만스러워 보인다. 배경은 푸른 산과 맑은 하늘이다."
+        },
+        {
+          "number": 5,
+          "name_kr": "컵 5",
+          "name_en": "Five of Cups",
+          "meaning_upright": "상실, 슬픔, 후회, 실망, 과거에 집중",
+          "meaning_reversed": "용서, 앞으로 나아감, 치유, 긍정적 시각",
+          "image_description": "검은 망토를 두른 인물이 세 개의 엎어진 컵을 바라보며 슬픔에 잠겨 있다. 빨간 액체가 컵에서 쏟아져 나왔다. 뒤에는 두 개의 컵이 여전히 서 있지만, 그는 그것을 보지 못한다. 멀리 강과 다리, 성이 보인다. 하늘은 회색이며, 전체적으로 상실과 슬픔, 그러나 여전히 남아있는 희망을 상징한다."
+        },
+        {
+          "number": 6,
+          "name_kr": "컵 6",
+          "name_en": "Six of Cups",
+          "meaning_upright": "향수, 과거, 추억, 순수함, 동심",
+          "meaning_reversed": "과거에 얽매임, 미래 지향, 어린 시절 문제",
+          "image_description": "작은 마을 광장에서 어린 소년이 어린 소녀에게 컵에 담긴 꽃을 건네고 있다. 총 여섯 개의 컵이 있으며, 각각에 흰 꽃이 담겨 있다. 소년은 중세 의상을 입고 있다. 배경에는 집들과 성이 보이며, 왼쪽에는 나이 든 인물이 떠나가고 있다. 전체 분위기는 순수하고 향수를 불러일으키며, 어린 시절의 순수함을 나타낸다."
+        },
+        {
+          "number": 7,
+          "name_kr": "컵 7",
+          "name_en": "Seven of Cups",
+          "meaning_upright": "선택, 환상, 백일몽, 기회, 혼란",
+          "meaning_reversed": "명료함, 현실, 결정, 환상 버리기",
+          "image_description": "어두운 인물의 실루엣이 구름 속에 떠 있는 일곱 개의 컵을 바라보고 있다. 각 컵에는 다른 것이 들어 있다: 얼굴, 베일을 쓴 인물, 뱀, 성, 보석, 월계관, 용. 컵들은 구름 위에 떠 있어 환상적이고 비현실적으로 보인다. 전체적으로 선택의 어려움과 환상, 많은 가능성 앞에서의 혼란을 나타낸다."
+        },
+        {
+          "number": 8,
+          "name_kr": "컵 8",
+          "name_en": "Eight of Cups",
+          "meaning_upright": "떠남, 포기, 탐색, 실망, 새로운 길",
+          "meaning_reversed": "두려움, 회피, 정체, 떠나기 어려움",
+          "image_description": "빨간 로브를 입은 인물이 여덟 개의 컵을 뒤로 하고 산을 향해 걸어가고 있다. 컵들은 잘 쌓여 있지만, 그는 돌아보지 않는다. 손에 지팡이를 들고 있으며, 달이 하늘에 떠 있다. 산은 높고 험해 보이지만, 그는 결연하게 걸어간다. 전체적으로 과거를 버리고 새로운 길을 찾아 떠나는 것을 상징한다."
+        },
+        {
+          "number": 9,
+          "name_kr": "컵 9",
+          "name_en": "Nine of Cups",
+          "meaning_upright": "만족, 소원 성취, 행복, 풍요, 즐거움",
+          "meaning_reversed": "불만, 자만, 과욕, 표면적 행복",
+          "image_description": "만족스러운 표정의 남자가 푸른 옷을 입고 벤치에 앉아 있다. 팔짱을 끼고 있으며, 뒤에는 아치형 받침대에 아홉 개의 금빛 컵이 일렬로 놓여 있다. 빨간 모자를 쓰고 있으며, 표정은 매우 만족스럽고 자랑스러워 보인다. 전체적으로 소원 성취와 만족, 물질적・감정적 풍요를 나타낸다."
+        },
+        {
+          "number": 10,
+          "name_kr": "컵 10",
+          "name_en": "Ten of Cups",
+          "meaning_upright": "행복, 조화, 가족, 사랑, 이상적 관계",
+          "meaning_reversed": "불화, 가족 문제, 가치관 충돌, 단절",
+          "image_description": "부부가 두 팔을 벌리고 서 있으며, 두 아이가 옆에서 춤을 추고 있다. 하늘에는 무지개가 떠 있고, 그 위에 열 개의 금빛 컵이 호를 그리며 배열되어 있다. 배경에는 강이 흐르는 아름다운 시골 풍경과 집이 보인다. 나무들이 푸르게 자라고 있으며, 전체 분위기는 행복하고 조화로우며 가족의 완전한 사랑을 상징한다."
+        },
+        {
+          "number": "Page",
+          "name_kr": "컵 시종",
+          "name_en": "Page of Cups",
+          "meaning_upright": "창조성, 직관, 호기심, 감성적 메시지, 새로운 감정",
+          "meaning_reversed": "감정 미숙, 환상, 나쁜 소식, 창조력 부족",
+          "image_description": "젊은이가 푸른 튜닉과 꽃무늬 모자를 쓰고 서 있다. 손에 컵을 들고 있으며, 컵 안에서 물고기가 튀어나와 그를 바라보고 있다. 표정은 놀라워하며 호기심이 가득하다. 배경은 잔잔한 바다와 푸른 하늘이다. 전체적으로 창의성과 새로운 감정의 시작, 직관적 메시지를 상징한다."
+        },
+        {
+          "number": "Knight",
+          "name_kr": "컵 기사",
+          "name_en": "Knight of Cups",
+          "meaning_upright": "낭만, 매력, 이상주의, 제안, 감성",
+          "meaning_reversed": "비현실적, 변덕, 실망, 감정 과잉",
+          "image_description": "기사가 흰 말을 타고 천천히 나아가고 있다. 손에 컵을 들고 있으며, 마치 성배를 운반하듯 조심스럽게 다루고 있다. 날개 달린 투구를 쓰고 있으며, 물고기 무늬가 새겨진 갑옷을 입고 있다. 말은 걷고 있으며 뛰지 않는다. 배경은 사막과 강이 흐르는 풍경이다. 전체적으로 낭만과 이상주의, 감성적 제안을 상징한다."
+        },
+        {
+          "number": "Queen",
+          "name_kr": "컵 여왕",
+          "name_en": "Queen of Cups",
+          "meaning_upright": "연민, 직관, 감성, 돌봄, 감정적 안정",
+          "meaning_reversed": "감정 의존, 불안정, 과민함, 조작",
+          "image_description": "여왕이 바닷가 왕좌에 앉아 있다. 왕좌는 조개와 바다 생물로 장식되어 있으며, 바닷물 위에 놓여 있다. 두 손으로 화려하게 장식된 컵을 들고 있으며, 컵은 닫혀 있어 신비로워 보인다. 푸른 로브를 입고 있으며, 금관을 쓰고 있다. 발 아래 물가에는 조약돌이 있고, 표정은 깊이 명상하는 듯하다. 전체적으로 감정의 깊이와 직관, 돌봄을 상징한다."
+        },
+        {
+          "number": "King",
+          "name_kr": "컵 왕",
+          "name_en": "King of Cups",
+          "meaning_upright": "감정 통제, 외교, 균형, 지혜, 연민",
+          "meaning_reversed": "감정 조작, 불안정, 냉담, 감정 억압",
+          "image_description": "왕이 거친 바다 위에 떠 있는 왕좌에 앉아 있다. 파도가 치고 있지만, 왕좌는 안정적이다. 오른손에 컵을, 왼손에 홀을 들고 있다. 푸른 로브를 입고 있으며, 금관을 쓰고 있다. 목에는 물고기 목걸이를 하고 있다. 오른쪽에는 물고기가 뛰어오르고, 왼쪽에는 배가 지나간다. 표정은 차분하고 통제된 감정을 나타낸다. 전체적으로 감정의 숙달과 균형을 상징한다."
+        }
       ],
       "swords": [
-        { "number": "Ace", "name_kr": "검 에이스", "name_en": "Ace of Swords", "meaning_upright": "명료함, 돌파구, 진실, 정의, 새로운 아이디어", "meaning_reversed": "혼란, 부정의, 잘못된 판단, 진실 왜곡" },
-        { "number": 2, "name_kr": "검 2", "name_en": "Two of Swords", "meaning_upright": "선택, 교착 상태, 회피, 균형, 딜레마", "meaning_reversed": "결정, 혼란 해소, 정보 드러남, 선택 강요" },
-        { "number": 3, "name_kr": "검 3", "name_en": "Three of Swords", "meaning_upright": "상처, 슬픔, 배신, 이별, 아픔", "meaning_reversed": "치유, 용서, 회복, 슬픔 극복" },
-        { "number": 4, "name_kr": "검 4", "name_en": "Four of Swords", "meaning_upright": "휴식, 회복, 명상, 재충전, 평화", "meaning_reversed": "불면, 소진, 회복 실패, 정체" },
-        { "number": 5, "name_kr": "검 5", "name_en": "Five of Swords", "meaning_upright": "갈등, 패배, 불명예, 자기중심적 승리, 논쟁", "meaning_reversed": "화해, 용서, 과거 갈등, 평화" },
-        { "number": 6, "name_kr": "검 6", "name_en": "Six of Swords", "meaning_upright": "전환, 이동, 변화, 회복, 앞으로 나아감", "meaning_reversed": "저항, 정체, 과거에 얽매임, 지연" },
-        { "number": 7, "name_kr": "검 7", "name_en": "Seven of Swords", "meaning_upright": "속임수, 전략, 회피, 비밀, 교활함", "meaning_reversed": "양심의 가책, 진실, 고백, 속임수 드러남" },
-        { "number": 8, "name_kr": "검 8", "name_en": "Eight of Swords", "meaning_upright": "속박, 제한, 무력감, 혼란, 희생자 의식", "meaning_reversed": "해방, 자유, 명료함, 제한 극복" },
-        { "number": 9, "name_kr": "검 9", "name_en": "Nine of Swords", "meaning_upright": "불안, 걱정, 악몽, 공포, 죄책감", "meaning_reversed": "회복, 희망, 불안 해소, 치유" },
-        { "number": 10, "name_kr": "검 10", "name_en": "Ten of Swords", "meaning_upright": "종말, 배신, 고통, 바닥, 완전한 실패", "meaning_reversed": "회복, 재생, 최악 극복, 새로운 시작" },
-        { "number": "Page", "name_kr": "검 시종", "name_en": "Page of Swords", "meaning_upright": "호기심, 지성, 경계, 소식, 새로운 아이디어", "meaning_reversed": "험담, 속임수, 미성숙, 나쁜 소식" },
-        { "number": "Knight", "name_kr": "검 기사", "name_en": "Knight of Swords", "meaning_upright": "행동, 야망, 결단, 빠른 변화, 단호함", "meaning_reversed": "무모함, 공격성, 조급함, 무계획" },
-        { "number": "Queen", "name_kr": "검 여왕", "name_en": "Queen of Swords", "meaning_upright": "독립성, 명료함, 지성, 직설적, 객관성", "meaning_reversed": "냉담, 비판적, 잔혹함, 감정 결여" },
-        { "number": "King", "name_kr": "검 왕", "name_en": "King of Swords", "meaning_upright": "권위, 지성, 진실, 논리, 명확한 판단", "meaning_reversed": "독재, 조작, 냉혹함, 비윤리적" }
+        {
+          "number": "Ace",
+          "name_kr": "검 에이스",
+          "name_en": "Ace of Swords",
+          "meaning_upright": "명료함, 돌파구, 진실, 정의, 새로운 아이디어",
+          "meaning_reversed": "혼란, 부정의, 잘못된 판단, 진실 왜곡",
+          "image_description": "구름에서 나온 손이 곧은 검을 똑바로 쥐고 있다. 검 끝에는 금관이 씌워져 있고, 월계수 가지와 종려나무 가지가 양쪽에 매달려 있다. 여섯 개의 불꽃(요드)이 검 주위에서 떨어지고 있다. 아래에는 산악 지형이 보인다. 하늘은 회색이며, 전체적으로 정신적 명료함과 진실, 새로운 아이디어를 상징한다."
+        },
+        {
+          "number": 2,
+          "name_kr": "검 2",
+          "name_en": "Two of Swords",
+          "meaning_upright": "선택, 교착 상태, 회피, 균형, 딜레마",
+          "meaning_reversed": "결정, 혼란 해소, 정보 드러남, 선택 강요",
+          "image_description": "눈을 가린 여인이 바닷가에 앉아 있다. 양손에 검을 들고 가슴 앞에서 교차시키고 있다. 회색 로브를 입고 있으며, 뒤로는 초승달이 떠 있다. 바다는 잔잔하지만, 멀리 바위섬들이 보인다. 자세는 방어적이며, 눈가리개는 진실을 보기 거부하는 것을 상징한다. 전체적으로 어려운 결정 앞에서의 교착 상태를 나타낸다."
+        },
+        {
+          "number": 3,
+          "name_kr": "검 3",
+          "name_en": "Three of Swords",
+          "meaning_upright": "상처, 슬픔, 배신, 이별, 아픔",
+          "meaning_reversed": "치유, 용서, 회복, 슬픔 극복",
+          "image_description": "빨간 심장에 세 개의 검이 꽂혀 있다. 배경은 회색 비구름과 비가 내리고 있다. 심장은 떠 있으며, 검들은 정확히 심장을 관통하고 있다. 비는 눈물을 상징하며, 전체 분위기는 슬프고 고통스럽다. 명확하고 직접적으로 감정적 상처와 고통을 표현하는 이미지다."
+        },
+        {
+          "number": 4,
+          "name_kr": "검 4",
+          "name_en": "Four of Swords",
+          "meaning_upright": "휴식, 회복, 명상, 재충전, 평화",
+          "meaning_reversed": "불면, 소진, 회복 실패, 정체",
+          "image_description": "기사가 관 위에 누워 있는 것처럼 석관 위에서 쉬고 있다. 두 손을 가슴 앞에서 기도하듯 모으고 있다. 세 개의 검이 벽에 수직으로 걸려 있고, 하나는 석관 아래에 놓여 있다. 스테인드글라스 창문에는 사람과 나무가 그려져 있다. 전체 분위기는 고요하고 평화로우며, 휴식과 회복을 상징한다."
+        },
+        {
+          "number": 5,
+          "name_kr": "검 5",
+          "name_en": "Five of Swords",
+          "meaning_upright": "갈등, 패배, 불명예, 자기중심적 승리, 논쟁",
+          "meaning_reversed": "화해, 용서, 과거 갈등, 평화",
+          "image_description": "한 남자가 세 개의 검을 모으고 있으며, 자만스러운 미소를 짓고 있다. 두 명의 인물이 등을 돌리고 슬퍼하며 떠나고 있다. 땅에는 두 개의 검이 놓여 있다. 하늘은 흐리고 구름이 끼어 있으며, 바다는 거칠다. 승자는 있지만, 불명예스러운 승리를 얻은 것처럼 보인다. 전체적으로 갈등과 패배, 공허한 승리를 나타낸다."
+        },
+        {
+          "number": 6,
+          "name_kr": "검 6",
+          "name_en": "Six of Swords",
+          "meaning_upright": "전환, 이동, 변화, 회복, 앞으로 나아감",
+          "meaning_reversed": "저항, 정체, 과거에 얽매임, 지연",
+          "image_description": "뱃사공이 여인과 아이를 배에 태우고 잔잔한 물을 건너고 있다. 배 앞쪽에는 여섯 개의 검이 똑바로 꽂혀 있다. 왼쪽 물은 거칠지만, 오른쪽은 잔잔하다. 인물들은 망토로 몸을 감싸고 있으며, 아이는 여인에게 기대어 있다. 멀리 육지가 보인다. 전체적으로 어려운 시기를 벗어나 평온함으로 향하는 전환을 상징한다."
+        },
+        {
+          "number": 7,
+          "name_kr": "검 7",
+          "name_en": "Seven of Swords",
+          "meaning_upright": "속임수, 전략, 회피, 비밀, 교활함",
+          "meaning_reversed": "양심의 가책, 진실, 고백, 속임수 드러남",
+          "image_description": "한 남자가 다섯 개의 검을 들고 발끝으로 살금살금 군영에서 빠져나가고 있다. 뒤를 돌아보며 조심스럽게 움직이고 있다. 두 개의 검은 땅에 그대로 남아 있다. 배경에는 텐트들이 보이며, 멀리 사람들이 있다. 표정은 교활하고 은밀하다. 전체적으로 도둑질, 속임수, 전략적 철수를 상징한다."
+        },
+        {
+          "number": 8,
+          "name_kr": "검 8",
+          "name_en": "Eight of Swords",
+          "meaning_upright": "속박, 제한, 무력감, 혼란, 희생자 의식",
+          "meaning_reversed": "해방, 자유, 명료함, 제한 극복",
+          "image_description": "여인이 눈을 가리고 밧줄로 느슨하게 묶인 채 서 있다. 여덟 개의 검이 그녀 주위에 땅에 박혀 있지만, 완전히 둘러싸고 있지는 않다. 뒤로는 성과 물이 보인다. 땅은 진흙투성이다. 여인은 갇혀 있는 것처럼 보이지만, 실제로는 움직일 수 있는 공간이 있다. 전체적으로 자기부과적 제한과 정신적 속박을 상징한다."
+        },
+        {
+          "number": 9,
+          "name_kr": "검 9",
+          "name_en": "Nine of Swords",
+          "meaning_upright": "불안, 걱정, 악몽, 공포, 죄책감",
+          "meaning_reversed": "회복, 희망, 불안 해소, 치유",
+          "image_description": "여인이 침대에서 일어나 앉아 얼굴을 손으로 가리고 있다. 아홉 개의 검이 벽에 수평으로 걸려 있다. 침대보에는 장미와 점성술 기호가 새겨져 있다. 배경은 완전히 검은색이다. 악몽에서 깬 것처럼 보이며, 표정은 고뇌와 절망으로 가득 차 있다. 전체적으로 불안과 걱정, 정신적 고통을 나타낸다."
+        },
+        {
+          "number": 10,
+          "name_kr": "검 10",
+          "name_en": "Ten of Swords",
+          "meaning_upright": "종말, 배신, 고통, 바닥, 완전한 실패",
+          "meaning_reversed": "회복, 재생, 최악 극복, 새로운 시작",
+          "image_description": "남자가 엎드린 채 등에 열 개의 검이 꽂혀 있다. 검은 망토를 두르고 있으며, 빨간 피가 보인다. 배경은 어두운 밤이지만, 먼 수평선에는 노란 빛이 보인다(새벽). 물은 잔잔하고 고요하다. 한 손은 기도하는 자세를 취하고 있다. 전체적으로 완전한 패배와 끝, 그러나 다가오는 새로운 시작을 암시한다."
+        },
+        {
+          "number": "Page",
+          "name_kr": "검 시종",
+          "name_en": "Page of Swords",
+          "meaning_upright": "호기심, 지성, 경계, 소식, 새로운 아이디어",
+          "meaning_reversed": "험담, 속임수, 미성숙, 나쁜 소식",
+          "image_description": "젊은이가 언덕 위에 서서 검을 양손으로 들고 있다. 바람이 세차게 불어 나무들이 휘어져 있고, 새들이 날아가고 있다. 초록색 튜닉을 입고 있으며, 경계하는 자세다. 구름이 빠르게 움직이고 있다. 표정은 기민하고 호기심 많으며, 주변을 경계하고 있다. 전체적으로 민첩한 사고와 경계심을 상징한다."
+        },
+        {
+          "number": "Knight",
+          "name_kr": "검 기사",
+          "name_en": "Knight of Swords",
+          "meaning_upright": "행동, 야망, 결단, 빠른 변화, 단호함",
+          "meaning_reversed": "무모함, 공격성, 조급함, 무계획",
+          "image_description": "기사가 갑옷을 입고 질주하는 흰 말을 타고 있다. 검을 높이 들어 올리고 있으며, 돌진하는 자세다. 말의 갈기와 기사의 망토가 바람에 휘날리고 있다. 하늘은 흐리고 구름이 빠르게 움직이며, 나무들이 강풍에 휘어져 있다. 새들이 흩어지고 있다. 전체적으로 빠른 행동과 공격적인 에너지, 단호한 결정을 상징한다."
+        },
+        {
+          "number": "Queen",
+          "name_kr": "검 여왕",
+          "name_en": "Queen of Swords",
+          "meaning_upright": "독립성, 명료함, 지성, 직설적, 객관성",
+          "meaning_reversed": "냉담, 비판적, 잔혹함, 감정 결여",
+          "image_description": "여왕이 석조 왕좌에 앉아 있다. 왕좌에는 나비와 천사가 조각되어 있다. 오른손에 검을 똑바로 들고 있으며, 왼손은 앞으로 뻗어 있다. 푸른 로브를 입고 있으며, 금관을 쓰고 있다. 하늘은 흐리고, 새 한 마리가 날아가고 있다. 표정은 엄숙하고 직접적이며, 감정이 배제된 듯하다. 전체적으로 명료한 사고와 진실, 객관성을 상징한다."
+        },
+        {
+          "number": "King",
+          "name_kr": "검 왕",
+          "name_en": "King of Swords",
+          "meaning_upright": "권위, 지성, 진실, 논리, 명확한 판단",
+          "meaning_reversed": "독재, 조작, 냉혹함, 비윤리적",
+          "image_description": "왕이 석조 왕좌에 앉아 있다. 왕좌에는 나비와 초승달이 조각되어 있다. 오른손에 검을 똑바로 들고 있으며, 왼손에는 반지를 낀 채 팔걸이 위에 올려놓고 있다. 보라색 로브를 입고 있으며, 금관을 쓰고 있다. 나무들이 배경에 있고, 새들이 날아가고 있다. 표정은 엄격하고 권위적이며, 지적이다. 전체적으로 논리적 사고와 진실, 권위를 상징한다."
+        }
       ],
       "pentacles": [
-        { "number": "Ace", "name_kr": "펜타클 에이스", "name_en": "Ace of Pentacles", "meaning_upright": "기회, 풍요, 번영, 새로운 시작, 물질적 성공", "meaning_reversed": "기회 상실, 탐욕, 재정 불안, 물질주의" },
-        { "number": 2, "name_kr": "펜타클 2", "name_en": "Two of Pentacles", "meaning_upright": "균형, 적응, 변화, 우선순위, 융통성", "meaning_reversed": "불균형, 과부하, 혼란, 우선순위 상실" },
-        { "number": 3, "name_kr": "펜타클 3", "name_en": "Three of Pentacles", "meaning_upright": "팀워크, 협력, 기술, 학습, 품질", "meaning_reversed": "불협화음, 기술 부족, 갈등, 품질 저하" },
-        { "number": 4, "name_kr": "펜타클 4", "name_en": "Four of Pentacles", "meaning_upright": "보수, 안정, 통제, 소유, 보안", "meaning_reversed": "탐욕, 집착, 인색함, 통제 상실" },
-        { "number": 5, "name_kr": "펜타클 5", "name_en": "Five of Pentacles", "meaning_upright": "궁핍, 어려움, 고립, 재정 문제, 소외", "meaning_reversed": "회복, 도움, 개선, 어려움 극복" },
-        { "number": 6, "name_kr": "펜타클 6", "name_en": "Six of Pentacles", "meaning_upright": "관대함, 자선, 나눔, 공정성, 지원", "meaning_reversed": "불공정, 빚, 착취, 일방적 관계" },
-        { "number": 7, "name_kr": "펜타클 7", "name_en": "Seven of Pentacles", "meaning_upright": "인내, 투자, 평가, 보상 기다림, 장기 목표", "meaning_reversed": "조급함, 좌절, 결과 부족, 방향 전환" },
-        { "number": 8, "name_kr": "펜타클 8", "name_en": "Eight of Pentacles", "meaning_upright": "숙련, 노력, 헌신, 기술 향상, 근면", "meaning_reversed": "무의미한 노력, 완벽주의, 기술 부족, 지루함" },
-        { "number": 9, "name_kr": "펜타클 9", "name_en": "Nine of Pentacles", "meaning_upright": "풍요, 독립, 성취, 자급자족, 여유", "meaning_reversed": "과잉, 재정 불안, 의존, 성취 부족" },
-        { "number": 10, "name_kr": "펜타클 10", "name_en": "Ten of Pentacles", "meaning_upright": "부, 유산, 가족, 전통, 안정, 지속적 성공", "meaning_reversed": "재정 불안, 가족 문제, 유산 분쟁, 불안정" },
-        { "number": "Page", "name_kr": "펜타클 시종", "name_en": "Page of Pentacles", "meaning_upright": "기회, 학습, 현실적, 야망, 새로운 시작", "meaning_reversed": "게으름, 비현실적, 기회 상실, 무계획" },
-        { "number": "Knight", "name_kr": "펜타클 기사", "name_en": "Knight of Pentacles", "meaning_upright": "책임감, 근면, 인내, 신뢰, 완벽주의", "meaning_reversed": "게으름, 완고함, 정체, 지루함" },
-        { "number": "Queen", "name_kr": "펜타클 여왕", "name_en": "Queen of Pentacles", "meaning_upright": "양육, 실용성, 풍요, 안정, 현실감각", "meaning_reversed": "물질주의, 질투, 불안정, 과잉보호" },
-        { "number": "King", "name_kr": "펜타클 왕", "name_en": "King of Pentacles", "meaning_upright": "성공, 풍요, 리더십, 실용성, 안정", "meaning_reversed": "탐욕, 물질주의, 완고함, 재정 불안" }
+        {
+          "number": "Ace",
+          "name_kr": "펜타클 에이스",
+          "name_en": "Ace of Pentacles",
+          "meaning_upright": "기회, 풍요, 번영, 새로운 시작, 물질적 성공",
+          "meaning_reversed": "기회 상실, 탐욕, 재정 불안, 물질주의",
+          "image_description": "구름에서 나온 손이 큰 금빛 펜타클(오각별이 새겨진 동전)을 들고 있다. 아래에는 정원으로 이어지는 아치형 입구가 있으며, 백합과 다른 꽃들이 피어 있다. 정원 너머로 산이 보이고, 오른쪽에는 길이 있다. 하늘은 밝고 맑으며, 전체적으로 새로운 재정적 기회와 물질적 시작을 상징한다."
+        },
+        {
+          "number": 2,
+          "name_kr": "펜타클 2",
+          "name_en": "Two of Pentacles",
+          "meaning_upright": "균형, 적응, 변화, 우선순위, 융통성",
+          "meaning_reversed": "불균형, 과부하, 혼란, 우선순위 상실",
+          "image_description": "젊은 남자가 두 개의 펜타클을 저글링하고 있다. 펜타클들은 무한대 기호를 그리는 리본으로 연결되어 있다. 남자는 춤추듯 한 발을 들고 있으며, 균형을 잡고 있다. 배경에는 거친 파도가 치는 바다와 두 척의 배가 파도 위에서 흔들리고 있다. 전체적으로 균형 잡기와 변화 관리, 여러 책임 사이의 저글링을 상징한다."
+        },
+        {
+          "number": 3,
+          "name_kr": "펜타클 3",
+          "name_en": "Three of Pentacles",
+          "meaning_upright": "팀워크, 협력, 기술, 학습, 품질",
+          "meaning_reversed": "불협화음, 기술 부족, 갈등, 품질 저하",
+          "image_description": "석공이 교회나 수도원에서 일하고 있다. 한 손에는 조각 도구를 들고 있으며, 아치 위의 세 개의 펜타클을 조각하고 있다. 수도사와 건축가가 설계도를 들고 그의 작업을 감독하고 있다. 벤치 위에서 작업하고 있으며, 배경은 고딕 양식의 아치다. 전체적으로 협력과 장인정신, 기술 개발을 상징한다."
+        },
+        {
+          "number": 4,
+          "name_kr": "펜타클 4",
+          "name_en": "Four of Pentacles",
+          "meaning_upright": "보수, 안정, 통제, 소유, 보안",
+          "meaning_reversed": "탐욕, 집착, 인색함, 통제 상실",
+          "image_description": "남자가 도시 밖에 앉아 있다. 머리 위에 하나의 펜타클을 올리고 금관처럼 균형을 잡고 있다. 두 손으로 하나를 가슴에 꽉 안고 있으며, 두 발로 각각 하나씩 펜타클을 밟고 있다. 표정은 경직되어 있고, 몸은 방어적이다. 뒤로 회색 도시가 보인다. 전체적으로 소유와 통제, 놓아주기를 거부하는 것을 상징한다."
+        },
+        {
+          "number": 5,
+          "name_kr": "펜타클 5",
+          "name_en": "Five of Pentacles",
+          "meaning_upright": "궁핍, 어려움, 고립, 재정 문제, 소외",
+          "meaning_reversed": "회복, 도움, 개선, 어려움 극복",
+          "image_description": "두 사람이 눈 내리는 밤에 교회 창문 밖을 지나가고 있다. 한 사람은 목발을 짚고 있으며, 다른 사람은 담요를 두르고 있다. 둘 다 가난해 보이고 추워 보인다. 교회 스테인드글라스에는 다섯 개의 펜타클이 빛나고 있지만, 그들은 안으로 들어가지 않고 지나친다. 눈은 계속 내리고 있다. 전체적으로 곤경과 고립, 그러나 가까이 있는 도움을 상징한다."
+        },
+        {
+          "number": 6,
+          "name_kr": "펜타클 6",
+          "name_en": "Six of Pentacles",
+          "meaning_upright": "관대함, 자선, 나눔, 공정성, 지원",
+          "meaning_reversed": "불공정, 빚, 착취, 일방적 관계",
+          "image_description": "부유한 상인이 저울을 한 손에 들고, 다른 손으로 동전을 무릎 꿇은 두 거지에게 나눠주고 있다. 보라색 로브를 입고 있으며, 모자를 쓰고 있다. 여섯 개의 펜타클이 위에 배열되어 있다. 두 거지는 손을 내밀어 감사히 받고 있다. 배경은 도시 풍경이다. 전체적으로 관대함과 자선, 공정한 분배를 상징한다."
+        },
+        {
+          "number": 7,
+          "name_kr": "펜타클 7",
+          "name_en": "Seven of Pentacles",
+          "meaning_upright": "인내, 투자, 평가, 보상 기다림, 장기 목표",
+          "meaning_reversed": "조급함, 좌절, 결과 부족, 방향 전환",
+          "image_description": "젊은 농부가 호미에 기대어 서서 자신이 가꾼 펜타클 식물을 바라보고 있다. 일곱 개의 펜타클이 덤불에 열매처럼 달려 있다. 표정은 사려 깊고 평가하는 듯하며, 자신의 노력이 충분한 결과를 내고 있는지 생각하는 것 같다. 배경은 산과 맑은 하늘이다. 전체적으로 인내와 장기 투자, 노력의 평가를 상징한다."
+        },
+        {
+          "number": 8,
+          "name_kr": "펜타클 8",
+          "name_en": "Eight of Pentacles",
+          "meaning_upright": "숙련, 노력, 헌신, 기술 향상, 근면",
+          "meaning_reversed": "무의미한 노력, 완벽주의, 기술 부족, 지루함",
+          "image_description": "장인이 작업대에 앉아 펜타클을 조각하고 있다. 벽에는 완성된 여섯 개의 펜타클이 걸려 있고, 하나는 작업 중이며, 하나는 발치에 놓여 있다. 망치와 끌을 들고 세심하게 작업하고 있다. 배경으로는 도시가 멀리 보인다. 표정은 집중되어 있고, 자신의 기술에 전념하는 모습이다. 전체적으로 근면과 기술 개발, 장인정신을 상징한다."
+        },
+        {
+          "number": 9,
+          "name_kr": "펜타클 9",
+          "name_en": "Nine of Pentacles",
+          "meaning_upright": "풍요, 독립, 성취, 자급자족, 여유",
+          "meaning_reversed": "과잉, 재정 불안, 의존, 성취 부족",
+          "image_description": "우아한 여인이 포도밭에 홀로 서 있다. 노란 로브를 입고 있으며, 왼손에는 장갑을 낀 매가 앉아 있다. 아홉 개의 펜타클이 포도나무에 열려 있다. 배경에는 큰 저택이 보인다. 표정은 만족스럽고 자신감 있으며, 독립적이다. 정원은 잘 가꿔져 있고 풍요롭다. 전체적으로 자급자족과 물질적 성공, 혼자서도 즐기는 여유를 상징한다."
+        },
+        {
+          "number": 10,
+          "name_kr": "펜타클 10",
+          "name_en": "Ten of Pentacles",
+          "meaning_upright": "부, 유산, 가족, 전통, 안정, 지속적 성공",
+          "meaning_reversed": "재정 불안, 가족 문제, 유산 분쟁, 불안정",
+          "image_description": "노인이 화려한 로브를 입고 아치 아래 앉아 있다. 두 마리의 개가 그의 발치에 있고, 젊은 부부와 아이가 근처에 있다. 열 개의 펜타클이 가족 문장 패턴으로 배열되어 있다. 배경에는 성과 포도밭이 보인다. 세 세대가 함께 있으며, 전체적으로 부의 축적, 가족 유산, 세대 간 부의 전달을 상징한다."
+        },
+        {
+          "number": "Page",
+          "name_kr": "펜타클 시종",
+          "name_en": "Page of Pentacles",
+          "meaning_upright": "기회, 학습, 현실적, 야망, 새로운 시작",
+          "meaning_reversed": "게으름, 비현실적, 기회 상실, 무계획",
+          "image_description": "젊은이가 들판에 서서 두 손으로 펜타클을 들어 올려 신중하게 바라보고 있다. 초록색 튜닉을 입고 있으며, 빨간 모자를 쓰고 있다. 발 아래에는 꽃이 피어 있고, 배경에는 경작지와 산이 보인다. 표정은 호기심 많고 진지하며, 새로운 기회나 학습에 집중하고 있다. 전체적으로 새로운 재정적 기회와 학습, 현실적 야망을 상징한다."
+        },
+        {
+          "number": "Knight",
+          "name_kr": "펜타클 기사",
+          "name_en": "Knight of Pentacles",
+          "meaning_upright": "책임감, 근면, 인내, 신뢰, 완벽주의",
+          "meaning_reversed": "게으름, 완고함, 정체, 지루함",
+          "image_description": "기사가 무거운 갑옷을 입고 큰 흑마를 타고 있다. 말은 서 있으며 움직이지 않는다. 오른손에 펜타클을 조심스럽게 들고 있으며, 신중하게 바라보고 있다. 배경은 경작지이며, 푸른 언덕이 보인다. 말과 기사 모두 정적이고 안정적이다. 전체적으로 신중함과 책임감, 느리지만 확실한 진전을 상징한다."
+        },
+        {
+          "number": "Queen",
+          "name_kr": "펜타클 여왕",
+          "name_en": "Queen of Pentacles",
+          "meaning_upright": "양육, 실용성, 풍요, 안정, 현실감각",
+          "meaning_reversed": "물질주의, 질투, 불안정, 과잉보호",
+          "image_description": "여왕이 꽃과 과일로 장식된 왕좌에 앉아 정원에 있다. 무릎에 큰 펜타클을 두 손으로 들고 있으며, 사랑스럽게 바라보고 있다. 빨간 로브와 금관을 쓰고 있다. 발치에는 토끼가 뛰어다니고, 주변에는 장미와 다른 꽃들이 가득 피어 있다. 배경에는 나무와 성이 보인다. 전체적으로 풍요와 양육, 실용적 지혜를 상징한다."
+        },
+        {
+          "number": "King",
+          "name_kr": "펜타클 왕",
+          "name_en": "King of Pentacles",
+          "meaning_upright": "성공, 풍요, 리더십, 실용성, 안정",
+          "meaning_reversed": "탐욕, 물질주의, 완고함, 재정 불안",
+          "image_description": "왕이 성 앞 왕좌에 앉아 있다. 검은 로브에 포도와 황소 무늬가 수놓아져 있으며, 금관을 쓰고 있다. 오른손에 홀을, 왼손에 펜타클을 들고 있다. 왕좌와 로브는 매우 화려하며, 발치에는 황소 머리 조각이 있다. 배경에는 성과 포도밭이 보이며, 꽃이 핀 정원이 있다. 전체적으로 물질적 성공과 안정, 실용적 리더십을 상징한다."
+        }
       ]
     }
   }
