@@ -225,7 +225,7 @@
 }
 
 .reading-header {
-  text-align: center;
+  text-align: left;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 215, 0, 0.2);
   margin-bottom: 1rem;
