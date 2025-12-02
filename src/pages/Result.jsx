@@ -292,7 +292,6 @@ const Result = () => {
                         <div key={idx} className="reading-section-with-card advice-section">
                           <div className="section-card-image">
                             <div className="large-icon-display">🌟</div>
-                            <p className="section-card-name">전문가 조언</p>
                           </div>
                           <div className="section-text">
                             <div className="advice-header-text">
