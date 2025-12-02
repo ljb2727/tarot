@@ -1,0 +1,109 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 2.5rem;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal-description {
+  color: #ccc;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.api-link {
+  display: block;
+  text-align: center;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.api-link:hover {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.api-input {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  color: var(--color-text);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.api-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.api-input::placeholder {
+  color: #666;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-save, .btn-cancel {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid;
+}
+
+.btn-save {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
+.btn-save:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-cancel {
+  background: transparent;
+  color: #999;
+  border-color: #666;
+}
+
+.btn-cancel:hover {
+  border-color: #999;
+  color: #ccc;
+}
