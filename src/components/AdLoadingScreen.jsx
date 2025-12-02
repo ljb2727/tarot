@@ -7,12 +7,16 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
   const [canSkip, setCanSkip] = useState(false);
 
   useEffect(() => {
-    // 광고 스크립트 로드
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense error:', e);
-    }
+    // 광고 스크립트 로드 - DOM이 완전히 렌더링된 후 실행
+    const loadAd = setTimeout(() => {
+      try {
+        if (window.adsbygoogle && window.adsbygoogle.loaded !== true) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      } catch (e) {
+        console.error('AdSense error:', e);
+      }
+    }, 100); // 100ms 대기 후 광고 로드
 
     // 최소 광고 시청 시간 타이머
     const timer = setInterval(() => {
@@ -26,7 +30,10 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
       });
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearTimeout(loadAd);
+      clearInterval(timer);
+    };
   }, []);
 
   return (
