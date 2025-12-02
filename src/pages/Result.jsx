@@ -132,19 +132,32 @@ const Result = () => {
               let currentContent = [];
 
               lines.forEach(line => {
-                if (line.includes('**1. 과거:')) {
+                // 과거 카드 섹션 감지 (이모지 포함)
+                if (line.includes('**과거:') || line.includes('1. 과거:')) {
                   if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
                   currentSection = { type: 'past', title: line, cardIndex: 0 };
                   currentContent = [];
-                } else if (line.includes('**2. 현재:')) {
+                } 
+                // 현재 카드 섹션 감지
+                else if (line.includes('**현재:') || line.includes('2. 현재:')) {
                   if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
                   currentSection = { type: 'present', title: line, cardIndex: 1 };
                   currentContent = [];
-                } else if (line.includes('**3. 미래:')) {
+                } 
+                // 미래 카드 섹션 감지
+                else if (line.includes('**미래:') || line.includes('3. 미래:')) {
                   if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
                   currentSection = { type: 'future', title: line, cardIndex: 2 };
                   currentContent = [];
-                } else if (line.includes('**4. 종합 조언')) {
+                } 
+                // 종합 해석 섹션 감지
+                else if (line.includes('### 과거-현재-미래') || line.includes('###과거-현재-미래')) {
+                  if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
+                  currentSection = { type: 'overall', title: line, cardIndex: null };
+                  currentContent = [];
+                } 
+                // 종합 조언 섹션 감지
+                else if (line.includes('**종합 조언') || line.includes('4. 종합 조언')) {
                   if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
                   currentSection = { type: 'advice', title: line, cardIndex: null };
                   currentContent = [];
@@ -208,17 +221,37 @@ const Result = () => {
                           </div>
                         </div>
                       );
-                    } else {
-                      // 종합 조언 섹션
+                    } else if (section.type === 'overall') {
+                      // 종합 해석 섹션
                       return (
-                        <div key={idx} className="reading-section-full">
-                          <div dangerouslySetInnerHTML={{ 
-                            __html: (section.title + '\n' + section.content)
-                              .replace(/\n\n+/g, '\n') // 연속된 개행을 하나로
+                        <div key={idx} className="overall-interpretation-section">
+                          <div className="overall-header">
+                            <span className="overall-icon">📊</span>
+                            <h3>과거-현재-미래 종합 해석</h3>
+                          </div>
+                          <div className="overall-content" dangerouslySetInnerHTML={{ 
+                            __html: section.content
+                              .replace(/\n\n+/g, '\n')
                               .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
-                              .replace(/<b>해석:<\/b>/g, '<br/><b>해석:</b>') // 해석: 앞에 줄바꿈 추가
                               .replace(/\n/g, '<br/>')
-                              .replace(/<\/b><br\/>/g, '</b> ') // b 태그 다음 br 제거 및 공백 추가
+                              .replace(/<\/b><br\/>/g, '</b> ')
+                          }} />
+                        </div>
+                      );
+                    } else if (section.type === 'advice') {
+                      // 전문가 조언 섹션
+                      return (
+                        <div key={idx} className="expert-advice-section">
+                          <div className="advice-header">
+                            <span className="advice-icon">🌟</span>
+                            <h3>타로 전문가의 조언</h3>
+                          </div>
+                          <div className="advice-content" dangerouslySetInnerHTML={{ 
+                            __html: section.content
+                              .replace(/\n\n+/g, '\n')
+                              .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+                              .replace(/\n/g, '<br/>')
+                              .replace(/<\/b><br\/>/g, '</b> ')
                           }} />
                         </div>
                       );
