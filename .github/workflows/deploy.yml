@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # main 브랜치에 푸시할 때 자동 배포
+  workflow_dispatch: # 수동 실행 옵션 추가
 
 permissions:
   contents: read
