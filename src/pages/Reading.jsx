@@ -133,33 +133,66 @@ const Reading = () => {
             key={card.id} 
             className="preview-card"
             layoutId={`card-${card.id}`}
-            initial={{ rotateY: 180 }}
-            animate={{ 
-              rotateY: 0,
-              opacity: 1
-            }}
-            transition={{ 
-              duration: 0.8,
-              rotateY: { duration: 0.6 }
-            }}
+            initial={{ rotateY: 0 }}
+            animate={{ rotateY: 180 }}
+            transition={{ duration: 0.8 }}
             style={{
               transformStyle: 'preserve-3d',
-              perspective: '1000px'
+              perspective: '1000px',
+              position: 'relative'
             }}
           >
-            <img 
-              src={card.image} 
-              alt={card.name_kr}
-              style={{ 
-                transform: card.isReversed ? 'rotate(180deg)' : 'none',
-                backfaceVisibility: 'hidden'
-              }}
-              onError={(e) => { e.target.src = `${baseUrl}cards/card_back.png`; }}
-            />
-            <p>
-              {['과거', '현재', '미래'][idx]}
-              {card.isReversed && <span style={{ color: '#ff6b6b', fontSize: '0.8em' }}> (역)</span>}
-            </p>
+            {/* 카드 앞면 (결과 이미지) */}
+            <div style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              backfaceVisibility: 'hidden',
+              transform: 'rotateY(180deg)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}>
+              <img 
+                src={card.image} 
+                alt={card.name_kr}
+                style={{ 
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: '10px',
+                  transform: card.isReversed ? 'rotate(180deg)' : 'none'
+                }}
+                onError={(e) => { e.target.src = `${baseUrl}cards/card_back.png`; }}
+              />
+              <p style={{ marginTop: '5px' }}>
+                {['과거', '현재', '미래'][idx]}
+                {card.isReversed && <span style={{ color: '#ff6b6b', fontSize: '0.8em' }}> (역)</span>}
+              </p>
+            </div>
+
+            {/* 카드 뒷면 (패턴 이미지) */}
+            <div style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              backfaceVisibility: 'hidden',
+              transform: 'rotateY(0deg)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}>
+              <img 
+                src={`${baseUrl}cards/card_back.png`} 
+                alt="Card Back"
+                style={{ 
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: '10px'
+                }} 
+              />
+            </div>
           </motion.div>
         ))}
         {[...Array(3 - selectedCards.length)].map((_, i) => (
