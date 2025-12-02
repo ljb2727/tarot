@@ -5,18 +5,22 @@ import '../styles/AdLoadingScreen.css';
 const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
   const [timeRemaining, setTimeRemaining] = useState(minDisplayTime / 1000);
   const [canSkip, setCanSkip] = useState(false);
+  const isProduction = window.location.hostname !== 'localhost';
 
   useEffect(() => {
-    // 광고 스크립트 로드 - DOM이 완전히 렌더링된 후 실행
-    const loadAd = setTimeout(() => {
-      try {
-        if (window.adsbygoogle && window.adsbygoogle.loaded !== true) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // 프로덕션 환경에서만 광고 스크립트 로드
+    let loadAd;
+    if (isProduction) {
+      loadAd = setTimeout(() => {
+        try {
+          if (window.adsbygoogle && window.adsbygoogle.loaded !== true) {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          }
+        } catch (e) {
+          console.error('AdSense error:', e);
         }
-      } catch (e) {
-        console.error('AdSense error:', e);
-      }
-    }, 100); // 100ms 대기 후 광고 로드
+      }, 100);
+    }
 
     // 최소 광고 시청 시간 타이머
     const timer = setInterval(() => {
@@ -31,10 +35,10 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
     }, 1000);
 
     return () => {
-      clearTimeout(loadAd);
+      if (loadAd) clearTimeout(loadAd);
       clearInterval(timer);
     };
-  }, []);
+  }, [isProduction]);
 
   return (
     <div className="ad-loading-screen">
@@ -51,12 +55,23 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
 
         {/* AdSense 광고 영역 */}
         <div className="ad-space">
-          <ins className="adsbygoogle"
-               style={{ display: 'block' }}
-               data-ad-client="ca-pub-3362637665990884"
-               data-ad-slot="8519136349"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
+          {isProduction ? (
+            <ins className="adsbygoogle"
+                 style={{ display: 'block' }}
+                 data-ad-client="ca-pub-3362637665990884"
+                 data-ad-slot="8519136349"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+          ) : (
+            <div className="ad-placeholder">
+              <div className="placeholder-content">
+                <p>📺 광고 영역</p>
+                <p style={{ fontSize: '0.9rem', color: '#aaa', marginTop: '0.5rem' }}>
+                  실제 배포 환경에서 AdSense 광고가 표시됩니다
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* 진행 바 */}
