@@ -16,35 +16,42 @@ const Home = () => {
     navigate('/reading', { state: { question } });
   };
 
+  // 환경 변수에 API 키가 있으면 설정 버튼을 숨김
+  const hasEnvKey = !!import.meta.env.VITE_GEMINI_API_KEY;
+
   return (
     <div className="container" style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
-      <button
-        onClick={() => setShowApiModal(true)}
-        style={{
-          position: 'absolute',
-          top: '1rem',
-          right: '1rem',
-          background: 'rgba(0, 0, 0, 0.3)',
-          border: '1px solid rgba(255, 215, 0, 0.3)',
-          borderRadius: '20px',
-          padding: '8px 16px',
-          color: '#ffd700',
-          cursor: 'pointer',
-          fontSize: '0.9rem',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '5px',
-          zIndex: 10
-        }}
-      >
-        ⚙️ API 설정
-      </button>
+      {!hasEnvKey && (
+        <>
+          <button
+            onClick={() => setShowApiModal(true)}
+            style={{
+              position: 'absolute',
+              top: '1rem',
+              right: '1rem',
+              background: 'rgba(0, 0, 0, 0.3)',
+              border: '1px solid rgba(255, 215, 0, 0.3)',
+              borderRadius: '20px',
+              padding: '8px 16px',
+              color: '#ffd700',
+              cursor: 'pointer',
+              fontSize: '0.9rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px',
+              zIndex: 10
+            }}
+          >
+            ⚙️ API 설정
+          </button>
 
-      <ApiKeyModal 
-        isOpen={showApiModal}
-        onClose={() => setShowApiModal(false)}
-        onSave={() => {}}
-      />
+          <ApiKeyModal 
+            isOpen={showApiModal}
+            onClose={() => setShowApiModal(false)}
+            onSave={() => {}}
+          />
+        </>
+      )}
 
       <motion.h1 
         initial={{ opacity: 0, y: -50 }}

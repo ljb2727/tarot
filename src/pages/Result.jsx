@@ -22,7 +22,14 @@ const Result = () => {
       navigate('/');
     }
     
-    // 로컬 스토리지에서 API 키 가져오기
+    // 1. 환경 변수에서 API 키 확인 (고정 키)
+    const envKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (envKey) {
+      setApiKey(envKey);
+      return;
+    }
+
+    // 2. 로컬 스토리지에서 API 키 가져오기 (사용자 설정 키)
     try {
       const savedKey = localStorage.getItem('gemini_api_key');
       if (savedKey) {
