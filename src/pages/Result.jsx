@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Card from '../components/Card';
 import ApiKeyModal from '../components/ApiKeyModal';
 import ImageModal from '../components/ImageModal';
+import AdLoadingScreen from '../components/AdLoadingScreen';
 import { generateTarotReading } from '../utils/gemini';
 import { storage } from '../utils/storage';
 import '../styles/Result.css';
@@ -15,6 +16,7 @@ const Result = () => {
   const [showApiModal, setShowApiModal] = useState(false);
   const [aiReading, setAiReading] = useState('');
   const [isLoadingAi, setIsLoadingAi] = useState(false);
+  const [showAdLoading, setShowAdLoading] = useState(false);
   const [apiKey, setApiKey] = useState('');
   const [selectedImageInfo, setSelectedImageInfo] = useState(null);
 
@@ -45,7 +47,15 @@ const Result = () => {
       return;
     }
 
+    // 광고 로딩 화면 표시
+    setShowAdLoading(true);
+  };
+
+  const handleAdComplete = async () => {
+    // 광고 시청 완료 후 AI 리딩 시작
+    setShowAdLoading(false);
     setIsLoadingAi(true);
+    
     try {
       const reading = await generateTarotReading(cards, apiKey, question);
       setAiReading(reading);
@@ -81,7 +91,16 @@ const Result = () => {
   const positions = ['과거', '현재', '미래'];
 
   return (
-    <div className="container result-container">
+    <>
+      {/* 광고 로딩 화면 */}
+      {showAdLoading && (
+        <AdLoadingScreen 
+          onAdComplete={handleAdComplete}
+          minDisplayTime={5000} // 5초 최소 광고 시청 시간
+        />
+      )}
+
+      <div className="container result-container">
       <div className="question-display" style={{ margin: '0 auto 2rem auto' }}>
         <span className="question-label">Q.</span>
         <span className="question-text">{question}</span>
@@ -338,6 +357,7 @@ const Result = () => {
         isReversed={selectedImageInfo?.isReversed}
       />
     </div>
+    </>
   );
 };
 
