@@ -5,6 +5,7 @@ import Card from '../components/Card';
 import ApiKeyModal from '../components/ApiKeyModal';
 import ImageModal from '../components/ImageModal';
 import { generateTarotReading } from '../utils/gemini';
+import { storage } from '../utils/storage';
 import '../styles/Result.css';
 
 const Result = () => {
@@ -30,13 +31,9 @@ const Result = () => {
     }
 
     // 2. 로컬 스토리지에서 API 키 가져오기 (사용자 설정 키)
-    try {
-      const savedKey = localStorage.getItem('gemini_api_key');
-      if (savedKey) {
-        setApiKey(savedKey);
-      }
-    } catch (error) {
-      console.warn('localStorage 접근 불가:', error);
+    const savedKey = storage.getItem('gemini_api_key');
+    if (savedKey) {
+      setApiKey(savedKey);
     }
   }, [cards, navigate]);
 

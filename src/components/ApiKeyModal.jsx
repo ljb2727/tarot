@@ -1,31 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { storage } from '../utils/storage';
 import '../styles/ApiKeyModal.css';
 
 const ApiKeyModal = ({ isOpen, onClose, onSave }) => {
   const [apiKey, setApiKey] = useState('');
 
   useEffect(() => {
-    try {
-      const savedKey = localStorage.getItem('gemini_api_key');
-      if (savedKey) {
-        setApiKey(savedKey);
-      }
-    } catch (error) {
-      console.warn('localStorage 접근 불가:', error);
+    const savedKey = storage.getItem('gemini_api_key');
+    if (savedKey) {
+      setApiKey(savedKey);
     }
   }, [isOpen]);
 
   const handleSave = () => {
     if (apiKey.trim()) {
-      try {
-        localStorage.setItem('gemini_api_key', apiKey.trim());
-        onSave(apiKey.trim());
-        onClose();
-      } catch (error) {
-        console.error('localStorage 저장 실패:', error);
-        alert('API 키 저장에 실패했습니다. 브라우저 설정을 확인해주세요.');
-      }
+      storage.setItem('gemini_api_key', apiKey.trim());
+      onSave(apiKey.trim());
+      onClose();
     } else {
       alert('API 키를 입력해주세요.');
     }
