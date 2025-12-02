@@ -2,6 +2,8 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ImageModal = ({ isOpen, onClose, imageSrc, altText, isReversed }) => {
+  const baseUrl = import.meta.env.BASE_URL;
+  
   if (!isOpen) return null;
 
   return (
@@ -51,7 +53,7 @@ const ImageModal = ({ isOpen, onClose, imageSrc, altText, isReversed }) => {
               transform: isReversed ? 'rotate(180deg)' : 'none',
               objectFit: 'contain'
             }}
-            onError={(e) => { e.target.src = '/cards/card_back.png'; }}
+            onError={(e) => { e.target.src = `${baseUrl}cards/card_back.png`; }}
           />
           <button
             onClick={onClose}

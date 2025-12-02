@@ -1,6 +1,8 @@
 import tarotData from '../data/card.json';
 
 export const getDeck = () => {
+  const baseUrl = import.meta.env.BASE_URL;
+  
   const major = tarotData.tarot_deck_data.major_arcana.map(card => {
     const numberStr = card.number.toString().padStart(2, '0');
     const nameStr = card.name_en.replace(/\s+/g, '');
@@ -8,7 +10,7 @@ export const getDeck = () => {
       ...card,
       id: `major_${card.number}`,
       type: 'major',
-      image: `/cards/${numberStr}-${nameStr}.png`
+      image: `${baseUrl}cards/${numberStr}-${nameStr}.png`
     };
   });
 
@@ -35,7 +37,7 @@ export const getDeck = () => {
       id: `${suit}_${card.number}`,
       type: 'minor',
       suit: suit,
-      image: `/cards/${capitalize(suit)}${getMinorNumber(card.number)}.png`
+      image: `${baseUrl}cards/${capitalize(suit)}${getMinorNumber(card.number)}.png`
     }));
     minor = [...minor, ...suitCards];
   });

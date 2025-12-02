@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import '../styles/Reading.css';
 
 const Reading = () => {
+  const baseUrl = import.meta.env.BASE_URL;
   const [deck, setDeck] = useState([]);
   const [piles, setPiles] = useState([[], [], []]);
   const [selectedCards, setSelectedCards] = useState([]);
@@ -139,7 +140,7 @@ const Reading = () => {
               src={card.image} 
               alt={card.name_kr}
               style={{ transform: card.isReversed ? 'rotate(180deg)' : 'none' }}
-              onError={(e) => { e.target.src = '/cards/card_back.png'; }}
+              onError={(e) => { e.target.src = `${baseUrl}cards/card_back.png`; }}
             />
             <p>
               {['과거', '현재', '미래'][idx]}
@@ -177,7 +178,7 @@ const Reading = () => {
                 height: '130px',
                 marginLeft: '-40px',
                 marginTop: '-65px',
-                backgroundImage: 'url(/cards/card_back.png)',
+                backgroundImage: `url(${baseUrl}cards/card_back.png)`,
                 backgroundSize: 'cover',
                 borderRadius: '10px',
                 boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
@@ -211,7 +212,7 @@ const Reading = () => {
                     zIndex: i 
                   }}
                 >
-                  <img src="/cards/card_back.png" alt="Card Back" />
+                  <img src={`${baseUrl}cards/card_back.png`} alt="Card Back" />
                 </div>
               ))}
               <div className="pile-count">{pile.length}장</div>
