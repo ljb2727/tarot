@@ -18,7 +18,7 @@ const Reading = () => {
 
   useEffect(() => {
     if (!question) {
-      navigate('/');
+      navigate('/', { replace: true });
       return;
     }
     initializeDeck();

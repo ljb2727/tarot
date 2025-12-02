@@ -19,8 +19,10 @@ const Result = () => {
   const [selectedImageInfo, setSelectedImageInfo] = useState(null);
 
   useEffect(() => {
-    if (cards.length === 0) {
-      navigate('/');
+    // 카드나 질문이 없으면 홈으로 리다이렉트
+    if (!cards || cards.length === 0 || !question) {
+      navigate('/', { replace: true });
+      return;
     }
     
     // 1. 환경 변수에서 API 키 확인 (고정 키)
@@ -35,7 +37,7 @@ const Result = () => {
     if (savedKey) {
       setApiKey(savedKey);
     }
-  }, [cards, navigate]);
+  }, [cards, question, navigate]);
 
   const handleAiReading = async () => {
     if (!apiKey) {
