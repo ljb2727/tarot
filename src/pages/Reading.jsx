@@ -7,7 +7,10 @@ import '../styles/Reading.css';
 
 const Reading = () => {
   const [deck, setDeck] = useState([]);
+  const [piles, setPiles] = useState([[], [], []]);
   const [selectedCards, setSelectedCards] = useState([]);
+  const [isShuffling, setIsShuffling] = useState(false);
+  const [showShuffleOverlay, setShowShuffleOverlay] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
   const { question } = location.state || { question: '' };
@@ -15,22 +18,68 @@ const Reading = () => {
   useEffect(() => {
     if (!question) {
       navigate('/');
+      return;
     }
+    initializeDeck();
+  }, [question, navigate]);
+
+  const initializeDeck = () => {
     const initialDeck = getDeck();
     const shuffled = shuffleDeck(initialDeck);
     setDeck(shuffled);
-  }, [question, navigate]);
+    distributePiles(shuffled);
+  };
 
-  const handleCardClick = (card) => {
-    if (selectedCards.length < 3 && !selectedCards.includes(card)) {
-      const newSelected = [...selectedCards, card];
-      setSelectedCards(newSelected);
-      
-      if (newSelected.length === 3) {
-        setTimeout(() => {
-          navigate('/result', { state: { cards: newSelected, question } });
-        }, 1000);
-      }
+  const distributePiles = (currentDeck) => {
+    const chunkSize = Math.ceil(currentDeck.length / 3);
+    const newPiles = [
+      currentDeck.slice(0, chunkSize),
+      currentDeck.slice(chunkSize, chunkSize * 2),
+      currentDeck.slice(chunkSize * 2)
+    ];
+    setPiles(newPiles);
+  };
+
+  const handleShuffle = () => {
+    if (selectedCards.length > 0 || isShuffling) return;
+    
+    setIsShuffling(true);
+    setShowShuffleOverlay(false); // 애니메이션을 위해 잠시 숨김
+    
+    // 1. 셔플 로직 실행 (데이터 업데이트)
+    const shuffled = shuffleDeck(deck);
+    setDeck(shuffled);
+    
+    // 2. 애니메이션 시간 후 상태 복귀 및 뭉치 재분배
+    setTimeout(() => {
+      distributePiles(shuffled);
+      setIsShuffling(false);
+      setShowShuffleOverlay(true); // 애니메이션 끝나면 다시 표시
+    }, 2000); // 2초 동안 애니메이션
+  };
+
+  const handleSkipShuffle = () => {
+    setShowShuffleOverlay(false); // 영구히 닫음 (카드 선택 단계로)
+  };
+
+  const handlePileClick = (pileIndex) => {
+    if (selectedCards.length >= 3 || isShuffling) return;
+
+    const currentPile = piles[pileIndex];
+    if (currentPile.length === 0) return;
+
+    const selectedCard = currentPile[currentPile.length - 1];
+    const newSelected = [...selectedCards, selectedCard];
+    setSelectedCards(newSelected);
+
+    const newPiles = [...piles];
+    newPiles[pileIndex] = currentPile.slice(0, -1);
+    setPiles(newPiles);
+
+    if (newSelected.length === 3) {
+      setTimeout(() => {
+        navigate('/result', { state: { cards: newSelected, question } });
+      }, 1000);
     }
   };
 
@@ -40,61 +89,136 @@ const Reading = () => {
         <span className="question-label">Q.</span>
         <span className="question-text">{question}</span>
       </div>
-      <h2>카드를 3장 선택해주세요</h2>
-      <p className="instruction">
-        {selectedCards.length === 0 && "첫 번째 카드는 '과거'를 의미합니다."}
-        {selectedCards.length === 1 && "두 번째 카드는 '현재'를 의미합니다."}
-        {selectedCards.length === 2 && "세 번째 카드는 '미래'를 의미합니다."}
-        {selectedCards.length === 3 && "운명을 확인하는 중..."}
-      </p>
       
-      {selectedCards.length > 0 && (
-        <div className="selected-preview">
-          {selectedCards.map((card, idx) => (
-            <div key={card.id} className="preview-card">
-              <img 
-                src={card.image} 
-                alt={card.name_kr}
-                style={{ transform: card.isReversed ? 'rotate(180deg)' : 'none' }}
-                onError={(e) => { e.target.src = '/cards/card_back.png'; }}
-              />
-              <p>
-                {['과거', '현재', '미래'][idx]}
-                {card.isReversed && <span style={{ color: '#ff6b6b', fontSize: '0.8em' }}> (역방향)</span>}
-              </p>
-            </div>
+      <h2>
+        {isShuffling ? "운명을 섞는 중..." : 
+         selectedCards.length < 3 ? "마음에 드는 카드 뭉치를 선택하세요" : "운명을 확인하는 중..."}
+      </h2>
+      
+      <p className="instruction">
+        {!isShuffling && selectedCards.length === 0 && "첫 번째 카드: 과거"}
+        {!isShuffling && selectedCards.length === 1 && "두 번째 카드: 현재"}
+        {!isShuffling && selectedCards.length === 2 && "세 번째 카드: 미래"}
+      </p>
+
+      {/* 셔플 버튼 및 선택 버튼 (중앙 고정 오버레이) */}
+      {selectedCards.length === 0 && !isShuffling && showShuffleOverlay && (
+        <div className="shuffle-overlay">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+            <motion.button
+              className="btn-shuffle"
+              onClick={handleShuffle}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              🔄 카드 섞기
+            </motion.button>
+            <motion.button
+              className="btn-select-now"
+              onClick={handleSkipShuffle}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              👉 바로 선택하기
+            </motion.button>
+          </div>
+        </div>
+      )}
+
+      {/* 선택된 카드 프리뷰 */}
+      <div className="selected-preview" style={{ minHeight: '180px', marginBottom: '1rem' }}>
+        {selectedCards.map((card, idx) => (
+          <motion.div 
+            key={card.id} 
+            className="preview-card"
+            initial={{ opacity: 0, scale: 0.5, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <img 
+              src={card.image} 
+              alt={card.name_kr}
+              style={{ transform: card.isReversed ? 'rotate(180deg)' : 'none' }}
+              onError={(e) => { e.target.src = '/cards/card_back.png'; }}
+            />
+            <p>
+              {['과거', '현재', '미래'][idx]}
+              {card.isReversed && <span style={{ color: '#ff6b6b', fontSize: '0.8em' }}> (역)</span>}
+            </p>
+          </motion.div>
+        ))}
+        {[...Array(3 - selectedCards.length)].map((_, i) => (
+          <div key={`empty-${i}`} className="preview-card empty-slot">
+            <div className="empty-circle"></div>
+          </div>
+        ))}
+      </div>
+
+      {/* 셔플 애니메이션용 카드들 */}
+      {isShuffling && (
+        <div className="shuffle-container" style={{ position: 'relative', height: '300px', width: '100%' }}>
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={`shuffle-${i}`}
+              className="shuffle-card"
+              initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+              animate={{
+                x: [0, (Math.random() - 0.5) * 600, 0], // 흩어졌다 모이기
+                y: [0, (Math.random() - 0.5) * 600, 0],
+                rotate: [0, Math.random() * 720, 0], // 회전
+                scale: [1, 0.8, 1]
+              }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              style={{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                width: '80px',
+                height: '130px',
+                marginLeft: '-40px',
+                marginTop: '-65px',
+                backgroundImage: 'url(/cards/card_back.png)',
+                backgroundSize: 'cover',
+                borderRadius: '10px',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                zIndex: 100
+              }}
+            />
           ))}
         </div>
       )}
-      
-      <div className="card-spread">
-        {deck.map((card, index) => (
-          <motion.div
-            key={card.id}
-            className={`spread-card-wrapper ${selectedCards.includes(card) ? 'selected' : ''}`}
-            initial={{ x: 0, y: 0, rotate: 0 }}
-            animate={{ 
-              x: (index - 39) * 15,
-              y: Math.abs(index - 39) * 2,
-              rotate: (index - 39) * 2 
-            }}
-            transition={{ duration: 1, delay: index * 0.01 }}
-            style={{ 
-              zIndex: index,
-              position: 'absolute',
-              left: '50%',
-              top: '20%',
-              marginLeft: '-100px'
-            }}
-          >
-            <Card 
-              card={card} 
-              isFlipped={false}
-              onClick={() => handleCardClick(card)}
-            />
-          </motion.div>
-        ))}
-      </div>
+
+      {/* 3개의 카드 뭉치 (셔플 중에는 숨김) */}
+      {!isShuffling && (
+        <div className="card-piles-container">
+          {piles.map((pile, index) => (
+            <motion.div
+              key={`pile-${index}`}
+              className="card-pile"
+              onClick={() => handlePileClick(index)}
+              whileHover={{ scale: 1.05, y: -10 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              {[...Array(Math.min(pile.length, 5))].map((_, i) => (
+                <div 
+                  key={i} 
+                  className="pile-card-layer"
+                  style={{ 
+                    transform: `translateY(-${i * 2}px) translateZ(${i}px)`,
+                    zIndex: i 
+                  }}
+                >
+                  <img src="/cards/card_back.png" alt="Card Back" />
+                </div>
+              ))}
+              <div className="pile-count">{pile.length}장</div>
+            </motion.div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -10,7 +10,6 @@ const Result = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { cards, question } = location.state || { cards: [], question: '' };
-  const [flippedCards, setFlippedCards] = useState([false, false, false]);
   const [showApiModal, setShowApiModal] = useState(false);
   const [aiReading, setAiReading] = useState('');
   const [isLoadingAi, setIsLoadingAi] = useState(false);
@@ -31,23 +30,6 @@ const Result = () => {
       console.warn('localStorage 접근 불가:', error);
     }
   }, [cards, navigate]);
-
-  useEffect(() => {
-    // 각 카드를 순차적으로 뒤집기
-    const timers = [];
-    cards.forEach((_, index) => {
-      const timer = setTimeout(() => {
-        setFlippedCards(prev => {
-          const newState = [...prev];
-          newState[index] = true;
-          return newState;
-        });
-      }, 1000 + index * 1500);
-      timers.push(timer);
-    });
-
-    return () => timers.forEach(timer => clearTimeout(timer));
-  }, [cards]);
 
   const handleAiReading = async () => {
     if (!apiKey) {
@@ -86,8 +68,26 @@ const Result = () => {
       </div>
       <h2>당신의 운명</h2>
       
+      {/* 선택된 3장의 카드 미리보기 */}
+      <div className="selected-cards-display">
+        {cards.map((card, index) => (
+          <div key={card.id} className="selected-card-item">
+            <span className="card-position-label">{positions[index]}</span>
+            <Card 
+              card={card}
+              isFlipped={true}
+              style={{ width: '100px', height: '166px', cursor: 'default' }}
+            />
+            <p className="selected-card-name">
+              {card.name_kr}
+              {card.isReversed && <span className="reversed-badge">역</span>}
+            </p>
+          </div>
+        ))}
+      </div>
+      
       <div className="ai-reading-section">
-        {!aiReading && (
+        {!aiReading && !isLoadingAi && (
           <motion.button
             className="btn-ai-reading"
             onClick={handleAiReading}
@@ -95,8 +95,26 @@ const Result = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {isLoadingAi ? '✨ AI가 해석 중...' : '🤖 AI 타로 리딩 받기'}
+            🔮 운명 알아보기
           </motion.button>
+        )}
+        
+        {isLoadingAi && (
+          <div className="crystal-ball-loading">
+            <div className="crystal-ball">
+              <div className="crystal-shine"></div>
+              <div className="crystal-glow"></div>
+              <div className="magic-sparkles">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="sparkle" style={{
+                    '--delay': `${i * 0.1}s`,
+                    '--angle': `${i * 30}deg`
+                  }}></div>
+                ))}
+              </div>
+            </div>
+            <p className="loading-text">✨ 운명을 읽는 중...</p>
+          </div>
         )}
         
         {aiReading && (
@@ -106,54 +124,111 @@ const Result = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div 
-              className="reading-text"
-              dangerouslySetInnerHTML={{ 
-                __html: aiReading
-                  .replace(/### /g, '<h3>')
-                  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                  .replace(/\n/g, '<br/>')
-              }}
-            />
+            {(() => {
+              // AI 리딩 텍스트를 섹션별로 분리
+              const sections = [];
+              const lines = aiReading.split('\n');
+              let currentSection = null;
+              let currentContent = [];
+
+              lines.forEach(line => {
+                if (line.includes('**1. 과거:')) {
+                  if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
+                  currentSection = { type: 'past', title: line, cardIndex: 0 };
+                  currentContent = [];
+                } else if (line.includes('**2. 현재:')) {
+                  if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
+                  currentSection = { type: 'present', title: line, cardIndex: 1 };
+                  currentContent = [];
+                } else if (line.includes('**3. 미래:')) {
+                  if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
+                  currentSection = { type: 'future', title: line, cardIndex: 2 };
+                  currentContent = [];
+                } else if (line.includes('**4. 종합 조언')) {
+                  if (currentSection) sections.push({ ...currentSection, content: currentContent.join('\n') });
+                  currentSection = { type: 'advice', title: line, cardIndex: null };
+                  currentContent = [];
+                } else if (currentSection) {
+                  currentContent.push(line);
+                } else {
+                  // 헤더 부분 (질문 등)
+                  if (!currentSection && line.trim()) {
+                    // 구분선(---)이나 빈 줄은 무시
+                    if (line.trim().match(/^[-=*]{3,}$/)) return;
+                    
+                    sections.push({ type: 'header', content: line });
+                  }
+                }
+              });
+              
+              if (currentSection) {
+                sections.push({ ...currentSection, content: currentContent.join('\n') });
+              }
+
+              return (
+                <div className="reading-sections">
+                  {sections.map((section, idx) => {
+                    if (section.type === 'header') {
+                      return (
+                        <div key={idx} className="reading-header" 
+                          dangerouslySetInnerHTML={{ 
+                            __html: section.content
+                              .replace(/### /g, '<h3>')
+                              .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+                          }} 
+                        />
+                      );
+                    }
+
+                    if (section.cardIndex !== null && section.cardIndex !== undefined) {
+                      // 과거/현재/미래 섹션: 카드 이미지와 함께 표시
+                      const card = cards[section.cardIndex];
+                      return (
+                        <div key={idx} className="reading-section-with-card">
+                          <div className="section-card-image">
+                            <Card 
+                              card={card}
+                              isFlipped={true}
+                              style={{ width: '120px', height: '200px', cursor: 'default' }}
+                            />
+                            <p className="section-card-name">
+                              {card.name_kr}
+                              {card.isReversed && <span className="reversed-badge">역</span>}
+                            </p>
+                          </div>
+                          <div className="section-text">
+                            <div dangerouslySetInnerHTML={{ 
+                              __html: (section.title + '\n' + section.content)
+                                .replace(/\n\n+/g, '\n') // 연속된 개행을 하나로
+                                .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+                                .replace(/<b>해석:<\/b>/g, '<br/><b>해석:</b>') // 해석: 앞에 줄바꿈 추가
+                                .replace(/\n/g, '<br/>')
+                                .replace(/<\/b><br\/>/g, '</b> ') // b 태그 다음 br 제거 및 공백 추가
+                            }} />
+                          </div>
+                        </div>
+                      );
+                    } else {
+                      // 종합 조언 섹션
+                      return (
+                        <div key={idx} className="reading-section-full">
+                          <div dangerouslySetInnerHTML={{ 
+                            __html: (section.title + '\n' + section.content)
+                              .replace(/\n\n+/g, '\n') // 연속된 개행을 하나로
+                              .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+                              .replace(/<b>해석:<\/b>/g, '<br/><b>해석:</b>') // 해석: 앞에 줄바꿈 추가
+                              .replace(/\n/g, '<br/>')
+                              .replace(/<\/b><br\/>/g, '</b> ') // b 태그 다음 br 제거 및 공백 추가
+                          }} />
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              );
+            })()}
           </motion.div>
         )}
-      </div>
-
-      <div className="results-grid">
-        {cards.map((card, index) => (
-          <motion.div 
-            key={card.id}
-            className="result-card-wrapper"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.5, duration: 0.8 }}
-          >
-            <h3 className="position-title">{positions[index]}</h3>
-            <div className="card-display">
-              <Card 
-                card={card} 
-                isFlipped={flippedCards[index]}
-                style={{ cursor: 'default' }}
-              />
-            </div>
-            <motion.div 
-              className="card-info"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: flippedCards[index] ? 1 : 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h4>
-                {card.name_kr}
-                {card.isReversed && <span style={{ color: '#ff6b6b', fontSize: '0.8em', marginLeft: '0.5rem' }}>(역방향)</span>}
-              </h4>
-              <p className="card-name-en">{card.name_en}</p>
-              <p className="card-desc">
-                이 카드는 당신의 {positions[index]}에 대한 중요한 메시지를 담고 있습니다.
-                {card.image_prompt.split('.')[1]}
-              </p>
-            </motion.div>
-          </motion.div>
-        ))}
       </div>
       
       <div className="action-buttons">

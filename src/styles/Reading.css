@@ -4,65 +4,51 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 1rem;
 }
 
 .question-display {
   background: rgba(255, 255, 255, 0.1);
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 50px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border: 1px solid rgba(255, 215, 0, 0.3);
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  max-width: 80%;
+  max-width: 90%;
 }
 
 .question-label {
   color: var(--color-primary);
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .question-text {
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .instruction {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
   color: #ccc;
-  min-height: 1.5em;
-}
-
-.card-spread {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  perspective: 1000px;
-}
-
-.spread-card-wrapper {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.spread-card-wrapper:hover {
-  transform: translateY(-20px) !important;
-  z-index: 1000 !important;
-}
-
-.spread-card-wrapper.selected {
-  opacity: 0.3;
-  pointer-events: none;
+  min-height: 1.2em;
 }
 
 .selected-preview {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  padding: 0.5rem 0;
 }
 
 .preview-card {
@@ -79,6 +65,7 @@
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
   animation: glow 1.5s ease-in-out infinite;
   padding: 0.5rem;
+  flex-shrink: 0; /* 크기 줄어들지 않음 */
 }
 
 .preview-card img {
@@ -103,5 +90,140 @@
   }
   50% {
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.card-piles-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 800px;
+  perspective: 1000px;
+}
+
+.card-pile {
+  position: relative;
+  width: 120px;
+  height: 200px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.pile-card-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pile-card-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.pile-count {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.shuffle-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+}
+
+.btn-shuffle {
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+  border: none;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  color: #1a1a2e;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 2001;
+}
+
+.btn-shuffle:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.btn-select-now {
+  background: transparent;
+  border: 2px solid #ffd700;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2001;
+  transition: all 0.3s ease;
+}
+
+.btn-select-now:hover {
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.empty-slot {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  animation: none;
+}
+
+.empty-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 600px) {
+  .card-piles-container {
+    gap: 1rem;
+  }
+  
+  .card-pile {
+    width: 90px;
+    height: 150px;
+  }
+
+  .preview-card {
+    width: 80px;
+    height: 128px;
+  }
+
+  .preview-card img {
+    width: 60px;
+    height: 90px;
   }
 }
