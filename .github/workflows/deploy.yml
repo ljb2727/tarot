@@ -37,6 +37,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+          # GitHub Pages를 자동으로 활성화
+          enablement: true
 
   deploy:
     environment:
