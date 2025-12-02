@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Card from '../components/Card';
 import ApiKeyModal from '../components/ApiKeyModal';
+import ImageModal from '../components/ImageModal';
 import { generateTarotReading } from '../utils/gemini';
 import '../styles/Result.css';
 
@@ -14,6 +15,7 @@ const Result = () => {
   const [aiReading, setAiReading] = useState('');
   const [isLoadingAi, setIsLoadingAi] = useState(false);
   const [apiKey, setApiKey] = useState('');
+  const [selectedImageInfo, setSelectedImageInfo] = useState(null);
 
   useEffect(() => {
     if (cards.length === 0) {
@@ -56,6 +58,18 @@ const Result = () => {
     handleAiReading();
   };
 
+  const openImageModal = (card) => {
+    setSelectedImageInfo({
+      imageSrc: card.image,
+      altText: card.name_kr,
+      isReversed: card.isReversed
+    });
+  };
+
+  const closeImageModal = () => {
+    setSelectedImageInfo(null);
+  };
+
   if (cards.length === 0) return null;
 
   const positions = ['과거', '현재', '미래'];
@@ -76,7 +90,8 @@ const Result = () => {
             <Card 
               card={card}
               isFlipped={true}
-              style={{ width: '100px', height: '166px', cursor: 'default' }}
+              style={{ width: '100px', height: '166px', cursor: 'pointer' }}
+              onClick={() => openImageModal(card)}
             />
             <p className="selected-card-name">
               {card.name_kr}
@@ -168,8 +183,8 @@ const Result = () => {
                 } else {
                   // 헤더 부분 (질문 등)
                   if (!currentSection && trimmedLine) {
-                    // 구분선(---)이나 빈 줄은 무시
-                    if (trimmedLine.match(/^[-=*]{3,}$/)) return;
+                    // 구분선(---)이나 빈 줄은 무시 (더 강력한 필터링)
+                    if (trimmedLine.match(/^[-=*_]{3,}$/) || trimmedLine === '---') return;
                     
                     sections.push({ type: 'header', content: line });
                   }
@@ -206,12 +221,32 @@ const Result = () => {
                             <Card 
                               card={card}
                               isFlipped={true}
-                              style={{ width: '120px', height: '200px', cursor: 'default' }}
+                              style={{ width: '120px', height: '200px', cursor: 'pointer' }}
+                              onClick={() => openImageModal(card)}
                             />
                             <p className="section-card-name">
                               {card.name_kr}
                               {card.isReversed && <span className="reversed-badge">역</span>}
                             </p>
+                            <button 
+                              className="btn-view-image"
+                              onClick={() => openImageModal(card)}
+                              style={{
+                                marginTop: '0.5rem',
+                                background: 'rgba(255, 255, 255, 0.1)',
+                                border: '1px solid rgba(255, 255, 255, 0.2)',
+                                color: '#ddd',
+                                padding: '4px 10px',
+                                borderRadius: '15px',
+                                fontSize: '0.8rem',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '4px'
+                              }}
+                            >
+                              🔍 크게 보기
+                            </button>
                           </div>
                           <div className="section-text">
                             <div dangerouslySetInnerHTML={{ 
@@ -282,18 +317,20 @@ const Result = () => {
         <button className="btn-primary" onClick={() => navigate('/')}>
           다시 하기
         </button>
-        <button 
-          className="btn-secondary" 
-          onClick={() => setShowApiModal(true)}
-        >
-          ⚙️ API 키 설정
-        </button>
       </div>
 
       <ApiKeyModal 
         isOpen={showApiModal}
         onClose={() => setShowApiModal(false)}
         onSave={handleApiKeySave}
+      />
+
+      <ImageModal
+        isOpen={!!selectedImageInfo}
+        onClose={closeImageModal}
+        imageSrc={selectedImageInfo?.imageSrc}
+        altText={selectedImageInfo?.altText}
+        isReversed={selectedImageInfo?.isReversed}
       />
     </div>
   );

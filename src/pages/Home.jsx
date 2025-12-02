@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import ApiKeyModal from '../components/ApiKeyModal';
 
 const Home = () => {
   const navigate = useNavigate();
   const [question, setQuestion] = useState('');
+  const [showApiModal, setShowApiModal] = useState(false);
 
   const handleStart = () => {
     if (question.trim().length < 2) {
@@ -15,7 +17,35 @@ const Home = () => {
   };
 
   return (
-    <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
+    <div className="container" style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
+      <button
+        onClick={() => setShowApiModal(true)}
+        style={{
+          position: 'absolute',
+          top: '1rem',
+          right: '1rem',
+          background: 'rgba(0, 0, 0, 0.3)',
+          border: '1px solid rgba(255, 215, 0, 0.3)',
+          borderRadius: '20px',
+          padding: '8px 16px',
+          color: '#ffd700',
+          cursor: 'pointer',
+          fontSize: '0.9rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+          zIndex: 10
+        }}
+      >
+        ⚙️ API 설정
+      </button>
+
+      <ApiKeyModal 
+        isOpen={showApiModal}
+        onClose={() => setShowApiModal(false)}
+        onSave={() => {}}
+      />
+
       <motion.h1 
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -43,22 +73,30 @@ const Home = () => {
           <label style={{ display: 'block', marginBottom: '0.5rem', color: '#ffd700', fontSize: '1.1rem' }}>
             어떤 고민이 있으신가요?
           </label>
-          <input
-            type="text"
+          <textarea
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            placeholder="예: 취업을 위해 제가 지금 준비해야 할 것은 무엇인가요?"
+            placeholder="예: 취업을 위해 제가 지금 준비해야 할 것은 무엇인가요?&#13;&#10;(구체적인 상황을 함께 적어주시면 더 좋습니다)"
             style={{
               width: '100%',
+              minHeight: '100px',
               padding: '1rem',
               borderRadius: '10px',
               border: '2px solid rgba(255, 215, 0, 0.3)',
               background: 'rgba(255, 255, 255, 0.05)',
               color: '#fff',
               fontSize: '1rem',
-              outline: 'none'
+              outline: 'none',
+              resize: 'vertical',
+              fontFamily: 'inherit',
+              lineHeight: '1.5'
             }}
-            onKeyDown={(e) => e.key === 'Enter' && handleStart()}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleStart();
+              }
+            }}
           />
           <p style={{ fontSize: '0.8rem', color: '#aaa', marginTop: '0.5rem' }}>
             * 구체적일수록 답변도 명확해집니다. '네/아니오' 질문보다는 '어떻게', '무엇'을 묻는 열린 질문이 좋습니다.
