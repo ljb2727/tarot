@@ -61,7 +61,7 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
                  style={{ 
                    display: 'block',
                    width: '100%',
-                   minHeight: '250px'
+                   minHeight: '200px'
                  }}
                  data-ad-format="autorelaxed"
                  data-ad-client="ca-pub-3362637665990884"
