@@ -12,6 +12,7 @@ const Reading = () => {
   const [selectedCards, setSelectedCards] = useState([]);
   const [isShuffling, setIsShuffling] = useState(false);
   const [showShuffleOverlay, setShowShuffleOverlay] = useState(true);
+  const [hasShuffled, setHasShuffled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { question } = location.state || { question: '' };
@@ -56,6 +57,7 @@ const Reading = () => {
       distributePiles(shuffled);
       setIsShuffling(false);
       setShowShuffleOverlay(true); // 애니메이션 끝나면 다시 표시
+      setHasShuffled(true); // 한 번 섞었음을 표시
     }, 2000); // 2초 동안 애니메이션
   };
 
@@ -114,14 +116,19 @@ const Reading = () => {
             >
               🔄 카드 섞기
             </motion.button>
-            <motion.button
-              className="btn-select-now"
-              onClick={handleSkipShuffle}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              👉 바로 선택하기
-            </motion.button>
+            {hasShuffled && (
+              <motion.button
+                className="btn-select-now"
+                onClick={handleSkipShuffle}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                👉 바로 선택하기
+              </motion.button>
+            )}
           </div>
         </div>
       )}
