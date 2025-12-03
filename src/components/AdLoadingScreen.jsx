@@ -58,10 +58,9 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
           {isProduction ? (
             <ins className="adsbygoogle"
                  style={{ display: 'block' }}
+                 data-ad-format="autorelaxed"
                  data-ad-client="ca-pub-3362637665990884"
-                 data-ad-slot="8519136349"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+                 data-ad-slot="2724677747"></ins>
           ) : (
             <div className="ad-placeholder">
               <div className="placeholder-content">
