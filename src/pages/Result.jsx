@@ -337,11 +337,13 @@ const Result = () => {
         )}
       </div>
       
-      <div className="action-buttons">
-        <button className="btn-primary" onClick={() => navigate('/')}>
-          다시 하기
-        </button>
-      </div>
+      {aiReading && (
+        <div className="action-buttons">
+          <button className="btn-primary" onClick={() => navigate('/')}>
+            다시 하기
+          </button>
+        </div>
+      )}
 
       <ApiKeyModal 
         isOpen={showApiModal}

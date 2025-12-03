@@ -26,7 +26,7 @@ const Home = () => {
         flexDirection: 'column', 
         alignItems: 'center', 
         justifyContent: 'center', 
-        minHeight: '100vh'
+        minHeight: '100%'
       }}
     >
       {/* 컨텐츠 영역 */}
@@ -37,7 +37,7 @@ const Home = () => {
               onClick={() => setShowApiModal(true)}
               style={{
                 position: 'absolute',
-                top: '1rem',
+                top: '0',
                 right: '1rem',
                 background: 'rgba(0, 0, 0, 0.3)',
                 border: '1px solid rgba(255, 215, 0, 0.3)',
