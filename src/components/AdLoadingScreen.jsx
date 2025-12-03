@@ -61,11 +61,12 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
                  style={{ 
                    display: 'block',
                    width: '100%',
-                   minHeight: '200px'
+                   minHeight: '280px'
                  }}
-                 data-ad-format="autorelaxed"
                  data-ad-client="ca-pub-3362637665990884"
-                 data-ad-slot="2724677747"></ins>
+                 data-ad-slot="4356489464"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
           ) : (
             <div className="ad-placeholder">
               <div className="placeholder-content">
