@@ -9,19 +9,23 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
 
   useEffect(() => {
     // 프로덕션 환경에서만 광고 스크립트 로드
-    let loadAd;
     if (isProduction) {
-      loadAd = setTimeout(() => {
+      // AdSense 스크립트가 로드될 때까지 대기
+      const loadAd = setTimeout(() => {
         try {
-          if (window.adsbygoogle && window.adsbygoogle.loaded !== true) {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-          }
+          console.log('AdSense 초기화 시도...');
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+          console.log('AdSense 푸시 완료');
         } catch (e) {
-          console.error('AdSense error:', e);
+          console.error('AdSense 오류:', e);
         }
-      }, 100);
-    }
+      }, 500);
 
+      return () => clearTimeout(loadAd);
+    }
+  }, [isProduction]);
+
+  useEffect(() => {
     // 최소 광고 시청 시간 타이머
     const timer = setInterval(() => {
       setTimeRemaining((prev) => {
@@ -34,11 +38,8 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
       });
     }, 1000);
 
-    return () => {
-      if (loadAd) clearTimeout(loadAd);
-      clearInterval(timer);
-    };
-  }, [isProduction]);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="ad-loading-screen">
@@ -57,7 +58,11 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
         <div className="ad-space">
           {isProduction ? (
             <ins className="adsbygoogle"
-                 style={{ display: 'block' }}
+                 style={{ 
+                   display: 'block',
+                   width: '100%',
+                   minHeight: '250px'
+                 }}
                  data-ad-format="autorelaxed"
                  data-ad-client="ca-pub-3362637665990884"
                  data-ad-slot="2724677747"></ins>
