@@ -9,11 +9,9 @@ const Home = () => {
   const [showApiModal, setShowApiModal] = useState(false);
 
   const handleStart = () => {
-    if (question.trim().length < 2) {
-      alert('질문을 구체적으로 입력해주세요.');
-      return;
-    }
-    navigate('/reading', { state: { question } });
+    // 질문이 비어있으면 기본 질문 사용
+    const finalQuestion = question.trim() || '나의 과거, 현재, 미래는 어떤가요?';
+    navigate('/reading', { state: { question: finalQuestion } });
   };
 
   // 환경 변수에 API 키가 있으면 설정 버튼을 숨김
@@ -128,7 +126,6 @@ const Home = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={handleStart}
-          style={{ opacity: question.trim().length < 2 ? 0.5 : 1 }}
         >
           타로 보기
         </motion.button>
