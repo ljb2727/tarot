@@ -27,7 +27,7 @@
 }
 
 .ad-header h2 {
-  color: var(--color-primary);
+  color: white;
   font-size: 2rem;
   margin-bottom: 0.5rem;
   text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
@@ -98,7 +98,7 @@
 }
 
 .timer-text {
-  color: var(--color-primary);
+  color: white;
   font-size: 1.1rem;
   font-weight: 600;
   animation: pulse 1.5s ease-in-out infinite;

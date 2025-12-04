@@ -90,8 +90,34 @@ ${userInfoSection}
       contents: prompt,
     });
     
-    let text = response.text;
+    console.log('Gemini Response:', response); // 디버깅용 로그
+
+    // 응답에서 텍스트 추출
+    let text = '';
+    if (typeof response.text === 'function') {
+      try {
+        text = response.text();
+      } catch (e) {
+        console.warn('response.text() 호출 실패:', e);
+      }
+    } 
     
+    if (!text && response.text && typeof response.text === 'string') {
+      text = response.text;
+    } 
+    
+    if (!text && response.candidates?.length > 0) {
+       // 구조가 다를 경우를 대비한 안전장치
+       const candidate = response.candidates[0];
+       if (candidate.content?.parts?.length > 0) {
+         text = candidate.content.parts[0].text;
+       }
+    }
+    
+    if (!text) {
+      throw new Error('API 응답에서 텍스트를 추출할 수 없습니다.');
+    }
+
     // 구분선(---, ===, ***, ___ 등) 제거
     text = text.replace(/^\s*[-=*_]{3,}\s*$/gm, '');
     

@@ -29,7 +29,7 @@ const Intro = () => {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        style={{ fontSize: '4rem', marginBottom: '1rem' }}
+        style={{ fontSize: '4rem', marginBottom: '1rem', color: '#fff' }}
       >
         원픽 타로
       </motion.h1>

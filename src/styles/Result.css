@@ -28,7 +28,7 @@
 }
 
 .card-position-label {
-  color: var(--color-primary);
+  color: white;
   font-weight: bold;
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -447,6 +447,17 @@
 }
 
 .advice-section b {
-  color: #ffd700;
+  color: var(--color-primary);
 }
 
+.reading-section-with-card {
+  border: none;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.reading-section-with-card:last-child {
+  border-bottom: none;
+}

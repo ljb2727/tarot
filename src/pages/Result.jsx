@@ -19,6 +19,15 @@ const Result = () => {
   const [showAdLoading, setShowAdLoading] = useState(false);
   const [apiKey, setApiKey] = useState('');
   const [selectedImageInfo, setSelectedImageInfo] = useState(null);
+  const [waitingForAi, setWaitingForAi] = useState(false); // 광고 완료 후 AI 대기 중인지 여부
+
+  // AI 해석이 완료되면 로딩 상태 해제 (광고 시청 완료 후 대기 중일 때)
+  useEffect(() => {
+    if (waitingForAi && aiReading) {
+      setIsLoadingAi(false);
+      setWaitingForAi(false);
+    }
+  }, [aiReading, waitingForAi]);
 
   useEffect(() => {
     // 카드나 질문이 없으면 홈으로 리다이렉트
@@ -49,24 +58,43 @@ const Result = () => {
 
     // 광고 로딩 화면 표시
     setShowAdLoading(true);
+
+    // AI 해석을 광고와 병렬로 시작
+    (async () => {
+      try {
+        const reading = await generateTarotReading(cards, apiKey, question, userInfo);
+        setAiReading(reading);
+      } catch (error) {
+        console.error('AI 해석 생성 오류:', error);
+        // 에러 발생 시 aiReading을 null로 설정하여 handleAdComplete에서 처리
+        setAiReading(null); 
+      }
+    })();
   };
 
   const handleAdComplete = async () => {
-    // 광고 시청 완료 후 AI 리딩 시작
+    // 광고 시청 완료
     setShowAdLoading(false);
-    setIsLoadingAi(true);
     
-    try {
-      const reading = await generateTarotReading(cards, apiKey, question, userInfo);
-      setAiReading(reading);
-    } catch (error) {
-      alert(error.message || 'AI 해석 생성 중 오류가 발생했습니다.');
-      if (error.message.includes('API')) {
-        setShowApiModal(true);
-      }
-    } finally {
-      setIsLoadingAi(false);
+    // AI 해석이 아직 완료되지 않았으면 로딩 표시 및 대기
+    if (!aiReading) {
+      setIsLoadingAi(true);
+      setWaitingForAi(true);
+      
+      // 30초 타임아웃 설정 (안전장치)
+      setTimeout(() => {
+        // 타임아웃 시점에도 여전히 대기 중이고 결과가 없다면 에러 처리
+        setWaitingForAi(prev => {
+          if (prev) {
+            setIsLoadingAi(false);
+            alert('AI 해석 생성 시간이 초과되었습니다. 다시 시도해주세요.');
+            return false;
+          }
+          return prev;
+        });
+      }, 30000);
     }
+    // AI 해석이 이미 완료되었으면 바로 결과 화면으로 (로딩 없음)
   };
 
   const handleApiKeySave = (newKey) => {
@@ -105,7 +133,7 @@ const Result = () => {
         <span className="question-label">Q.</span>
         <span className="question-text">{question}</span>
       </div>
-      <h2>당신의 운명</h2>
+      <h2 style={{ color: '#fff' }}>당신의 운명</h2>
       
       {/* 선택된 3장의 카드 미리보기 */}
       <div className="selected-cards-display">
@@ -118,7 +146,7 @@ const Result = () => {
               style={{ width: '100px', height: '166px', cursor: 'pointer' }}
               onClick={() => openImageModal(card)}
             />
-            <p className="selected-card-name">
+            <p className="selected-card-name" style={{ color: '#fff', maxWidth: '100px', wordWrap: 'break-word', textAlign: 'center' }}>
               {card.name_kr}
               {card.isReversed && <span className="reversed-badge">역</span>}
             </p>
@@ -139,21 +167,56 @@ const Result = () => {
           </motion.button>
         )}
         
-        {isLoadingAi && (
-          <div className="crystal-ball-loading">
-            <div className="crystal-ball">
-              <div className="crystal-shine"></div>
-              <div className="crystal-glow"></div>
-              <div className="magic-sparkles">
-                {[...Array(12)].map((_, i) => (
-                  <div key={i} className="sparkle" style={{
-                    '--delay': `${i * 0.1}s`,
-                    '--angle': `${i * 30}deg`
-                  }}></div>
-                ))}
-              </div>
-            </div>
-            <p className="loading-text">✨ 운명을 읽는 중...</p>
+        {(isLoadingAi || aiReading) && (
+          <div className="loading-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2rem 0' }}>
+            <motion.video
+              src={localStorage.getItem('selected_master') === 'calix' ? 'images/calix.mp4' : 'images/aria.mp4'}
+              autoPlay
+              loop
+              muted
+              playsInline
+              initial={{ opacity: 0 }}
+              animate={{ 
+                opacity: 1,
+                boxShadow: [
+                  '0 0 20px var(--color-primary), 0 0 40px var(--color-shadow-primary)',
+                  '0 0 40px var(--color-primary), 0 0 80px var(--color-shadow-primary), 0 0 120px var(--color-shadow-primary)',
+                  '0 0 20px var(--color-primary), 0 0 40px var(--color-shadow-primary)'
+                ]
+              }}
+              transition={{ 
+                opacity: { duration: 0.5 },
+                boxShadow: { 
+                  duration: 1.5, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }
+              }}
+              style={{
+                width: '100%',
+                maxWidth: '300px',
+                height: '300px',
+                objectFit: 'cover',
+                borderRadius: '50%',
+                border: '3px solid var(--color-primary)',
+                marginBottom: '1rem'
+              }}
+            />
+            <motion.p
+              animate={{ opacity: isLoadingAi ? [0.5, 1, 0.5] : 1 }}
+              transition={{ duration: 1.5, repeat: isLoadingAi ? Infinity : 0 }}
+              style={{ color: 'var(--color-primary)', fontSize: '1.1rem', fontWeight: 'bold', textAlign: 'center' }}
+            >
+              {isLoadingAi ? (
+                localStorage.getItem('selected_master') === 'calix' 
+                  ? '칼릭스가 운명의 흐름을 꿰뚫어 보고 있습니다...' 
+                  : '아리아가 별들의 목소리를 듣고 있습니다...'
+              ) : (
+                localStorage.getItem('selected_master') === 'calix'
+                  ? '칼릭스가 당신에게 전하는 직설적인 조언입니다.'
+                  : '아리아가 당신에게 전하는 운명의 메시지입니다.'
+              )}
+            </motion.p>
           </div>
         )}
         
@@ -245,7 +308,7 @@ const Result = () => {
                           <div className="section-card-image">
                             <div style={{ 
                               marginBottom: '0.5rem', 
-                              color: '#ffd700', 
+                              color: '#fff', 
                               fontSize: '1.1rem', 
                               fontWeight: 'bold',
                               borderBottom: '1px solid rgba(255, 215, 0, 0.3)',
@@ -261,7 +324,7 @@ const Result = () => {
                               style={{ width: '120px', height: '200px', cursor: 'pointer' }}
                               onClick={() => openImageModal(card)}
                             />
-                            <p className="section-card-name">
+                            <p className="section-card-name" style={{ color: '#fff', maxWidth: '120px', wordWrap: 'break-word', textAlign: 'center' }}>
                               {card.name_kr}
                               {card.isReversed && <span className="reversed-badge">역</span>}
                             </p>
@@ -303,7 +366,7 @@ const Result = () => {
                         <div key={idx} className="reading-section-with-card overall-section">
                           <div className="section-card-image">
                             <div className="large-icon-display">📊</div>
-                            <p className="section-card-name">종합 해석</p>
+                            <p className="section-card-name" style={{ color: '#fff', maxWidth: '120px', wordWrap: 'break-word', textAlign: 'center' }}>종합 해석</p>
                           </div>
                           <div className="section-text">
                             <div className="overall-header-text">
@@ -323,22 +386,26 @@ const Result = () => {
                       // 전문가 조언 섹션
                       const selectedMaster = localStorage.getItem('selected_master') || 'aria';
                       const masterName = selectedMaster === 'aria' ? '아리아' : '칼릭스';
+                      const masterColor = selectedMaster === 'calix' ? '#ff4d4d' : '#ffd700';
                       
                       return (
                         <div key={idx} className="reading-section-with-card advice-section">
                           <div className="section-card-image">
-                            <div className="large-icon-display">🌟</div>
+                            <div className="large-icon-display" style={{ color: masterColor }}>🌟</div>
                           </div>
                           <div className="section-text">
                             <div className="advice-header-text">
-                              <h3>타로 마스터 {masterName}의 조언</h3>
+                              <h3 style={{ color: masterColor }}>타로 마스터 {masterName}의 조언</h3>
                             </div>
                             <div dangerouslySetInnerHTML={{ 
                               __html: section.content
-                                .replace(/\n\n+/g, '\n')
+                                .trim()
                                 .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
-                                .replace(/(\d+)\.\s/g, '<br/><br/>$1. ') // 숫자 목록 앞에 줄바꿈
                                 .replace(/\n/g, '<br/>')
+                                .replace(/(\d+\.\s)/g, '<br/><br/>$1')
+                                .replace(/(당장 행동해야 할|즉시 포기해야 할)/g, '<br/><br/>$1')
+                                .replace(/(<br\/>\s*){3,}/g, '<br/><br/>') // br 3개 이상은 2개로
+                                .replace(/^(<br\/>\s*)+/, '') // 맨 앞 br 제거
                                 .replace(/<\/b><br\/>/g, '</b> ')
                             }} />
                           </div>

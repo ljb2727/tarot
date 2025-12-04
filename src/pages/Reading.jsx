@@ -113,6 +113,12 @@ const Reading = () => {
               onClick={handleShuffle}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              style={{
+                backgroundImage: 'var(--color-btn-gradient)',
+                color: '#0f0c29',
+                border: 'none',
+                boxShadow: '0 4px 15px var(--color-shadow-primary)'
+              }}
             >
               🔄 카드 섞기
             </motion.button>
@@ -125,6 +131,12 @@ const Reading = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid var(--color-primary)',
+                  color: 'var(--color-primary)',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+                }}
               >
                 👉 바로 선택하기
               </motion.button>
@@ -208,7 +220,7 @@ const Reading = () => {
             );
           } else {
             return (
-              <div key={`empty-${index}`} className="preview-card empty-slot">
+              <div key={`empty-${index}`} className="preview-card empty-slot" style={{ opacity: 1, visibility: 'visible' }}>
                 <div className="empty-circle"></div>
               </div>
             );

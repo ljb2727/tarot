@@ -59,7 +59,9 @@ const SelectMaster = () => {
         style={{ 
           fontSize: '2rem', 
           marginBottom: '2rem',
-          textAlign: 'center'
+          textAlign: 'center',
+          color: currentMaster.color,
+          transition: 'color 0.3s ease'
         }}
       >
         타로 마스터 선택
