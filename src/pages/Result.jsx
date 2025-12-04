@@ -12,7 +12,7 @@ import '../styles/Result.css';
 const Result = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { cards, question } = location.state || { cards: [], question: '' };
+  const { cards, question, userInfo } = location.state || { cards: [], question: '', userInfo: {} };
   const [showApiModal, setShowApiModal] = useState(false);
   const [aiReading, setAiReading] = useState('');
   const [isLoadingAi, setIsLoadingAi] = useState(false);
@@ -57,7 +57,7 @@ const Result = () => {
     setIsLoadingAi(true);
     
     try {
-      const reading = await generateTarotReading(cards, apiKey, question);
+      const reading = await generateTarotReading(cards, apiKey, question, userInfo);
       setAiReading(reading);
     } catch (error) {
       alert(error.message || 'AI 해석 생성 중 오류가 발생했습니다.');

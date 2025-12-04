@@ -15,7 +15,7 @@ const Reading = () => {
   const [hasShuffled, setHasShuffled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { question } = location.state || { question: '' };
+  const { question, userInfo } = location.state || { question: '', userInfo: {} };
 
   useEffect(() => {
     if (!question) {
@@ -81,7 +81,7 @@ const Reading = () => {
 
     if (newSelected.length === 3) {
       setTimeout(() => {
-        navigate('/result', { state: { cards: newSelected, question } });
+        navigate('/result', { state: { cards: newSelected, question, userInfo } });
       }, 1000);
     }
   };

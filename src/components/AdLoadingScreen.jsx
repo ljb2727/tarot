@@ -1,16 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Capacitor } from '@capacitor/core';
+import { showInterstitialAd } from '../utils/admob';
 import '../styles/AdLoadingScreen.css';
 
 const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
   const [timeRemaining, setTimeRemaining] = useState(minDisplayTime / 1000);
   const [canSkip, setCanSkip] = useState(false);
+  const [adShown, setAdShown] = useState(false);
+  
+  const isNativeApp = Capacitor.isNativePlatform();
   const isProduction = window.location.hostname !== 'localhost';
 
+  // AdMob 전면광고 표시 (네이티브 앱)
   useEffect(() => {
-    // 프로덕션 환경에서만 광고 스크립트 로드
-    if (isProduction) {
-      // AdSense 스크립트가 로드될 때까지 대기
+    if (isNativeApp && !adShown) {
+      const showAd = async () => {
+        try {
+          console.log('AdMob 전면광고 표시 시도...');
+          await showInterstitialAd();
+          setAdShown(true);
+          console.log('AdMob 광고 표시 완료');
+        } catch (e) {
+          console.error('AdMob 광고 표시 실패:', e);
+          setAdShown(true); // 에러가 나도 타이머는 진행
+        }
+      };
+      
+      showAd();
+    }
+  }, [isNativeApp, adShown]);
+
+  // AdSense 광고 로드 (웹)
+  useEffect(() => {
+    if (!isNativeApp && isProduction) {
       const loadAd = setTimeout(() => {
         try {
           console.log('AdSense 초기화 시도...');
@@ -23,10 +46,10 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
 
       return () => clearTimeout(loadAd);
     }
-  }, [isProduction]);
+  }, [isNativeApp, isProduction]);
 
+  // 최소 광고 시청 시간 타이머
   useEffect(() => {
-    // 최소 광고 시청 시간 타이머
     const timer = setInterval(() => {
       setTimeRemaining((prev) => {
         if (prev <= 1) {
@@ -54,9 +77,20 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
           <p>잠시만 기다려주세요</p>
         </motion.div>
 
-        {/* AdSense 광고 영역 */}
+        {/* 광고 영역 */}
         <div className="ad-space">
-          {isProduction ? (
+          {isNativeApp ? (
+            // 네이티브 앱: AdMob 전면광고가 전체화면으로 표시됨
+            <div className="ad-placeholder">
+              <div className="placeholder-content">
+                <p>📱 AdMob 광고</p>
+                <p style={{ fontSize: '0.9rem', color: '#aaa', marginTop: '0.5rem' }}>
+                  전면광고가 별도 화면으로 표시됩니다
+                </p>
+              </div>
+            </div>
+          ) : isProduction ? (
+            // 웹 프로덕션: AdSense
             <ins className="adsbygoogle"
                  style={{ 
                    display: 'block',
@@ -68,11 +102,12 @@ const AdLoadingScreen = ({ onAdComplete, minDisplayTime = 5000 }) => {
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
           ) : (
+            // 로컬 개발
             <div className="ad-placeholder">
               <div className="placeholder-content">
                 <p>📺 광고 영역</p>
                 <p style={{ fontSize: '0.9rem', color: '#aaa', marginTop: '0.5rem' }}>
-                  실제 배포 환경에서 AdSense 광고가 표시됩니다
+                  실제 배포 환경에서 광고가 표시됩니다
                 </p>
               </div>
             </div>

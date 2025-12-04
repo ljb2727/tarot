@@ -7,11 +7,15 @@ const Home = () => {
   const navigate = useNavigate();
   const [question, setQuestion] = useState('');
   const [showApiModal, setShowApiModal] = useState(false);
+  const [userInfo, setUserInfo] = useState({ name: '', age: '', job: '', gender: '' });
 
   const handleStart = () => {
-    // 질문이 비어있으면 기본 질문 사용
-    const finalQuestion = question.trim() || '나의 과거, 현재, 미래는 어떤가요?';
-    navigate('/reading', { state: { question: finalQuestion } });
+    const trimmedQuestion = question.trim();
+    if (!trimmedQuestion || trimmedQuestion.length < 5) {
+      alert('고민을 5글자 이상 입력해주세요.');
+      return;
+    }
+    navigate('/reading', { state: { question: trimmedQuestion, userInfo } });
   };
 
   // 환경 변수에 API 키가 있으면 설정 버튼을 숨김
@@ -118,6 +122,24 @@ const Home = () => {
             <p style={{ fontSize: '0.8rem', color: '#aaa', marginTop: '0.5rem' }}>
               * 구체적일수록 답변도 명확해집니다. '네/아니오' 질문보다는 '어떻게', '무엇'을 묻는 열린 질문이 좋습니다.
             </p>
+          </div>
+
+          {/* 개인정보 입력 (선택사항) */}
+          <div style={{ marginBottom: '1rem', textAlign: 'left' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', color: '#ffd700', fontSize: '0.95rem' }}>
+              개인정보 (선택사항 - 더 정확한 해석을 위해)
+            </label>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', width: '100%' }}>
+              <input type="text" value={userInfo.name} onChange={(e) => setUserInfo({...userInfo, name: e.target.value})} placeholder="이름" style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} />
+              <input type="number" value={userInfo.age} onChange={(e) => setUserInfo({...userInfo, age: e.target.value})} placeholder="나이" style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} />
+              <input type="text" value={userInfo.job} onChange={(e) => setUserInfo({...userInfo, job: e.target.value})} placeholder="직업" style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} />
+              <select value={userInfo.gender} onChange={(e) => setUserInfo({...userInfo, gender: e.target.value})} style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: userInfo.gender ? '#fff' : '#999', fontSize: '0.9rem', outline: 'none' }}>
+                <option value="" style={{background: '#1a1a2e'}}>성별</option>
+                <option value="남성" style={{background: '#1a1a2e'}}>남성</option>
+                <option value="여성" style={{background: '#1a1a2e'}}>여성</option>
+                <option value="기타" style={{background: '#1a1a2e'}}>기타</option>
+              </select>
+            </div>
           </div>
         </motion.div>
 
