@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ApiKeyModal from '../components/ApiKeyModal';
@@ -6,10 +6,12 @@ import Toast from '../components/Toast';
 
 const Home = () => {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
   const [question, setQuestion] = useState('');
   const [showApiModal, setShowApiModal] = useState(false);
   const [userInfo, setUserInfo] = useState({ name: '', birthdate: '', job: '', gender: '' });
   const [rememberInfo, setRememberInfo] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   
   // Toast 상태
   const [toastMessage, setToastMessage] = useState('');
@@ -33,17 +35,23 @@ const Home = () => {
     if (rememberInfo) {
       localStorage.setItem('tarot_user_info', JSON.stringify(userInfo));
     } else {
-      // 기억하기를 껐을 때만 삭제 (초기 로드 시점 제외를 위해 의존성 주의 필요하지만, 
-      // 여기서는 간단히 rememberInfo가 false가 되는 순간 삭제하도록 함.
-      // 단, 초기값이 false이므로 마운트 시 삭제될 수 있음. 
-      // 따라서 마운트 시점에는 실행되지 않도록 하거나, 
-      // 로컬스토리지에 데이터가 있는데 rememberInfo가 false인 경우(사용자가 끈 경우)에만 삭제해야 함.
-      // 하지만 UX상 끄면 바로 지우는게 맞음. 초기 로드 useEffect가 먼저 실행되어 true로 만들 것이므로 괜찮음.
       if (localStorage.getItem('tarot_user_info')) {
          localStorage.removeItem('tarot_user_info');
       }
     }
   }, [userInfo, rememberInfo]);
+
+  // 비디오 재생/일시정지 제어
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isTyping) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [isTyping]);
 
   const showToastMessage = (message) => {
     setToastMessage(message);
@@ -122,13 +130,38 @@ const Home = () => {
           </>
         )}
 
-        <motion.img
-          src="images/ready.png"
-          alt="원픽 타로"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          style={{ maxWidth: '300px', marginBottom: '2rem' }}
+        <motion.video
+          ref={videoRef}
+          src="images/ready.mp4"
+          loop
+          muted
+          playsInline
+          initial={{ opacity: 0 }}
+          animate={{ 
+            opacity: 1,
+            boxShadow: [
+              '0 0 10px rgba(255, 215, 0, 0.5)',
+              '0 0 20px rgba(255, 215, 0, 0.8)',
+              '0 0 10px rgba(255, 215, 0, 0.5)'
+            ]
+          }}
+          transition={{ 
+            opacity: { duration: 0.5 },
+            boxShadow: { 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }
+          }}
+          style={{ 
+            width: '100%', 
+            maxWidth: '600px',
+            marginBottom: '2rem',
+            border: '3px solid #ffd700',
+            borderRadius: '15px',
+            boxShadow: '0 0 20px rgba(255, 215, 0, 0.5)',
+            objectFit: 'cover'
+          }}
         />
 
         <motion.div
@@ -143,7 +176,14 @@ const Home = () => {
             </label>
             <textarea
               value={question}
-              onChange={(e) => setQuestion(e.target.value)}
+              onChange={(e) => {
+                setQuestion(e.target.value);
+                if (!isTyping && e.target.value.length > 0) {
+                  setIsTyping(true);
+                } else if (e.target.value.length === 0) {
+                  setIsTyping(false);
+                }
+              }}
               placeholder="예: 취업을 위해 제가 지금 준비해야 할 것은 무엇인가요?&#13;&#10;(구체적인 상황을 함께 적어주시면 더 좋습니다)"
               style={{
                 width: '100%',
@@ -175,7 +215,7 @@ const Home = () => {
           <div style={{ marginBottom: '1rem', textAlign: 'left' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
               <label style={{ color: '#ffd700', fontSize: '0.95rem' }}>
-                개인정보 (선택사항)
+                추가 정보(선택사항)
               </label>
               <label 
                 style={{ 
@@ -247,16 +287,30 @@ const Home = () => {
             </div>
           </div>
         </motion.div>
-
-        <motion.button
-          className="btn-primary"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={handleStart}
-        >
-          타로 보기
-        </motion.button>
       </div>
+
+      {/* 하단 고정 버튼 */}
+      <motion.button
+        className="btn-primary"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={handleStart}
+        style={{
+          position: 'fixed',
+          bottom: 'max(env(safe-area-inset-bottom), 20px)',
+          left: '1rem',
+          right: '1rem',
+          zIndex: 1000,
+          maxWidth: '400px',
+          margin: '0 auto',
+          background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)',
+          color: '#0f0c29',
+          fontWeight: 'bold',
+          boxShadow: '0 4px 15px rgba(255, 215, 0, 0.4)'
+        }}
+      >
+        타로 보기
+      </motion.button>
     </div>
   );
 };

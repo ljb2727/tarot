@@ -76,8 +76,15 @@ ${userInfoSection}
     });
     
     let text = response.text;
-    // 끝부분의 --- 제거 및 공백 정리
-    text = text.replace(/\n\s*---\s*$/g, '').trim();
+    
+    // 구분선(---, ===, ***, ___ 등) 제거
+    text = text.replace(/^\s*[-=*_]{3,}\s*$/gm, '');
+    
+    // 연속된 빈 줄을 하나로
+    text = text.replace(/\n\s*\n\s*\n/g, '\n\n');
+    
+    // 최종 공백 정리
+    text = text.trim();
     
     return text;
   } catch (error) {
