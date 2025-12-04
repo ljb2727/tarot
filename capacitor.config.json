@@ -1,5 +1,25 @@
 {
   "appId": "com.tarot.mystic",
   "appName": "원픽 타로",
-  "webDir": "dist"
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true,
+    "insets": {
+      "useSafeArea": true
+    }
+  },
+  "plugins": {
+    "SplashScreen": {
+      "backgroundColor": "#000000",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#000000",
+      "overlaysWebView": false
+    }
+  }
 }

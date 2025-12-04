@@ -47,7 +47,7 @@ const SelectMaster = () => {
         flexDirection: 'column', 
         alignItems: 'center', 
         justifyContent: 'flex-start', 
-        minHeight: '100vh',
+        minHeight: '100svh',
         padding: '2rem 1rem',
         paddingBottom: '100px' // 하단 버튼 공간 확보
       }}

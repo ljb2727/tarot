@@ -92,7 +92,7 @@ const Home = () => {
         flexDirection: 'column', 
         alignItems: 'center', 
         justifyContent: 'center', 
-        minHeight: '100%'
+        minHeight: '100svh'
       }}
     >
       <Toast 

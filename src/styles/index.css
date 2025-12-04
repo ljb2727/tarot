@@ -29,14 +29,13 @@
 :root {
   --color-bg: #0f0c29;
   --color-bg-gradient: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-  --color-primary: #ffd700; /* Gold */
-  --color-secondary: #9b59b6; /* Purple */
+  --color-primary: #ffd700;
+  --color-secondary: #9b59b6;
   --color-text: #ecf0f1;
   --color-card-bg: #1a1a2e;
   --font-main: 'GMarketSans', sans-serif;
   --font-serif: 'MapoHongdaeFreedom', serif;
-  
-  /* 기본값 (아리아 테마) */
+
   --color-btn-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
   --color-shadow-primary: rgba(255, 215, 0, 0.4);
 }
@@ -47,18 +46,21 @@
   padding: 0;
 }
 
+/* ✔ Android WebView 정상작동용 */
+html {
+  height: 100%;
+}
+
 body {
-  font-family: var(--font-main);
-  background: var(--color-bg);
-  background: var(--color-bg-gradient);
-  color: var(--color-text);
-  min-height: 100vh;
+  height: 100%;
+  background: #000;
   overflow-x: hidden;
-  /* 강제 여백: 상단/하단 시스템 바를 피하기 위해 */
-  padding-top: max(env(safe-area-inset-top), 50px);
-  padding-bottom: max(env(safe-area-inset-bottom), 50px);
-  padding-left: env(safe-area-inset-left, 0px);
-  padding-right: env(safe-area-inset-right, 0px);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#root {
+  min-height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
