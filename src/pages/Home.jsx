@@ -17,7 +17,7 @@ const Home = () => {
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
 
-  // 초기 로드 시 로컬 스토리지 확인
+  // 초기 로드 시 로컬 스토리지 확인 및 테마 적용
   React.useEffect(() => {
     const savedInfo = localStorage.getItem('tarot_user_info');
     if (savedInfo) {
@@ -27,6 +27,21 @@ const Home = () => {
       } catch (e) {
         console.error('Failed to parse saved user info', e);
       }
+    }
+
+    // 테마 강제 적용
+    const selectedMaster = localStorage.getItem('selected_master') || 'aria';
+    const root = document.documentElement;
+    if (selectedMaster === 'calix') {
+      root.style.setProperty('--color-primary', '#ff4d4d');
+      root.style.setProperty('--color-secondary', '#c0392b');
+      root.style.setProperty('--color-btn-gradient', 'linear-gradient(135deg, #ff4d4d 0%, #ff8080 100%)');
+      root.style.setProperty('--color-shadow-primary', 'rgba(255, 77, 77, 0.4)');
+    } else {
+      root.style.setProperty('--color-primary', '#ffd700');
+      root.style.setProperty('--color-secondary', '#9b59b6');
+      root.style.setProperty('--color-btn-gradient', 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)');
+      root.style.setProperty('--color-shadow-primary', 'rgba(255, 215, 0, 0.4)');
     }
   }, []);
 
@@ -100,7 +115,7 @@ const Home = () => {
                 border: '1px solid rgba(255, 215, 0, 0.3)',
                 borderRadius: '20px',
                 padding: '8px 16px',
-                color: '#ffd700',
+                color: 'var(--color-primary)',
                 cursor: 'pointer',
                 fontSize: '0.9rem',
                 display: 'flex',
@@ -131,9 +146,9 @@ const Home = () => {
           animate={{ 
             opacity: 1,
             boxShadow: [
-              '0 0 10px rgba(255, 215, 0, 0.5)',
-              '0 0 20px rgba(255, 215, 0, 0.8)',
-              '0 0 10px rgba(255, 215, 0, 0.5)'
+              '0 0 10px var(--color-shadow-primary)',
+              '0 0 20px var(--color-shadow-primary)',
+              '0 0 10px var(--color-shadow-primary)'
             ]
           }}
           transition={{ 
@@ -148,9 +163,9 @@ const Home = () => {
             width: '100%', 
             maxWidth: '600px',
             marginBottom: '2rem',
-            border: '3px solid #ffd700',
+            border: '3px solid var(--color-primary)',
             borderRadius: '15px',
-            boxShadow: '0 0 20px rgba(255, 215, 0, 0.5)',
+            boxShadow: '0 0 20px var(--color-shadow-primary)',
             objectFit: 'cover'
           }}
         />
@@ -162,7 +177,7 @@ const Home = () => {
           style={{ width: '100%', maxWidth: '500px', marginBottom: '2rem' }}
         >
           <div style={{ marginBottom: '1rem', textAlign: 'left' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', color: '#ffd700', fontSize: '1.1rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--color-primary)', fontSize: '1.1rem' }}>
               어떤 고민이 있으신가요?
             </label>
             <textarea
@@ -181,7 +196,7 @@ const Home = () => {
                 minHeight: '5rem',
                 padding: '0.5rem',
                 borderRadius: '10px',
-                border: '2px solid rgba(255, 215, 0, 0.3)',
+                border: '2px solid var(--color-primary)',
                 background: 'rgba(255, 255, 255, 0.05)',
                 color: '#fff',
                 fontSize: '1rem',
@@ -205,7 +220,7 @@ const Home = () => {
           {/* 개인정보 입력 (선택사항) */}
           <div style={{ marginBottom: '1rem', textAlign: 'left' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <label style={{ color: '#ffd700', fontSize: '0.95rem' }}>
+              <label style={{ color: 'var(--color-primary)', fontSize: '0.95rem' }}>
                 추가 정보(선택사항)
               </label>
               <label 
@@ -214,20 +229,20 @@ const Home = () => {
                   alignItems: 'center', 
                   cursor: 'pointer', 
                   fontSize: '0.85rem', 
-                  color: rememberInfo ? '#ffd700' : '#aaa',
+                  color: rememberInfo ? 'var(--color-primary)' : '#aaa',
                   transition: 'color 0.3s'
                 }}
               >
                 <div style={{
                   width: '16px',
                   height: '16px',
-                  border: `1px solid ${rememberInfo ? '#ffd700' : '#666'}`,
+                  border: `1px solid ${rememberInfo ? 'var(--color-primary)' : '#666'}`,
                   borderRadius: '4px',
                   marginRight: '6px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: rememberInfo ? 'rgba(255, 215, 0, 0.2)' : 'transparent',
+                  background: rememberInfo ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
                   transition: 'all 0.3s'
                 }}>
                   {rememberInfo && (
@@ -236,7 +251,7 @@ const Home = () => {
                       animate={{ scale: 1 }} 
                       viewBox="0 0 24 24" 
                       fill="none" 
-                      stroke="#ffd700" 
+                      stroke="var(--color-primary)" 
                       strokeWidth="4" 
                       strokeLinecap="round" 
                       strokeLinejoin="round"
@@ -256,7 +271,7 @@ const Home = () => {
               </label>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', width: '100%' }}>
-              <input type="text" value={userInfo.name} onChange={(e) => setUserInfo({...userInfo, name: e.target.value})} placeholder="이름" style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} />
+              <input type="text" value={userInfo.name} onChange={(e) => setUserInfo({...userInfo, name: e.target.value})} placeholder="이름" style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid var(--color-primary)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} />
               <input 
                 type="text" 
                 value={userInfo.birthdate} 
@@ -266,10 +281,10 @@ const Home = () => {
                 }} 
                 placeholder="생년월일 (예: 19900101)" 
                 maxLength={8}
-                style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} 
+                style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid var(--color-primary)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} 
               />
-              <input type="text" value={userInfo.job} onChange={(e) => setUserInfo({...userInfo, job: e.target.value})} placeholder="직업" style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} />
-              <select value={userInfo.gender} onChange={(e) => setUserInfo({...userInfo, gender: e.target.value})} style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: userInfo.gender ? '#fff' : '#999', fontSize: '0.9rem', outline: 'none' }}>
+              <input type="text" value={userInfo.job} onChange={(e) => setUserInfo({...userInfo, job: e.target.value})} placeholder="직업" style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid var(--color-primary)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', outline: 'none' }} />
+              <select value={userInfo.gender} onChange={(e) => setUserInfo({...userInfo, gender: e.target.value})} style={{ width: '100%', boxSizing: 'border-box', padding: '0.5rem', borderRadius: '8px', border: '1px solid var(--color-primary)', background: 'rgba(255, 255, 255, 0.05)', color: userInfo.gender ? '#fff' : '#999', fontSize: '0.9rem', outline: 'none' }}>
                 <option value="" style={{background: '#1a1a2e'}}>성별</option>
                 <option value="남성" style={{background: '#1a1a2e'}}>남성</option>
                 <option value="여성" style={{background: '#1a1a2e'}}>여성</option>
@@ -298,10 +313,10 @@ const Home = () => {
           zIndex: 1000,
           maxWidth: '400px',
           margin: '0 auto',
-          background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)',
+          backgroundImage: 'var(--color-btn-gradient)',
           color: '#0f0c29',
           fontWeight: 'bold',
-          boxShadow: '0 4px 15px rgba(255, 215, 0, 0.4)'
+          boxShadow: '0 4px 15px var(--color-shadow-primary)'
         }}
       >
         타로 보기

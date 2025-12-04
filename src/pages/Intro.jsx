@@ -5,7 +5,12 @@ import { motion } from 'framer-motion';
 const Intro = () => {
   const navigate = useNavigate();
 
-
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   return (
     <div 

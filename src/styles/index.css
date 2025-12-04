@@ -35,6 +35,10 @@
   --color-card-bg: #1a1a2e;
   --font-main: 'GMarketSans', sans-serif;
   --font-serif: 'MapoHongdaeFreedom', serif;
+  
+  /* 기본값 (아리아 테마) */
+  --color-btn-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  --color-shadow-primary: rgba(255, 215, 0, 0.4);
 }
 
 * {
