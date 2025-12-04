@@ -1,0 +1,6 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 필요한 경우: 네비게이션 바 아이콘 밝은색으로 -->
+        <item name="android:navigationBarDividerColor">#000000</item>
+    </style>
+</resources>
