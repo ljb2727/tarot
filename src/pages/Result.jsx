@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Card from '../components/Card';
@@ -12,6 +12,7 @@ import '../styles/Result.css';
 const Result = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const resultRef = useRef(null); // 결과 섹션 참조
   const { cards, question, userInfo } = location.state || { cards: [], question: '', userInfo: {} };
   const [showApiModal, setShowApiModal] = useState(false);
   const [aiReading, setAiReading] = useState('');
@@ -28,6 +29,20 @@ const Result = () => {
       setWaitingForAi(false);
     }
   }, [aiReading, waitingForAi]);
+
+  // AI 해석이 완료되고 로딩이 끝나면 결과 섹션으로 스크롤
+  useEffect(() => {
+    if (aiReading && !isLoadingAi && resultRef.current) {
+      setTimeout(() => {
+        // 부드럽게 스크롤 이동 (약간의 여백을 두고)
+        const yOffset = -50; 
+        const element = resultRef.current;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        
+        window.scrollTo({top: y, behavior: 'smooth'});
+      }, 300);
+    }
+  }, [aiReading, isLoadingAi]);
 
   useEffect(() => {
     // 카드나 질문이 없으면 홈으로 리다이렉트
@@ -154,7 +169,7 @@ const Result = () => {
         ))}
       </div>
       
-      <div className="ai-reading-section">
+      <div className="ai-reading-section" ref={resultRef}>
         {!aiReading && !isLoadingAi && (
           <motion.button
             className="btn-ai-reading"
@@ -407,6 +422,7 @@ const Result = () => {
                                 .replace(/(<br\/>\s*){3,}/g, '<br/><br/>') // br 3개 이상은 2개로
                                 .replace(/^(<br\/>\s*)+/, '') // 맨 앞 br 제거
                                 .replace(/<\/b><br\/>/g, '</b> ')
+                                .replace(/<b>\s*(<br\/>\s*)+/g, '<b>') // b태그 바로 안의 br 제거 (넘버링 뒤 줄바꿈 방지)
                             }} />
                           </div>
                         </div>
