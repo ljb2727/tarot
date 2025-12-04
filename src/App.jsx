@@ -5,6 +5,8 @@ import Reading from './pages/Reading';
 import Result from './pages/Result';
 import { initializeAdMob } from './utils/admob';
 
+import Intro from './pages/Intro';
+
 function App() {
   useEffect(() => {
     initializeAdMob();
@@ -13,7 +15,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Intro />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/reading" element={<Reading />} />
         <Route path="/result" element={<Result />} />
       </Routes>

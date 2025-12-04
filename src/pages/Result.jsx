@@ -339,7 +339,7 @@ const Result = () => {
       
       {aiReading && (
         <div className="action-buttons">
-          <button className="btn-primary" onClick={() => navigate('/')}>
+          <button className="btn-primary" onClick={() => navigate('/home')}>
             다시 하기
           </button>
         </div>

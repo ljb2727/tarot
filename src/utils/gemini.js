@@ -1,4 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
+import { getZodiacSign } from "./zodiac";
 
 export const generateTarotReading = async (cards, apiKey, question, userInfo = {}) => {
   if (!apiKey) {
@@ -14,15 +15,21 @@ export const generateTarotReading = async (cards, apiKey, question, userInfo = {
   // 사용자 정보 문자열 생성
   const userInfoText = [];
   if (userInfo.name) userInfoText.push(`이름: ${userInfo.name}`);
-  if (userInfo.age) userInfoText.push(`나이: ${userInfo.age}세`);
+  
+  let zodiacSign = '';
+  if (userInfo.birthdate && userInfo.birthdate.length === 8) {
+    zodiacSign = getZodiacSign(userInfo.birthdate);
+    userInfoText.push(`생년월일: ${userInfo.birthdate} (${zodiacSign})`);
+  }
+  
   if (userInfo.job) userInfoText.push(`직업: ${userInfo.job}`);
   if (userInfo.gender) userInfoText.push(`성별: ${userInfo.gender}`);
   
   const userInfoSection = userInfoText.length > 0 
-    ? `\n사용자 정보:\n${userInfoText.join('\n')}\n\n이 정보를 바탕으로 더 구체적이고 개인화된 해석을 제공해주세요.\n` 
+    ? `\n사용자 정보:\n${userInfoText.join('\n')}\n\n이 정보를 바탕으로 더 구체적이고 개인화된 해석을 제공해주세요.\n특히 **${zodiacSign}**의 성향이나 현재 운세 흐름을 타로 카드 해석과 연결지어 설명해주세요.\n` 
     : '';
 
-  const prompt = `당신은 타로 전문가입니다. 다음 질문에 대해 타로 리딩을 해주세요.
+  const prompt = `당신은 신비로운 타로 마스터 '아리아'입니다. 친절하고 따뜻한 말투로 내담자의 고민을 들어주고 타로 리딩을 해주세요.
 제공된 '이미지 묘사'를 바탕으로 카드의 그림을 사용자에게 설명하듯 묘사하고 해석해주세요.
 ${userInfoSection}
 질문: ${question}
@@ -68,7 +75,11 @@ ${userInfoSection}
       contents: prompt,
     });
     
-    return response.text;
+    let text = response.text;
+    // 끝부분의 --- 제거 및 공백 정리
+    text = text.replace(/\n\s*---\s*$/g, '').trim();
+    
+    return text;
   } catch (error) {
     console.error('Gemini API 오류:', error);
     throw new Error('AI 해석 생성 실패: ' + error.message);
