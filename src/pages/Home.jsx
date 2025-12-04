@@ -123,7 +123,7 @@ const Home = () => {
         )}
 
         <motion.img
-          src="/images/ready.png"
+          src="images/ready.png"
           alt="원픽 타로"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
