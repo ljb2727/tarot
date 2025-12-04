@@ -285,6 +285,10 @@ const Home = () => {
                 <option value="기타" style={{background: '#1a1a2e'}}>기타</option>
               </select>
             </div>
+            <p style={{ fontSize: '0.75rem', color: '#aaa', marginTop: '0.5rem', lineHeight: '1.4' }}>
+              ℹ️ 추가 정보를 입력하면 더 자세하고 개인화된 해석을 받을 수 있습니다.<br />
+              🔒 모든 정보는 기기에만 저장되며 서버로 전송되지 않습니다.
+            </p>
           </div>
         </motion.div>
       </div>
