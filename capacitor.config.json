@@ -6,10 +6,7 @@
     "androidScheme": "https"
   },
   "android": {
-    "allowMixedContent": true,
-    "insets": {
-      "useSafeArea": true
-    }
+    "allowMixedContent": true
   },
   "plugins": {
     "SplashScreen": {

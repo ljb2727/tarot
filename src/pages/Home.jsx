@@ -92,7 +92,8 @@ const Home = () => {
         flexDirection: 'column', 
         alignItems: 'center', 
         justifyContent: 'center', 
-        minHeight: '100svh'
+        minHeight: '100svh',
+        paddingBottom: '120px' // 하단 버튼 공간 확보
       }}
     >
       <Toast 
@@ -307,7 +308,7 @@ const Home = () => {
         onClick={handleStart}
         style={{
           position: 'fixed',
-          bottom: 'max(env(safe-area-inset-bottom), 20px)',
+          bottom: '50px',
           left: '1rem',
           right: '1rem',
           zIndex: 1000,

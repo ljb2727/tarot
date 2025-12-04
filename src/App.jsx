@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Capacitor } from '@capacitor/core';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import Home from './pages/Home';
 import Reading from './pages/Reading';
 import Result from './pages/Result';
-import { initializeAdMob } from './utils/admob';
-import { StatusBar, Style } from '@capacitor/status-bar';
-
 import Intro from './pages/Intro';
 import SelectMaster from './pages/SelectMaster';
+import { initializeAdMob } from './utils/admob';
 
 // 스크롤 최상단 이동 컴포넌트
 function ScrollToTop() {
@@ -29,11 +29,13 @@ function ThemeController() {
     const root = document.documentElement;
 
     if (selectedMaster === 'calix') {
+      // 칼릭스 테마 (레드)
       root.style.setProperty('--color-primary', '#ff4d4d');
       root.style.setProperty('--color-secondary', '#c0392b');
       root.style.setProperty('--color-btn-gradient', 'linear-gradient(135deg, #ff4d4d 0%, #ff8080 100%)');
       root.style.setProperty('--color-shadow-primary', 'rgba(255, 77, 77, 0.4)');
     } else {
+      // 아리아 테마 (골드 - 기본)
       root.style.setProperty('--color-primary', '#ffd700');
       root.style.setProperty('--color-secondary', '#9b59b6');
       root.style.setProperty('--color-btn-gradient', 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)');
@@ -47,23 +49,19 @@ function ThemeController() {
 function App() {
   useEffect(() => {
     const initializeApp = async () => {
+      // AdMob 초기화
       initializeAdMob();
       
-      try {
-        await StatusBar.setOverlaysWebView({ overlay: false });
-        await StatusBar.setStyle({ style: Style.Dark });
-        await StatusBar.setBackgroundColor({ color: '#000000' });
-      } catch (error) {
-        console.log('StatusBar API not available (running in web browser)');
+      // StatusBar 설정 (Capacitor 7 대응)
+      if (Capacitor.isNativePlatform()) {
+        try {
+          await StatusBar.setStyle({ style: Style.Dark });
+          await StatusBar.setBackgroundColor({ color: '#000000' });
+          await StatusBar.setOverlaysWebView({ overlay: false });
+        } catch (error) {
+          console.log('StatusBar error:', error);
+        }
       }
-
-      // ⬇⬇⬇ 하단 네비게이션바 침범 방지 핵심 부분 ⬇⬇⬇
-      document.documentElement.style.setProperty(
-        '--safe-bottom',
-        'env(safe-area-inset-bottom)'
-      );
-      document.body.style.paddingBottom = 'env(safe-area-inset-bottom)';
-      // ⬆⬆⬆ 여기만 추가하면 하단 안전영역 생김!!
     };
     
     initializeApp();

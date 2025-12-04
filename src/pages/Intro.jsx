@@ -37,7 +37,7 @@ const Intro = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
-        style={{ fontSize: '1.5rem', marginBottom: '3rem', maxWidth: '600px', lineHeight: '1.6' }}
+        style={{ fontSize: '1.5rem', marginBottom: '3rem', maxWidth: '600px', lineHeight: '1.6', color: '#fff' }}
       >
         당신의 운명을 확인해보세요. <br />카드가 당신에게 들려줄 이야기가 있습니다.
       </motion.p>

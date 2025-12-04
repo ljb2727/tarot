@@ -51,12 +51,16 @@ html {
   height: 100%;
 }
 
+body, #root {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   height: 100%;
-  background: #000;
+  background: var(--color-bg);
+  background: var(--color-bg-gradient);
   overflow-x: hidden;
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 #root {

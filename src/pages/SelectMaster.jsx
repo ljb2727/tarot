@@ -49,7 +49,7 @@ const SelectMaster = () => {
         justifyContent: 'flex-start', 
         minHeight: '100svh',
         padding: '2rem 1rem',
-        paddingBottom: '100px' // 하단 버튼 공간 확보
+        paddingBottom: '120px' // 하단 버튼 공간 확보
       }}
     >
       <motion.h1
@@ -183,7 +183,7 @@ const SelectMaster = () => {
         onClick={handleConfirm}
         style={{
           position: 'fixed',
-          bottom: 'max(env(safe-area-inset-bottom), 20px)',
+          bottom: '50px',
           left: '1rem',
           right: '1rem',
           zIndex: 1000,

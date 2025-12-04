@@ -10,6 +10,6 @@ public class MainActivity extends BridgeActivity {
         super.onCreate(savedInstanceState);
 
         // Capacitor가 화면을 제어하도록 Edge-to-Edge 모드를 허용합니다.
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
     }
 }

@@ -21,7 +21,7 @@ const Toast = ({ message, isVisible, onClose, duration = 3000 }) => {
           transition={{ duration: 0.3 }}
           style={{
             position: 'fixed',
-            top: '20px',
+            top: '60px',
             left: '50%',
             transform: 'translateX(-50%)',
             background: 'rgba(255, 107, 107, 0.9)', // 연한 빨간색 (파스텔 톤)

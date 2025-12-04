@@ -1,12 +1,23 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- 상태바 색 -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        
+        <!-- 상태바/네비바 검은색 고정 -->
         <item name="android:statusBarColor">#000000</item>
-
-        <!-- 하단 네비게이션 바 색 -->
         <item name="android:navigationBarColor">#000000</item>
+        
+        <!-- 아이콘은 흰색으로 -->
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- 핵심: 시스템이 알아서 영역 확보 (웹뷰가 침범 못함) -->
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
 
-        <!-- 필요한 경우: 네비게이션 바 아이콘 밝은색으로 -->
-        <item name="android:navigationBarDividerColor">#000000</item>
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 </resources>
