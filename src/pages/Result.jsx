@@ -243,6 +243,18 @@ const Result = () => {
                       return (
                         <div key={idx} className="reading-section-with-card">
                           <div className="section-card-image">
+                            <div style={{ 
+                              marginBottom: '0.5rem', 
+                              color: '#ffd700', 
+                              fontSize: '1.1rem', 
+                              fontWeight: 'bold',
+                              borderBottom: '1px solid rgba(255, 215, 0, 0.3)',
+                              paddingBottom: '0.2rem',
+                              width: '100%',
+                              textAlign: 'center'
+                            }}>
+                              {section.type === 'past' ? '과거' : section.type === 'present' ? '현재' : '미래'}
+                            </div>
                             <Card 
                               card={card}
                               isFlipped={true}
@@ -309,6 +321,9 @@ const Result = () => {
                       );
                     } else if (section.type === 'advice') {
                       // 전문가 조언 섹션
+                      const selectedMaster = localStorage.getItem('selected_master') || 'aria';
+                      const masterName = selectedMaster === 'aria' ? '아리아' : '칼릭스';
+                      
                       return (
                         <div key={idx} className="reading-section-with-card advice-section">
                           <div className="section-card-image">
@@ -316,12 +331,13 @@ const Result = () => {
                           </div>
                           <div className="section-text">
                             <div className="advice-header-text">
-                              <h3>타로 전문가의 조언</h3>
+                              <h3>타로 마스터 {masterName}의 조언</h3>
                             </div>
                             <div dangerouslySetInnerHTML={{ 
                               __html: section.content
                                 .replace(/\n\n+/g, '\n')
                                 .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+                                .replace(/(\d+)\.\s/g, '<br/><br/>$1. ') // 숫자 목록 앞에 줄바꿈
                                 .replace(/\n/g, '<br/>')
                                 .replace(/<\/b><br\/>/g, '</b> ')
                             }} />
@@ -338,9 +354,20 @@ const Result = () => {
       </div>
       
       {aiReading && (
-        <div className="action-buttons">
+        <div className="action-buttons" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
           <button className="btn-primary" onClick={() => navigate('/home')}>
             다시 하기
+          </button>
+          <button 
+            className="btn-primary" 
+            onClick={() => navigate('/select-master')}
+            style={{
+              background: 'transparent',
+              border: '2px solid var(--color-primary)',
+              color: 'var(--color-primary)'
+            }}
+          >
+            타로마스터 다시선택
           </button>
         </div>
       )}

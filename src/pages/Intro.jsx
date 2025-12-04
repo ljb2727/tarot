@@ -18,7 +18,7 @@ const Intro = () => {
         minHeight: '100vh',
         cursor: 'pointer'
       }}
-      onClick={() => navigate('/home')}
+      onClick={() => navigate('/select-master')}
     >
       <motion.h1 
         initial={{ opacity: 0, y: -50 }}

@@ -41,17 +41,7 @@ const Home = () => {
     }
   }, [userInfo, rememberInfo]);
 
-  // 비디오 재생/일시정지 제어
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isTyping) {
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      }
-    }
-  }, [isTyping]);
+
 
   const showToastMessage = (message) => {
     setToastMessage(message);
@@ -133,6 +123,7 @@ const Home = () => {
         <motion.video
           ref={videoRef}
           src="images/ready.mp4"
+          autoPlay
           loop
           muted
           playsInline
@@ -184,10 +175,10 @@ const Home = () => {
                   setIsTyping(false);
                 }
               }}
-              placeholder="예: 취업을 위해 제가 지금 준비해야 할 것은 무엇인가요?&#13;&#10;(구체적인 상황을 함께 적어주시면 더 좋습니다)"
+              placeholder="예: 취업을 위해 제가 지금 준비해야 할 것은 무엇인가요?&#13;&#10;"
               style={{
                 width: '100%',
-                minHeight: '8rem',
+                minHeight: '5rem',
                 padding: '0.5rem',
                 borderRadius: '10px',
                 border: '2px solid rgba(255, 215, 0, 0.3)',

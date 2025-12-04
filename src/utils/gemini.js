@@ -29,8 +29,23 @@ export const generateTarotReading = async (cards, apiKey, question, userInfo = {
     ? `\n사용자 정보:\n${userInfoText.join('\n')}\n\n이 정보를 바탕으로 더 구체적이고 개인화된 해석을 제공해주세요.\n특히 **${zodiacSign}**의 성향이나 현재 운세 흐름을 타로 카드 해석과 연결지어 설명해주세요.\n` 
     : '';
 
-  const prompt = `당신은 신비로운 타로 마스터 '아리아'입니다. 친절하고 따뜻한 말투로 내담자의 고민을 들어주고 타로 리딩을 해주세요.
+  // 선택된 마스터 확인
+  const selectedMaster = localStorage.getItem('selected_master') || 'aria';
+  
+  let masterPrompt = '';
+  if (selectedMaster === 'aria') {
+    masterPrompt = `당신은 신비로운 타로 마스터 '아리아'입니다. 친절하고 따뜻한 말투로 내담자의 고민을 들어주고 타로 리딩을 해주세요.
 제공된 '이미지 묘사'를 바탕으로 카드의 그림을 사용자에게 설명하듯 묘사하고 해석해주세요.
+정확하고 담백하게, 감정에 치우치지 않고 카드가 가리키는 진실을 명확하게 전달해주세요.`;
+  } else if (selectedMaster === 'calix') {
+    masterPrompt = `당신은 냉철한 타로 마스터 '칼릭스'입니다. 직설적이고 현실적인 말투로 내담자가 외면하고 있던 진실을 거침없이 드러내주세요.
+제공된 '이미지 묘사'를 바탕으로 카드의 그림을 날카롭게 분석하고 해석해주세요.
+달콤한 환상은 깨트리고, 현실을 직시하게 만들어주세요. 당장 행동해야 할 것과 포기해야 할 것을 명확히 구분해주세요.
+"~인 것 같아요", "~할 수도 있어요" 같은 모호한 표현 대신 "~입니다", "~해야 합니다" 같은 단정적 표현을 사용하세요.
+필요하다면 쓴소리도 서슴지 마세요.`;
+  }
+
+  const prompt = `${masterPrompt}
 ${userInfoSection}
 질문: ${question}
 
