@@ -110,7 +110,7 @@ const History = () => {
                 className="btn-delete-item"
                 onClick={(e) => handleDelete(e, item.id)}
               >
-                🗑️
+                삭제
               </button>
             </motion.div>
           ))}

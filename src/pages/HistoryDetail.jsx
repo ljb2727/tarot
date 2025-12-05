@@ -6,6 +6,7 @@ import { Share } from '@capacitor/share';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import html2canvas from 'html2canvas';
 import Card from '../components/Card';
+import ImageModal from '../components/ImageModal';
 import '../styles/Result.css'; // Result 페이지와 동일한 스타일 사용
 
 const HistoryDetail = () => {
@@ -13,6 +14,7 @@ const HistoryDetail = () => {
   const navigate = useNavigate();
   const [historyItem, setHistoryItem] = useState(null);
   const [isSharing, setIsSharing] = useState(false);
+  const [selectedImageInfo, setSelectedImageInfo] = useState(null);
 
   useEffect(() => {
     const item = getHistoryById(id);
@@ -96,6 +98,18 @@ const HistoryDetail = () => {
     }
   };
 
+  const openImageModal = (card) => {
+    setSelectedImageInfo({
+      imageSrc: card.image,
+      altText: card.name_kr,
+      isReversed: card.isReversed
+    });
+  };
+
+  const closeImageModal = () => {
+    setSelectedImageInfo(null);
+  };
+
   if (!historyItem) {
     return <div className="loading">불러오는 중...</div>;
   }
@@ -122,7 +136,8 @@ const HistoryDetail = () => {
             <Card 
               card={card}
               isFlipped={true}
-              style={{ width: '100px', height: '166px' }}
+              style={{ width: '100px', height: '166px', cursor: 'pointer' }}
+              onClick={() => openImageModal(card)}
             />
             <p className="selected-card-name" style={{ color: '#fff', maxWidth: '100px', wordWrap: 'break-word', textAlign: 'center' }}>
               {card.name_kr}
@@ -237,6 +252,14 @@ const HistoryDetail = () => {
           삭제하기
         </button>
       </div>
+
+      <ImageModal
+        isOpen={!!selectedImageInfo}
+        onClose={closeImageModal}
+        imageSrc={selectedImageInfo?.imageSrc}
+        altText={selectedImageInfo?.altText}
+        isReversed={selectedImageInfo?.isReversed}
+      />
     </div>
   );
 };

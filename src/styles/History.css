@@ -62,7 +62,7 @@
   border: 1px solid rgba(255, 215, 0, 0.2);
   border-radius: 15px;
   padding: 1rem;
-  padding-right: 3.5rem; /* 삭제 버튼 공간 확보 */
+  padding-right: 4rem; /* 삭제 버튼 공간 확보 */
   cursor: pointer;
   transition: all 0.3s;
   position: relative;
@@ -70,7 +70,7 @@
 
 .history-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  
   border-color: var(--color-primary);
 }
 
@@ -94,6 +94,7 @@
   background: rgba(255, 255, 255, 0.1);
   padding: 0.2rem 0.6rem;
   border-radius: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .history-question {
@@ -129,24 +130,22 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(255, 77, 77, 0.2);
+  background: transparent;
   border: 1px solid rgba(255, 77, 77, 0.5);
   color: #ff4d4d;
-  font-size: 1.2rem;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-family: 'Noto Sans KR', sans-serif;
   cursor: pointer;
   transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 10; /* 다른 요소 위로 */
 }
 
 .btn-delete-item:hover {
-  background: rgba(255, 77, 77, 0.4);
-  transform: scale(1.1);
+  background: rgba(255, 77, 77, 0.1);
+  border-color: #ff4d4d;
+  
 }
 
 .modal-overlay {
