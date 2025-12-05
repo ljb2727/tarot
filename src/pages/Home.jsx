@@ -91,9 +91,10 @@ const Home = () => {
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
-        justifyContent: 'center', 
-        minHeight: '100svh',
-        paddingBottom: '20px'
+        justifyContent: 'flex-start', 
+        width: '100%',
+        paddingBottom: '20px',
+        paddingTop: '1rem'
       }}
     >
       <Toast 

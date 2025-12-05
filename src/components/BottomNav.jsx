@@ -52,7 +52,7 @@ const BottomNav = () => {
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: isActive ? 'var(--color-primary)' : '#999',
+                color: isActive ? '#fff' : 'rgba(255, 255, 255, 0.5)',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',

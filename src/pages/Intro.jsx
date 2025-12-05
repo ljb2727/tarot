@@ -50,6 +50,9 @@ const Intro = () => {
         loop
         muted
         playsInline
+        onLoadedData={(e) => {
+          e.target.style.opacity = 1;
+        }}
         style={{
           position: 'absolute',
           top: 0,
@@ -57,7 +60,9 @@ const Intro = () => {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          zIndex: 0
+          zIndex: 0,
+          opacity: 0, // 초기 투명도 0
+          transition: 'opacity 0.5s ease-in-out' // 부드러운 전환
         }}
       />
 

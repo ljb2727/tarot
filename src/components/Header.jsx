@@ -46,7 +46,7 @@ const Header = () => {
           style={{
             background: 'transparent',
             border: 'none',
-            color: 'var(--color-primary)',
+            color: '#fff',
             fontSize: '1.5rem',
             cursor: 'pointer',
             padding: '0.5rem',
@@ -61,7 +61,7 @@ const Header = () => {
         <h1 style={{
           margin: 0,
           fontSize: '1.2rem',
-          color: 'var(--color-primary)',
+          color: '#fff',
           fontFamily: 'var(--font-serif)',
           textAlign: 'center',
           flex: 1

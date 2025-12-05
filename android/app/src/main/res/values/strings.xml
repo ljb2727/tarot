@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">원픽 타로</string>
     <string name="title_activity_main">원픽 타로</string>
-    <string name="package_name">com.tarot.mystic</string>
-    <string name="custom_url_scheme">com.tarot.mystic</string>
+    <string name="package_name">com.onepick.tarot</string>
+    <string name="custom_url_scheme">com.onepick.tarot</string>
 </resources>

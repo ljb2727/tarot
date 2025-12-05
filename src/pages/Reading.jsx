@@ -146,7 +146,7 @@ const Reading = () => {
       )}
 
       {/* 선택된 카드 프리뷰 */}
-      <div className="selected-preview" style={{ minHeight: '200px', marginBottom: '1rem', overflow: 'visible' }}>
+      <div className="selected-preview" style={{ marginBottom: '1rem', overflow: 'visible' }}>
         {[0, 1, 2].map((index) => {
           const card = selectedCards[index];
           

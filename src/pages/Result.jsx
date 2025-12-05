@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Card from '../components/Card';
@@ -20,6 +20,28 @@ const Result = () => {
   const [apiKey, setApiKey] = useState('');
   const [selectedImageInfo, setSelectedImageInfo] = useState(null);
   const [waitingForAi, setWaitingForAi] = useState(false); // 광고 완료 후 AI 대기 중인지 여부
+  const readingRef = useRef(null); // 스크롤 타겟 ref
+
+  // AI 해석 완료 시 스크롤 이동
+  useEffect(() => {
+    if (aiReading && readingRef.current) {
+      setTimeout(() => {
+        const root = document.getElementById('root');
+        if (root) {
+          // 헤더 높이(60px) + 여유 공간(20px) 고려하여 스크롤
+          const headerHeight = 60;
+          const extraSpace = 20;
+          const elementTop = readingRef.current.getBoundingClientRect().top;
+          const currentScroll = root.scrollTop;
+          
+          // 현재 스크롤 위치 + (요소의 화면상 위치 - 상단 여백)
+          const targetScroll = currentScroll + elementTop - (headerHeight + extraSpace);
+          
+          root.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        }
+      }, 500); 
+    }
+  }, [aiReading]);
 
   // AI 해석이 완료되면 로딩 상태 해제 (광고 시청 완료 후 대기 중일 때)
   useEffect(() => {
@@ -133,26 +155,30 @@ const Result = () => {
         <span className="question-label">Q.</span>
         <span className="question-text">{question}</span>
       </div>
-      <h2 style={{ color: '#fff' }}>당신의 운명</h2>
-      
-      {/* 선택된 3장의 카드 미리보기 */}
-      <div className="selected-cards-display">
-        {cards.map((card, index) => (
-          <div key={card.id} className="selected-card-item">
-            <span className="card-position-label">{positions[index]}</span>
-            <Card 
-              card={card}
-              isFlipped={true}
-              style={{ width: '100px', height: '166px', cursor: 'pointer' }}
-              onClick={() => openImageModal(card)}
-            />
-            <p className="selected-card-name" style={{ color: '#fff', maxWidth: '100px', wordWrap: 'break-word', textAlign: 'center' }}>
-              {card.name_kr}
-              {card.isReversed && <span className="reversed-badge">역</span>}
-            </p>
+      {!aiReading && !isLoadingAi && (
+        <>
+          <h2 style={{ color: '#fff' }}>당신의 운명</h2>
+          
+          {/* 선택된 3장의 카드 미리보기 */}
+          <div className="selected-cards-display">
+            {cards.map((card, index) => (
+              <div key={card.id} className="selected-card-item">
+                <span className="card-position-label">{positions[index]}</span>
+                <Card 
+                  card={card}
+                  isFlipped={true}
+                  style={{ width: '100px', height: '166px', cursor: 'pointer' }}
+                  onClick={() => openImageModal(card)}
+                />
+                <p className="selected-card-name" style={{ color: '#fff', maxWidth: '100px', wordWrap: 'break-word', textAlign: 'center' }}>
+                  {card.name_kr}
+                  {card.isReversed && <span className="reversed-badge">역</span>}
+                </p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
       
       <div className="ai-reading-section">
         {!aiReading && !isLoadingAi && (
@@ -179,16 +205,18 @@ const Result = () => {
                 e.target.style.opacity = 1;
               }}
               animate={{ 
-                boxShadow: [
-                  '0 0 20px var(--color-primary), 0 0 40px var(--color-shadow-primary)',
-                  '0 0 40px var(--color-primary), 0 0 80px var(--color-shadow-primary), 0 0 120px var(--color-shadow-primary)',
-                  '0 0 20px var(--color-primary), 0 0 40px var(--color-shadow-primary)'
-                ]
+                boxShadow: aiReading 
+                  ? '0 0 40px var(--color-primary), 0 0 80px var(--color-shadow-primary), 0 0 120px var(--color-shadow-primary)' // 해석 완료 시 고정
+                  : [
+                      '0 0 20px var(--color-primary), 0 0 40px var(--color-shadow-primary)',
+                      '0 0 40px var(--color-primary), 0 0 80px var(--color-shadow-primary), 0 0 120px var(--color-shadow-primary)',
+                      '0 0 20px var(--color-primary), 0 0 40px var(--color-shadow-primary)'
+                    ]
               }}
               transition={{ 
                 boxShadow: { 
-                  duration: 1.5, 
-                  repeat: Infinity, 
+                  duration: aiReading ? 0.5 : 1.5, 
+                  repeat: aiReading ? 0 : Infinity, 
                   ease: "easeInOut" 
                 }
               }}
@@ -224,10 +252,12 @@ const Result = () => {
         
         {aiReading && (
           <motion.div
+            ref={readingRef}
             className="ai-reading-content"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            style={{ color: '#fff' }} // 글자색 흰색 강제
           >
             {(() => {
               // AI 리딩 텍스트를 섹션별로 분리
