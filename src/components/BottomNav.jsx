@@ -14,7 +14,7 @@ const BottomNav = () => {
   const navItems = [
     { path: '/home', icon: '🏠', label: '홈' },
     { path: '/reading', icon: '🔮', label: '타로' },
-    { path: '/result', icon: '✨', label: '결과' }
+    { path: '/history', icon: '📚', label: '보관함' }
   ];
 
   return (
@@ -35,11 +35,11 @@ const BottomNav = () => {
       }}
     >
       <div style={{
-        height: '70px',
+        height: '55px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        padding: '0 1rem'
+        padding: '0 0.5rem'
       }}>
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
@@ -57,16 +57,16 @@ const BottomNav = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '0.25rem',
-                padding: '0.5rem 1rem',
+                gap: '0.15rem',
+                padding: '0.3rem 0.75rem',
                 transition: 'all 0.3s',
                 borderRadius: '10px',
-                minWidth: '60px'
+                minWidth: '55px'
               }}
             >
-              <span style={{ fontSize: '1.5rem' }}>{item.icon}</span>
+              <span style={{ fontSize: '1.3rem' }}>{item.icon}</span>
               <span style={{ 
-                fontSize: '0.7rem',
+                fontSize: '0.65rem',
                 fontWeight: isActive ? 'bold' : 'normal'
               }}>
                 {item.label}

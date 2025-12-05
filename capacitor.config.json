@@ -1,5 +1,5 @@
 {
-  "appId": "com.tarot.mystic",
+  "appId": "com.onepick.tarot",
   "appName": "원픽 타로",
   "webDir": "dist",
   "server": {
@@ -15,7 +15,7 @@
       "resizeOnFullScreen": true
     },
     "SplashScreen": {
-      "backgroundColor": "#000000",
+      "backgroundColor": "#272457",
       "showSpinner": false
     },
     "StatusBar": {

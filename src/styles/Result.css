@@ -49,6 +49,26 @@
   text-align: center;
 }
 
+.ai-reading-content {
+  text-align: left;
+  padding: 0;
+  line-height: 1.8;
+  color: #fff;
+  /* 긴 텍스트 줄바꿈 설정 */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  /* 긴 URL이나 숫자도 줄바꿈 */
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.ai-reading-content b {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+
 .btn-ai-reading {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
@@ -456,8 +476,28 @@
   margin-bottom: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  /* 긴 텍스트 줄바꿈 */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .reading-section-with-card:last-child {
   border-bottom: none;
+}
+
+.section-text {
+  /* 텍스트 영역 줄바꿈 설정 */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.section-text div {
+  /* 내부 div도 줄바꿈 */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }

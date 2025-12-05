@@ -8,6 +8,8 @@ import Reading from './pages/Reading';
 import Result from './pages/Result';
 import Intro from './pages/Intro';
 import SelectMaster from './pages/SelectMaster';
+import History from './pages/History';
+import HistoryDetail from './pages/HistoryDetail';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
 import { initializeAdMob } from './utils/admob';
@@ -116,6 +118,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/reading" element={<Reading />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/history/:id" element={<HistoryDetail />} />
       </Routes>
       <BottomNav />
     </Router>

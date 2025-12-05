@@ -7,6 +7,7 @@ import ImageModal from '../components/ImageModal';
 import AdLoadingScreen from '../components/AdLoadingScreen';
 import { generateTarotReading } from '../utils/gemini';
 import { storage } from '../utils/storage';
+import { saveHistory } from '../utils/historyStorage';
 import '../styles/Result.css';
 
 const Result = () => {
@@ -50,6 +51,19 @@ const Result = () => {
       setWaitingForAi(false);
     }
   }, [aiReading, waitingForAi]);
+
+  // AI 해석 완료 시 히스토리에 자동 저장
+  useEffect(() => {
+    if (aiReading && cards && question) {
+      saveHistory({
+        question,
+        userInfo,
+        cards,
+        aiReading,
+        selectedMaster: localStorage.getItem('selected_master') || 'aria'
+      });
+    }
+  }, [aiReading]);
 
   useEffect(() => {
     // 카드나 질문이 없으면 홈으로 리다이렉트

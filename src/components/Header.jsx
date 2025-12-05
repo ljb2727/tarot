@@ -33,11 +33,11 @@ const Header = () => {
       }}
     >
       <div style={{
-        height: '60px',
+        height: '45px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 1rem'
+        padding: '0 0.75rem'
       }}>
         {/* 뒤로가기 버튼 */}
         <motion.button
@@ -47,9 +47,9 @@ const Header = () => {
             background: 'transparent',
             border: 'none',
             color: '#fff',
-            fontSize: '1.5rem',
+            fontSize: '1.3rem',
             cursor: 'pointer',
-            padding: '0.5rem',
+            padding: '0.3rem',
             display: 'flex',
             alignItems: 'center'
           }}
@@ -60,7 +60,7 @@ const Header = () => {
         {/* 타이틀 */}
         <h1 style={{
           margin: 0,
-          fontSize: '1.2rem',
+          fontSize: '1rem',
           color: '#fff',
           fontFamily: 'var(--font-serif)',
           textAlign: 'center',
@@ -70,7 +70,7 @@ const Header = () => {
         </h1>
 
         {/* 오른쪽 공간 (대칭을 위해) */}
-        <div style={{ width: '40px' }}></div>
+        <div style={{ width: '35px' }}></div>
       </div>
     </motion.header>
   );

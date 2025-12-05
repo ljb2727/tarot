@@ -53,6 +53,14 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  /* 스크롤바 숨기기 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari, Opera 스크롤바 숨기기 */
+*::-webkit-scrollbar {
+  display: none;
 }
 
 input, textarea {
@@ -124,22 +132,4 @@ button {
   background: var(--color-primary);
   color: var(--color-bg);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0f0c29;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #302b63;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #9b59b6;
 }
