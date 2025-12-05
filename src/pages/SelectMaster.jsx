@@ -49,7 +49,7 @@ const SelectMaster = () => {
         justifyContent: 'flex-start', 
         minHeight: '100svh',
         padding: '2rem 1rem',
-        paddingBottom: '120px' // 하단 버튼 공간 확보
+        paddingBottom: 0
       }}
     >
       <motion.h1
@@ -118,21 +118,42 @@ const SelectMaster = () => {
             boxShadow: `0 0 20px ${currentMaster.color}40`
           }}
         >
-          <video
-            src={currentMaster.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
+          <div style={{ position: 'relative', width: '100%', height: '250px', marginBottom: '1.5rem' }}>
+            {/* 로딩 중일 때 보여줄 스켈레톤/배경 */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
               width: '100%',
-              height: '250px',
-              objectFit: 'cover',
+              height: '100%',
+              background: 'rgba(0,0,0,0.2)',
               borderRadius: '15px',
-              marginBottom: '1.5rem',
-              border: `1px solid ${currentMaster.color}40`
-            }}
-          />
+              zIndex: 0
+            }} />
+            
+            <video
+              key={currentMaster.video} // 비디오 소스 변경 시 컴포넌트 재생성
+              src={currentMaster.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              onLoadedData={(e) => {
+                e.target.style.opacity = 1;
+              }}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '15px',
+                border: `1px solid ${currentMaster.color}40`,
+                opacity: 0, // 초기에는 숨김
+                transition: 'opacity 0.5s ease-in-out', // 부드럽게 나타남
+                position: 'relative',
+                zIndex: 1
+              }}
+            />
+          </div>
 
           <h2 style={{ 
             fontSize: '1.5rem', 
@@ -182,13 +203,10 @@ const SelectMaster = () => {
         className="btn-primary"
         onClick={handleConfirm}
         style={{
-          position: 'fixed',
-          bottom: '50px',
-          left: '1rem',
-          right: '1rem',
-          zIndex: 1000,
+          width: '100%',
           maxWidth: '400px',
-          margin: '0 auto',
+          marginTop: '2rem',
+          marginBottom: '1rem',
           background: `linear-gradient(135deg, ${currentMaster.color} 0%, ${selectedTab === 'aria' ? '#ffed4e' : '#ff8080'} 100%)`,
           color: '#0f0c29',
           fontWeight: 'bold',
@@ -197,7 +215,8 @@ const SelectMaster = () => {
           border: 'none',
           borderRadius: '50px',
           cursor: 'pointer',
-          boxShadow: `0 4px 15px ${currentMaster.color}60`
+          boxShadow: `0 4px 15px ${currentMaster.color}60`,
+          zIndex: 10
         }}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

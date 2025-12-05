@@ -9,6 +9,11 @@
     "allowMixedContent": true
   },
   "plugins": {
+    "Keyboard": {
+      "resize": "body",
+      "style": "DARK",
+      "resizeOnFullScreen": true
+    },
     "SplashScreen": {
       "backgroundColor": "#000000",
       "showSpinner": false

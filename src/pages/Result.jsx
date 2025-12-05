@@ -175,9 +175,10 @@ const Result = () => {
               loop
               muted
               playsInline
-              initial={{ opacity: 0 }}
+              onLoadedData={(e) => {
+                e.target.style.opacity = 1;
+              }}
               animate={{ 
-                opacity: 1,
                 boxShadow: [
                   '0 0 20px var(--color-primary), 0 0 40px var(--color-shadow-primary)',
                   '0 0 40px var(--color-primary), 0 0 80px var(--color-shadow-primary), 0 0 120px var(--color-shadow-primary)',
@@ -185,7 +186,6 @@ const Result = () => {
                 ]
               }}
               transition={{ 
-                opacity: { duration: 0.5 },
                 boxShadow: { 
                   duration: 1.5, 
                   repeat: Infinity, 
@@ -198,7 +198,9 @@ const Result = () => {
                 height: '300px',
                 objectFit: 'cover',
                 borderRadius: '50%',
-                border: '3px solid var(--color-primary)',
+                border: '4px solid var(--color-primary)',
+                opacity: 0,
+                transition: 'opacity 0.5s ease-in-out',
                 marginBottom: '1rem'
               }}
             />

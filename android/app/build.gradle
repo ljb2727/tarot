@@ -22,10 +22,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    testOptions {
-        unitTests.all {
-            enabled = false
-        }
+    sourceSets {
+        test.java.srcDirs += 'src/test/java'
+        androidTest.java.srcDirs += 'src/androidTest/java'
+        test.java.exclude '**/com/getcapacitor/myapp/**'
+        androidTest.java.exclude '**/com/getcapacitor/myapp/**'
     }
 }
 

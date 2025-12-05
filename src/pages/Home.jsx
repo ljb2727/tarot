@@ -93,7 +93,7 @@ const Home = () => {
         alignItems: 'center', 
         justifyContent: 'center', 
         minHeight: '100svh',
-        paddingBottom: '120px' // 하단 버튼 공간 확보
+        paddingBottom: '20px'
       }}
     >
       <Toast 
@@ -143,9 +143,10 @@ const Home = () => {
           loop
           muted
           playsInline
-          initial={{ opacity: 0 }}
+          onLoadedData={(e) => {
+            e.target.style.opacity = 1;
+          }}
           animate={{ 
-            opacity: 1,
             boxShadow: [
               '0 0 10px var(--color-shadow-primary)',
               '0 0 20px var(--color-shadow-primary)',
@@ -153,7 +154,6 @@ const Home = () => {
             ]
           }}
           transition={{ 
-            opacity: { duration: 0.5 },
             boxShadow: { 
               duration: 2, 
               repeat: Infinity, 
@@ -167,7 +167,9 @@ const Home = () => {
             border: '3px solid var(--color-primary)',
             borderRadius: '15px',
             boxShadow: '0 0 20px var(--color-shadow-primary)',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            opacity: 0,
+            transition: 'opacity 0.5s ease-in-out'
           }}
         />
 
@@ -175,7 +177,7 @@ const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 1 }}
-          style={{ width: '100%', maxWidth: '500px', marginBottom: '2rem' }}
+          style={{ width: '100%', maxWidth: '500px', marginBottom: 0 }}
         >
           <div style={{ marginBottom: '1rem', textAlign: 'left' }}>
             <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--color-primary)', fontSize: '1.1rem' }}>
@@ -307,17 +309,15 @@ const Home = () => {
         whileTap={{ scale: 0.95 }}
         onClick={handleStart}
         style={{
-          position: 'fixed',
-          bottom: '50px',
-          left: '1rem',
-          right: '1rem',
-          zIndex: 1000,
+          width: '100%',
           maxWidth: '400px',
-          margin: '0 auto',
+          marginTop: '2rem',
+          marginBottom: '1rem',
           backgroundImage: 'var(--color-btn-gradient)',
           color: '#0f0c29',
           fontWeight: 'bold',
-          boxShadow: '0 4px 15px var(--color-shadow-primary)'
+          boxShadow: '0 4px 15px var(--color-shadow-primary)',
+          zIndex: 10
         }}
       >
         타로 보기

@@ -37,34 +37,57 @@
   --font-serif: 'MapoHongdaeFreedom', serif;
 
   --color-btn-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-  --color-shadow-primary: rgba(255, 215, 0, 0.4);
+  
+  /* Safe Area Variables */
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-/* ✔ Android WebView 정상작동용 */
-html {
-  height: 100%;
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
-body, #root {
+a:focus, button:focus {
+  outline: none;
+}
+
+html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  background: #000;
+  overflow: hidden; /* 스크롤은 #root에서 처리 */
 }
 
 body {
-  height: 100%;
   background: var(--color-bg);
   background: var(--color-bg-gradient);
-  overflow-x: hidden;
 }
 
 #root {
-  min-height: 100%;
+  /* 페이지 래퍼 역할 */
+  padding-top: calc(60px + var(--safe-top) + 20px);
+  /* 하단 네비(70px) + 안전영역 + 여유공간(20px) */
+  padding-bottom: calc(70px + var(--safe-bottom) + 20px);
+  height: 100%;
+  overflow-y: auto; /* 내부 스크롤 */
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
 h1, h2, h3, h4, h5, h6 {
