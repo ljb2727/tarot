@@ -183,7 +183,8 @@ const SelectMaster = () => {
             <p style={{ 
               fontSize: '0.9rem', 
               lineHeight: '1.6',
-              color: '#ccc'
+              color: '#ccc',
+              textAlign: 'left'
             }}>
               {currentMaster.description}
             </p>

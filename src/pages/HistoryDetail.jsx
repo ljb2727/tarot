@@ -143,6 +143,25 @@ const HistoryDetail = () => {
               {card.name_kr}
               {card.isReversed && <span className="reversed-badge">역</span>}
             </p>
+            <button 
+              className="btn-view-image"
+              onClick={() => openImageModal(card)}
+              style={{
+                marginTop: '0.5rem',
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#ddd',
+                padding: '4px 10px',
+                borderRadius: '15px',
+                fontSize: '0.8rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px'
+              }}
+            >
+              🔍 크게 보기
+            </button>
           </div>
         ))}
       </div>
