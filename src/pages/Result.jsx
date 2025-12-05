@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Share } from '@capacitor/share';
+import { Filesystem, Directory } from '@capacitor/filesystem';
+import html2canvas from 'html2canvas';
 import Card from '../components/Card';
 import ApiKeyModal from '../components/ApiKeyModal';
 import ImageModal from '../components/ImageModal';
@@ -21,6 +24,7 @@ const Result = () => {
   const [apiKey, setApiKey] = useState('');
   const [selectedImageInfo, setSelectedImageInfo] = useState(null);
   const [waitingForAi, setWaitingForAi] = useState(false); // 광고 완료 후 AI 대기 중인지 여부
+  const [isSharing, setIsSharing] = useState(false); // 공유 중인지 여부
   const readingRef = useRef(null); // 스크롤 타겟 ref
 
   // AI 해석 완료 시 스크롤 이동
@@ -137,6 +141,67 @@ const Result = () => {
     setApiKey(newKey);
     handleAiReading();
   };
+
+  const handleShare = async () => {
+    if (isSharing) return;
+    setIsSharing(true);
+
+    try {
+      const element = document.querySelector('.result-container');
+      if (!element) throw new Error('캡처할 요소를 찾을 수 없습니다.');
+
+      const canvas = await html2canvas(element, {
+        useCORS: true,
+        scale: 2,
+        backgroundColor: '#1a1a2e',
+        logging: false,
+        height: element.scrollHeight,
+        windowHeight: element.scrollHeight,
+        onclone: (clonedDoc) => {
+          const cardInners = clonedDoc.querySelectorAll('.card-inner');
+          cardInners.forEach(inner => {
+            inner.style.transform = 'none';
+            inner.style.transition = 'none';
+          });
+
+          const cardFronts = clonedDoc.querySelectorAll('.card-front');
+          cardFronts.forEach(front => {
+            front.style.transform = 'none';
+            front.style.zIndex = '10';
+          });
+
+          const cardBacks = clonedDoc.querySelectorAll('.card-back');
+          cardBacks.forEach(back => {
+            back.style.display = 'none';
+          });
+        }
+      });
+
+      const base64Data = canvas.toDataURL('image/jpeg', 0.8);
+      const data = base64Data.split(',')[1];
+      const fileName = `tarot_result_${Date.now()}.jpg`;
+
+      const savedFile = await Filesystem.writeFile({
+        path: fileName,
+        data: data,
+        directory: Directory.Cache
+      });
+
+      await Share.share({
+        title: '원픽 타로 결과',
+        text: `Q. ${question}\n\n이미지로 결과를 확인해보세요!`,
+        url: savedFile.uri,
+        dialogTitle: '타로 결과 공유하기',
+      });
+
+    } catch (error) {
+      console.error('공유 실패:', error);
+      alert('결과 공유 중 오류가 발생했습니다.');
+    } finally {
+      setIsSharing(false);
+    }
+  };
+
 
   const openImageModal = (card) => {
     setSelectedImageInfo({
@@ -467,20 +532,89 @@ const Result = () => {
       </div>
       
       {aiReading && (
-        <div className="action-buttons" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
-          <button className="btn-primary" onClick={() => navigate('/home')}>
+        <div className="action-buttons" style={{ 
+          display: 'flex', 
+          flexDirection: 'row', 
+          gap: '0.8rem', 
+          justifyContent: 'center',
+          width: '100%',
+          maxWidth: '500px',
+          padding: '0 1rem',
+          marginTop: '2rem',
+          marginBottom: '6rem'
+        }}>
+          <button 
+            className="btn-primary" 
+            onClick={handleShare}
+            disabled={isSharing}
+            style={{
+              flex: 1,
+              background: isSharing ? '#666' : 'var(--color-btn-gradient)',
+              border: 'none',
+              color: '#0f0c29',
+              fontSize: '0.9rem',
+              fontWeight: 'bold',
+              padding: '1rem 0.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              borderRadius: '15px',
+              boxShadow: '0 4px 15px var(--color-shadow-primary)',
+              opacity: isSharing ? 0.7 : 1
+            }}
+          >
+            <span style={{ fontSize: '1.5rem' }}>{isSharing ? '⏳' : '📤'}</span>
+            {isSharing ? '저장중...' : '공유하기'}
+          </button>
+
+          <button 
+            className="btn-primary" 
+            onClick={() => navigate('/home')}
+            style={{
+              flex: 1,
+              background: 'var(--color-btn-gradient)',
+              border: 'none',
+              color: '#0f0c29',
+              fontSize: '0.9rem',
+              fontWeight: 'bold',
+              padding: '1rem 0.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              borderRadius: '15px',
+              boxShadow: '0 4px 15px var(--color-shadow-primary)'
+            }}
+          >
+            <span style={{ fontSize: '1.5rem' }}>🔄</span>
             다시 하기
           </button>
+
           <button 
             className="btn-primary" 
             onClick={() => navigate('/select-master')}
             style={{
-              background: 'transparent',
-              border: '2px solid var(--color-primary)',
-              color: 'var(--color-primary)'
+              flex: 1,
+              background: 'var(--color-btn-gradient)',
+              border: 'none',
+              color: '#0f0c29',
+              fontSize: '0.9rem',
+              fontWeight: 'bold',
+              padding: '1rem 0.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              borderRadius: '15px',
+              boxShadow: '0 4px 15px var(--color-shadow-primary)'
             }}
           >
-            타로마스터 다시선택
+            <span style={{ fontSize: '1.5rem' }}>🧙</span>
+            마스터 변경
           </button>
         </div>
       )}

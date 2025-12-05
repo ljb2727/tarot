@@ -23,8 +23,9 @@ const ImageModal = ({ isOpen, onClose, imageSrc, altText, isReversed }) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          zIndex: 1000,
+          zIndex: 2000, // BottomNav보다 높게
           padding: '20px',
+          paddingBottom: 'calc(80px + var(--safe-bottom))', // BottomNav + safe area
           cursor: 'pointer'
         }}
       >
@@ -47,7 +48,7 @@ const ImageModal = ({ isOpen, onClose, imageSrc, altText, isReversed }) => {
             alt={altText}
             style={{
               maxWidth: '100%',
-              maxHeight: '80vh',
+              maxHeight: '70vh', // 높이 줄여서 버튼 공간 확보
               borderRadius: '15px',
               boxShadow: '0 0 30px rgba(255, 215, 0, 0.3)',
               transform: isReversed ? 'rotate(180deg)' : 'none',
@@ -58,18 +59,20 @@ const ImageModal = ({ isOpen, onClose, imageSrc, altText, isReversed }) => {
           <button
             onClick={onClose}
             style={{
-              marginTop: '1rem',
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
+              marginTop: '1.5rem',
+              background: 'rgba(255, 255, 255, 0.2)',
+              border: '2px solid rgba(255, 255, 255, 0.5)',
               color: '#fff',
-              padding: '8px 24px',
-              borderRadius: '20px',
+              padding: '12px 32px',
+              borderRadius: '25px',
               cursor: 'pointer',
-              fontSize: '1rem',
-              transition: 'background 0.3s'
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              transition: 'all 0.3s',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)'
             }}
-            onMouseOver={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
-            onMouseOut={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.1)'}
+            onMouseOver={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
+            onMouseOut={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
           >
             닫기
           </button>
